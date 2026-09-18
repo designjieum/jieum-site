@@ -18,7 +18,7 @@ const PROBLEMS: ProblemCard[] = [
     title: "01. 수백만 원에 달하는 견적 부담",
     subtitle: "처음 견적은 100만 원인데, 기능을 조금만 추가하면 300만 원?",
     problemDesc: "막상 문의하면 페이지 수, 반응형 기능, 디자인 옵션마다 추가금이 붙어 감당하기 힘든 비용이 됩니다.",
-    jieumSolution: "디자인 지음은 기획·모바일 최적화·문의 연동까지 모두 포함한 33만 원 투명 정찰제를 약속합니다."
+    jieumSolution: "디자인 지음은 기획·모바일 최적화·문의 연동까지 올인원으로 담아낸 '고전환 원페이지'를 33만 원 투명 정찰제로 약속합니다."
   },
   {
     id: 2,
@@ -57,10 +57,12 @@ export function ProblemSection() {
   return (
     <section id="problem" ref={containerRef} className="relative bg-[#090D16] text-white">
       {/* 상단 섹션 구분선 */}
-<div className="w-full border-t border-slate-800/80" />
+      <div className="w-full border-t border-slate-800/80" />
+
       <div className="h-[400vh] relative">
-        <div className="sticky top-0 h-screen flex items-center overflow-hidden px-4 sm:px-8 lg:px-16 max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 w-full items-center">
+        {/* max-w-6xl 및 px-6 적용으로 헤더와 수직 기준선 완벽 일치 */}
+        <div className="sticky top-0 h-screen flex items-center overflow-hidden px-6 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 w-full items-center">
             
             {/* 좌측 고정 설명 영역 */}
             <div className="lg:col-span-5 flex flex-col justify-center">
@@ -117,8 +119,8 @@ export function ProblemSection() {
                     : index === PROBLEMS.length - 1
                     ? [start, peak, 1]
                     : [start, peak, end],
-                  index === 0
-                    ? [1, 1, 0]
+                  index === 0 
+                    ? [1, 1, 0] 
                     : index === PROBLEMS.length - 1
                     ? [0, 1, 1]
                     : [0, 1, 0]
@@ -136,7 +138,7 @@ export function ProblemSection() {
                   <motion.div
                     key={problem.id}
                     style={{ opacity, y }}
-                    className="absolute inset-0 p-6 sm:p-8 rounded-2xl bg-linear-to-b from-slate-900/90 to-slate-950/90 border border-slate-800 shadow-2xl backdrop-blur-xl flex flex-col justify-between"
+                    className="absolute inset-0 p-6 sm:p-7 rounded-2xl bg-linear-to-b from-slate-900/90 to-slate-950/90 border border-slate-800 shadow-2xl backdrop-blur-xl flex flex-col justify-between"
                   >
                     <div>
                       <div className="flex items-center gap-3 mb-4">
@@ -157,7 +159,7 @@ export function ProblemSection() {
                       </p>
                     </div>
 
-                    <div className="mt-4 pt-4 border-t border-slate-800/80 bg-sky-950/20 -mx-6 sm:-mx-8 -mb-6 sm:-mb-8 p-4 sm:p-6 rounded-b-2xl flex items-start gap-3">
+                    <div className="mt-4 pt-4 border-t border-slate-800/80 bg-sky-950/20 -mx-6 sm:-mx-7 -mb-6 sm:-mb-7 p-4 sm:p-5 rounded-b-2xl flex items-start gap-3">
                       <div className="text-xs font-bold px-2 py-0.5 rounded bg-sky-500/20 text-sky-300 border border-sky-500/30 shrink-0 mt-0.5">
                         지음의 해답
                       </div>

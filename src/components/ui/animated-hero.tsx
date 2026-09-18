@@ -73,7 +73,7 @@ function Hero() {
         {/* 서브 카피 */}
         <p className="mt-7 text-base sm:text-lg md:text-xl text-slate-400 leading-[1.72] tracking-[-0.015em] max-w-xl break-all font-normal">
           수백만 원 견적서도, 복잡한 기획서 작성도 필요 없습니다. <br className="hidden sm:inline" />
-          예약 연결부터 손님 문의 유도까지, <strong className="font-semibold text-slate-200">2주 만에 실전 영업용 페이지</strong>를 완성해 드립니다.
+          예약 연결부터 손님 문의 유도까지, <strong className="font-semibold text-slate-200">2주 만에 실전 영업용 원페이지</strong>를 완성해 드립니다.
         </p>
 
         {/* 확정된 CTA 버튼 세트 */}
