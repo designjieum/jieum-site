@@ -1,190 +1,175 @@
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import {
-  HelpCircle,
-  DollarSign,
-  FileEdit,
-  MessageSquareOff,
-  Users,
-  CheckCircle2,
-} from "lucide-react";
+import { AlertCircle, FileSpreadsheet, MessageSquareDashed, HelpCircle, CheckCircle2 } from "lucide-react";
 
-const hesitateReasons = [
+interface ProblemCard {
+  id: number;
+  icon: typeof AlertCircle;
+  title: string;
+  subtitle: string;
+  problemDesc: string;
+  jieumSolution: string;
+}
+
+const PROBLEMS: ProblemCard[] = [
   {
-    icon: DollarSign,
-    tag: "비용 부담",
-    title: "부르는 게 값인 수백만 원 견적서",
-    description:
-      "간단한 홍보 페이지 하나 만들려 해도 업체마다 부르는 금액이 천차만별이고, 결국 수백만 원에 달하는 비용 때문에 선뜻 시작하지 못합니다.",
-    quote: "“페이지 몇 장 안 되는데 왜 200만 원이나 달라는 건지…”",
+    id: 1,
+    icon: AlertCircle,
+    title: "01. 수백만 원에 달하는 견적 부담",
+    subtitle: "처음 견적은 100만 원인데, 기능을 조금만 추가하면 300만 원?",
+    problemDesc: "막상 문의하면 페이지 수, 반응형 기능, 디자인 옵션마다 추가금이 붙어 감당하기 힘든 비용이 됩니다.",
+    jieumSolution: "디자인 지음은 기획·모바일 최적화·문의 연동까지 모두 포함한 33만 원 투명 정찰제를 약속합니다."
   },
   {
-    icon: FileEdit,
-    tag: "준비 막막함",
-    title: "기획서부터 사진까지 직접 준비하라니",
-    description:
-      "가게 운영만으로도 몸이 열 개라도 모자란데, 업체에선 문구 작성부터 메뉴 사진, 기획안까지 일일이 직접 정리해서 넘겨달라고 요구합니다.",
-    quote: "“장사하기도 바쁜데 기획서를 언제 다 쓰고 있나요…”",
+    id: 2,
+    icon: FileSpreadsheet,
+    title: "02. 기획서·문서 준비의 막막함",
+    subtitle: "바쁜 매장 운영 중에 스토리보드와 원고를 직접 써오라니요?",
+    problemDesc: "웹 제작 업체들은 기획 문서를 요구하지만, 하루 종일 현업에 바쁜 사장님들에겐 가장 큰 장벽입니다.",
+    jieumSolution: "네이버 플레이스 링크 하나만 보내주세요. 매장 분석부터 카피라이팅까지 지음이 직접 기획합니다."
   },
   {
-    icon: MessageSquareOff,
-    tag: "소통 단절",
-    title: "글자 하나 고치려 해도 한세월 걸리는 소통",
-    description:
-      "오픈 후 메뉴 가격이나 영업시간 하나 바꾸려 해도 비대면 메일로 접수하라며 며칠씩 걸리고, 매달 추가 관리비를 요구해 결국 방치하게 됩니다.",
-    quote: "“수정 요청 한 번 하려면 담당자 통화도 어렵고 답답해요…”",
+    id: 3,
+    icon: MessageSquareDashed,
+    title: "03. 말 바뀌는 외주와 소통 단절",
+    subtitle: "영업 사원 따로, 디자이너 따로... 수정 하나에 며칠씩 지연",
+    problemDesc: "다리를 거칠수록 사장님의 진짜 의도는 왜곡되고, 오픈 이후에는 연락조차 닿지 않는 경우가 허다합니다.",
+    jieumSolution: "경기북부 1인 디렉터가 매장으로 직접 방문해 1:1로 소통하며 책임지고 제작합니다."
   },
   {
-    icon: Users,
-    tag: "효과 의문",
-    title: "비싸게 만들어도 손님이 올까 하는 불안감",
-    description:
-      "큰돈 들여 만들어도 우리 동네 손님들이 실제로 검색해서 찾아올지, 그저 인터넷 한구석에 덩그러니 잊혀진 껍데기가 될까 걱정이 앞섭니다.",
-    quote: "“주변 사장님들 보면 비싸게 만들고도 방치한 곳이 태반이던데…”",
-  },
+    id: 4,
+    icon: HelpCircle,
+    title: "04. 만들어 두고 방치되는 사이트",
+    subtitle: "매달 나가는 강제 유지보수비, 그런데 손님 유입은 제로?",
+    problemDesc: "복잡하기만 하고 실질적인 전화나 예약으로 연결되지 않는 홈페이지는 매달 비용만 축내는 짐이 됩니다.",
+    jieumSolution: "매달 나가는 고정 관리비 0원. 손님이 3초 만에 문의할 수 있는 실전 고전환 구조로 설계합니다."
+  }
 ];
 
 export function ProblemSection() {
-  const containerRef = useRef<HTMLDivElement | null>(null);
-
-  // 스크롤 진행률 (0.0 ~ 1.0)
+  const containerRef = useRef<HTMLDivElement>(null);
+  
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    offset: ["start start", "end end"],
+    offset: ["start start", "end end"]
   });
 
   return (
-    <section
-      id="problem"
-      ref={containerRef}
-      className="relative w-full h-[400vh] bg-[#090D16] border-t border-slate-800/60"
-    >
-      {/* 뷰포트 고정 래퍼 */}
-      <div className="sticky top-0 h-screen w-full flex items-center justify-center overflow-hidden">
-        {/* 은은한 배경 무드 블러 */}
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute top-1/2 left-1/4 -translate-x-1/2 -translate-y-1/2 w-[650px] h-[360px] bg-blue-950/20 blur-[160px] rounded-full"
-        />
-
-        <div className="max-w-6xl w-full mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center relative z-10">
-          {/* [좌측 영역] 메시지 정돈 & 체크포인트 */}
-          <div className="lg:col-span-5 flex flex-col items-start text-left">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-semibold tracking-tight">
-              <HelpCircle className="w-3.5 h-3.5" />
-              <span>사장님들의 현실적인 고민</span>
-            </div>
-
-            <h2 className="mt-5 text-3xl sm:text-5xl font-extrabold tracking-[-0.035em] text-white leading-[1.2]">
-              왜 많은 사장님들이 <br />
-              <span className="text-slate-400">홈페이지 제작을 망설일까요?</span>
-            </h2>
-
-            <p className="mt-4 text-base text-slate-400 leading-[1.72] tracking-[-0.015em] break-all">
-              사장님의 장사 시간은 부족하고, 기존 외주 시장은 불필요하게 복잡했기 때문입니다. 디자인 지음은 사장님이 겪는 바로 이 4가지 장벽부터 무너뜨립니다.
-            </p>
-
-            {/* 정돈된 3대 해결 약속 리스트 */}
-            <div className="mt-7 space-y-2.5 w-full">
-              <div className="flex items-center gap-2.5 text-sm text-slate-300">
-                <CheckCircle2 className="w-4 h-4 text-blue-400 shrink-0" />
-                <span className="break-all">견적 거품 없는 투명한 33만 원 정찰제</span>
+    <section id="problem" ref={containerRef} className="relative bg-[#090D16] text-white">
+      {/* 상단 섹션 구분선 */}
+<div className="w-full border-t border-slate-800/80" />
+      <div className="h-[400vh] relative">
+        <div className="sticky top-0 h-screen flex items-center overflow-hidden px-4 sm:px-8 lg:px-16 max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 w-full items-center">
+            
+            {/* 좌측 고정 설명 영역 */}
+            <div className="lg:col-span-5 flex flex-col justify-center">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-rose-500/10 border border-rose-500/20 text-rose-400 text-xs font-semibold w-fit mb-4">
+                사장님들의 현실적인 고민
               </div>
-              <div className="flex items-center gap-2.5 text-sm text-slate-300">
-                <CheckCircle2 className="w-4 h-4 text-blue-400 shrink-0" />
-                <span className="break-all">서류 준비 없이 대표가 매장으로 직접 방문</span>
-              </div>
-              <div className="flex items-center gap-2.5 text-sm text-slate-300">
-                <CheckCircle2 className="w-4 h-4 text-blue-400 shrink-0" />
-                <span className="break-all">월 관리비 0원 & 네이버 플레이스 연동 중심</span>
-              </div>
-            </div>
 
-            {/* 하단 스크롤 인디케이터 게이지 바 */}
-            <div className="mt-9 hidden lg:flex flex-col gap-2 w-48">
-              <div className="flex items-center justify-between text-[11px] font-medium text-slate-500">
-                <span>스크롤 진행도</span>
-                <span className="font-mono text-blue-400">4대 고민 체크 중</span>
+              <h2 className="text-2xl sm:text-4xl font-extrabold tracking-[-0.035em] leading-[1.28] text-slate-100 mb-4 break-keep text-balance">
+                왜 많은 사장님들이 홈페이지 제작을 망설이셨을까요?
+              </h2>
+
+              <p className="text-slate-400 text-sm sm:text-base leading-relaxed mb-8 break-keep text-pretty">
+                실력이나 열정이 부족해서가 아닙니다. 기존 웹 에이전시들의 불투명한 관행과 소통 부재가 사장님들을 지치게 만들었기 때문입니다.
+              </p>
+
+              <div className="hidden sm:flex flex-col gap-3 pt-6 border-t border-slate-800">
+                <div className="flex items-center gap-3 text-sm text-slate-300">
+                  <CheckCircle2 className="w-4 h-4 text-sky-400 shrink-0" />
+                  <span>숨은 추가 비용 없는 33만 원 정찰제</span>
+                </div>
+                <div className="flex items-center gap-3 text-sm text-slate-300">
+                  <CheckCircle2 className="w-4 h-4 text-sky-400 shrink-0" />
+                  <span>경기북부 대표 1:1 현장 직접 방문</span>
+                </div>
+                <div className="flex items-center gap-3 text-sm text-slate-300">
+                  <CheckCircle2 className="w-4 h-4 text-sky-400 shrink-0" />
+                  <span>기획서 없이 네이버 플레이스 링크로 즉시 시작</span>
+                </div>
               </div>
-              <div className="w-full h-1 bg-slate-800 rounded-full overflow-hidden">
-                <motion.div
-                  style={{ scaleX: scrollYProgress, transformOrigin: "left" }}
-                  className="w-full h-full bg-blue-500"
-                />
+
+              <div className="mt-8 flex items-center gap-3">
+                <span className="text-xs font-mono text-slate-500">진행률</span>
+                <div className="flex-1 h-1 bg-slate-800 rounded-full overflow-hidden">
+                  <motion.div 
+                    style={{ scaleX: scrollYProgress }} 
+                    className="h-full bg-linear-to-r from-sky-400 to-indigo-500 origin-left"
+                  />
+                </div>
               </div>
             </div>
-          </div>
 
-          {/* [우측 영역] 4개 카드 순차 전환 스택 */}
-          <div className="lg:col-span-7 relative h-[410px] sm:h-[360px] w-full flex items-center justify-center">
-            {hesitateReasons.map((item, index) => {
-              const Icon = item.icon;
+            {/* 우측 순차 카드 전환 영역 */}
+            <div className="lg:col-span-7 relative h-96 sm:h-96 w-full flex items-center">
+              {PROBLEMS.map((problem, index) => {
+                const step = 1 / PROBLEMS.length;
+                const start = index * step;
+                const peak = start + step * 0.4;
+                const end = (index + 1) * step;
 
-              // 4개 카드 구간 분할 (0.0 ~ 1.0)
-              const start = index * 0.24;
-              const peak = start + 0.12;
-              const end = start + 0.28;
-              const isLast = index === hesitateReasons.length - 1;
+                const opacity = useTransform(
+                  scrollYProgress,
+                  index === 0 
+                    ? [0, peak, end] 
+                    : index === PROBLEMS.length - 1
+                    ? [start, peak, 1]
+                    : [start, peak, end],
+                  index === 0
+                    ? [1, 1, 0]
+                    : index === PROBLEMS.length - 1
+                    ? [0, 1, 1]
+                    : [0, 1, 0]
+                );
 
-              const opacity = useTransform(
-                scrollYProgress,
-                isLast ? [start, peak, 1.0] : [start, peak, end - 0.04, end],
-                isLast ? [0, 1, 1] : [0, 1, 1, 0]
-              );
+                const y = useTransform(
+                  scrollYProgress,
+                  [start, peak],
+                  [30, 0]
+                );
 
-              const y = useTransform(
-                scrollYProgress,
-                isLast ? [start, peak, 1.0] : [start, peak, end],
-                isLast ? [45, 0, 0] : [45, 0, -45]
-              );
+                const Icon = problem.icon;
 
-              const scale = useTransform(
-                scrollYProgress,
-                isLast ? [start, peak, 1.0] : [start, peak, end],
-                isLast ? [0.94, 1, 1] : [0.94, 1, 0.96]
-              );
-
-              return (
-                <motion.div
-                  key={index}
-                  style={{
-                    opacity,
-                    y,
-                    scale,
-                    pointerEvents: opacity ? "auto" : "none",
-                  }}
-                  className="absolute inset-0 p-8 sm:p-9 rounded-3xl bg-slate-900/85 border border-slate-800 shadow-[0_20px_50px_rgba(0,0,0,0.6)] backdrop-blur-xl flex flex-col justify-between"
-                >
-                  <div>
-                    <div className="flex items-center justify-between">
-                      <span className="text-xs font-semibold px-3 py-1 rounded-md bg-slate-800 text-slate-300 border border-slate-700/60">
-                        {item.tag}
-                      </span>
-                      <div className="w-10 h-10 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400">
-                        <Icon className="w-5 h-5" />
+                return (
+                  <motion.div
+                    key={problem.id}
+                    style={{ opacity, y }}
+                    className="absolute inset-0 p-6 sm:p-8 rounded-2xl bg-linear-to-b from-slate-900/90 to-slate-950/90 border border-slate-800 shadow-2xl backdrop-blur-xl flex flex-col justify-between"
+                  >
+                    <div>
+                      <div className="flex items-center gap-3 mb-4">
+                        <div className="w-10 h-10 rounded-xl bg-rose-500/10 border border-rose-500/20 flex items-center justify-center text-rose-400 shrink-0">
+                          <Icon className="w-5 h-5" />
+                        </div>
+                        <h3 className="text-lg sm:text-xl font-bold text-slate-100 tracking-[-0.035em] break-keep text-balance">
+                          {problem.title}
+                        </h3>
                       </div>
+
+                      <p className="text-sm sm:text-base font-semibold text-rose-300/90 mb-3 break-keep text-pretty leading-snug">
+                        "{problem.subtitle}"
+                      </p>
+
+                      <p className="text-xs sm:text-sm text-slate-400 leading-relaxed break-keep text-pretty">
+                        {problem.problemDesc}
+                      </p>
                     </div>
 
-                    <h3 className="mt-6 text-xl sm:text-2xl font-bold tracking-tight text-white leading-snug break-all">
-                      {item.title}
-                    </h3>
+                    <div className="mt-4 pt-4 border-t border-slate-800/80 bg-sky-950/20 -mx-6 sm:-mx-8 -mb-6 sm:-mb-8 p-4 sm:p-6 rounded-b-2xl flex items-start gap-3">
+                      <div className="text-xs font-bold px-2 py-0.5 rounded bg-sky-500/20 text-sky-300 border border-sky-500/30 shrink-0 mt-0.5">
+                        지음의 해답
+                      </div>
+                      <p className="text-xs sm:text-sm text-sky-200/90 leading-relaxed font-medium break-keep text-pretty">
+                        {problem.jieumSolution}
+                      </p>
+                    </div>
+                  </motion.div>
+                );
+              })}
+            </div>
 
-                    <p className="mt-4 text-sm sm:text-base text-slate-400 leading-[1.7] tracking-tight break-all text-justify font-normal">
-                      {item.description}
-                    </p>
-                  </div>
-
-                  <div className="mt-6 pt-4 border-t border-slate-800 flex items-center justify-between">
-                    <p className="text-xs sm:text-sm text-slate-300 font-medium italic break-all">
-                      {item.quote}
-                    </p>
-                    <span className="text-xs font-mono font-bold text-blue-400 shrink-0 ml-2">
-                      0{index + 1} / 04
-                    </span>
-                  </div>
-                </motion.div>
-              );
-            })}
           </div>
         </div>
       </div>

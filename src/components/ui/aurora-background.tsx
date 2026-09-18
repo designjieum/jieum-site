@@ -18,7 +18,12 @@ export function AuroraBackground() {
           repeat: Infinity,
           ease: "easeInOut",
         }}
-        className="absolute -top-32 left-1/4 w-[600px] h-[450px] bg-blue-600/15 blur-[140px] rounded-full"
+        style={{
+          width: 600,
+          height: 450,
+          filter: "blur(140px)",
+        }}
+        className="absolute -top-32 left-1/4 bg-blue-600/15 rounded-full"
       />
 
       {/* 부드러운 스카이/인디고 보조 광원 */}
@@ -33,11 +38,27 @@ export function AuroraBackground() {
           repeat: Infinity,
           ease: "easeInOut",
         }}
-        className="absolute top-1/4 right-1/4 w-[500px] h-[380px] bg-indigo-500/10 blur-[130px] rounded-full"
+        style={{
+          width: 500,
+          height: 380,
+          filter: "blur(130px)",
+        }}
+        className="absolute top-1/4 right-1/4 bg-indigo-500/10 rounded-full"
       />
 
       {/* 미세한 그리드 패턴으로 단정하고 전문적인 느낌 추가 */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_30%,#000_70%,transparent_100%)]" />
+      <div
+        style={{
+          backgroundImage:
+            "linear-gradient(to right, rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.03) 1px, transparent 1px)",
+          backgroundSize: "4rem 4rem",
+          maskImage:
+            "radial-gradient(ellipse 60% 50% at 50% 30%, #000 70%, transparent 100%)",
+          WebkitMaskImage:
+            "radial-gradient(ellipse 60% 50% at 50% 30%, #000 70%, transparent 100%)",
+        }}
+        className="absolute inset-0"
+      />
     </div>
   );
 }
