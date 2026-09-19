@@ -2,6 +2,7 @@ import { Hero } from "@/components/ui/animated-hero";
 import { ProblemSection } from "@/components/ui/problem-section";
 import { SolutionSection } from "@/components/ui/solution-section";
 import { FeaturesSection } from "@/components/ui/features-section";
+import { PortfolioSection } from "@/components/ui/portfolio";
 
 export default function App() {
   return (
@@ -40,6 +41,8 @@ export default function App() {
         <SolutionSection />
         {/* 4단계: 실체 엔진 가로 슬라이딩 섹션 */}
         <FeaturesSection />
+        {/* 5단계: 실전 구축 사례 쇼케이스 섹션 */}
+        <PortfolioSection />
       </main>
     </div>
   );
