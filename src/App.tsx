@@ -6,14 +6,18 @@ import { PortfolioSection } from "@/components/ui/portfolio";
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-[#090D16] text-slate-100 font-sans antialiased selection:bg-blue-600 selection:text-white">
-      {/* 상단 글로벌 헤더 유지 */}
-      <header className="sticky top-0 z-50 backdrop-blur-md bg-[#090D16]/80 border-b border-slate-800/80">
+    <div className="min-h-screen bg-[#090D16] text-slate-100 font-sans antialiased selection:bg-blue-600 selection:text-white relative">
+      {/* 
+        1) fixed top-0 inset-x-0: 히어로 섹션을 아래로 밀지 않고 화면 위에 완벽히 얹힘
+        2) bg-[#090D16]/30 + backdrop-blur-md: 뒤편 셰이더의 파도가 뽀얗고 영롱하게 투과됨
+        3) border-b border-white/[0.08]: 답답한 테두리 대신 은은한 유리 반사광 테두리 적용
+      */}
+      <header className="fixed top-0 inset-x-0 z-50 backdrop-blur-md bg-[#090D16]/30 border-b border-white/10 transition-all">
         <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-          <a href="#" className="font-extrabold text-lg tracking-tight text-white">
+          <a href="#" className="font-extrabold text-lg tracking-tight text-white hover:text-blue-400 transition-colors">
             디자인 지음
           </a>
-          <nav className="hidden sm:flex items-center gap-7 text-sm font-medium text-slate-400">
+          <nav className="hidden sm:flex items-center gap-7 text-sm font-medium text-slate-300">
             <a href="#problem" className="hover:text-white transition-colors">소개 & 비용</a>
             <a href="#solution" className="hover:text-white transition-colors">솔루션</a>
             <a href="#portfolio" className="hover:text-white transition-colors">제작 사례</a>
@@ -33,7 +37,7 @@ export default function App() {
 
       {/* 메인 랜딩 콘텐츠 */}
       <main>
-        {/* 1단계: 히어로 섹션 */}
+        {/* 1단계: 히어로 섹션 (화면 최상단부터 시작되어 셰이더가 헤더 뒤까지 가득 채움) */}
         <Hero />
         {/* 2단계: 문제 제기 및 공감 섹션 */}
         <ProblemSection />

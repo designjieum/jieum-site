@@ -1,8 +1,8 @@
 import { useEffect, useMemo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { MessageCircle, ArrowDown, Sparkles } from "lucide-react";
+import { MessageCircle, ArrowDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { WaveLinesBackground } from "@/components/ui/wave-lines-background";
+import { ShaderBackground } from "@/components/ui/shader-background";
 
 function Hero() {
   const [titleNumber, setTitleNumber] = useState(0);
@@ -25,31 +25,33 @@ function Hero() {
   }, [titleNumber, titles]);
 
   return (
-    <section className="relative w-full overflow-hidden pt-28 pb-24 sm:pt-36 sm:pb-32 bg-[#090D16]">
-      {/* 유려한 파도 결 라인 애니메이션 */}
-      <WaveLinesBackground />
+    /* 4) 기기 전체 높이에 맞춤 (min-h-screen 및 모바일 주소창 대응 min-h-dvh) */
+    <section className="relative w-full overflow-hidden min-h-dvh flex items-center justify-center pt-24 pb-16 sm:pt-28 sm:pb-20 bg-[#090D16]">
+      {/* 1. WebGL 셰이더 배경 레이어 */}
+      <div className="absolute inset-0 z-0">
+        <ShaderBackground className="w-full h-full opacity-65" />
+      </div>
 
-      {/* 하단 섹션으로 이어지는 그라데이션 페이드 */}
+      {/* 2. 텍스트 가독성을 위한 다크 오버레이 및 하단 연결 그라데이션 */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-linear-to-b from-transparent via-transparent to-[#090D16]"
+        className="pointer-events-none absolute inset-0 z-1 bg-linear-to-b from-[#090D16]/50 via-transparent to-[#090D16]"
       />
 
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 flex flex-col items-center text-center relative z-10">
-        {/* 3) 상단 타깃 뱃지: 375px 이하에서는 살짝 컴팩트(12px), 이상에서는 text-sm(14px) 유지 */}
-        <motion.div
-          initial={{ opacity: 0, y: -10 }}
+      {/* 3. 콘텐츠 레이어 */}
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 flex flex-col items-center text-center relative z-10 w-full my-auto">
+        
+        {/* 3) 뱃지 효과 없이 단정한 텍스트로만 표시 */}
+        <motion.p
+          initial={{ opacity: 0, y: -8 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.45 }}
-          className="mb-8 inline-flex items-center gap-1.5 min-[376px]:gap-2 px-3 py-1.5 min-[376px]:px-4 min-[376px]:py-2 rounded-full bg-slate-900/90 border border-slate-800 shadow-[0_0_20px_rgba(37,99,235,0.12)] backdrop-blur-sm"
+          className="mb-6 sm:mb-8 text-xs min-[376px]:text-sm sm:text-[15px] font-semibold tracking-tight text-slate-300/90"
         >
-          <Sparkles className="w-3.5 h-3.5 min-[376px]:w-4 min-[376px]:h-4 text-blue-400 shrink-0" />
-          <span className="text-[12px] min-[376px]:text-sm font-semibold tracking-tight text-slate-200 whitespace-nowrap">
-            경기북부 1:1 방문 맞춤 제작 · 33만 원 정찰제
-          </span>
-        </motion.div>
+          경기북부 1:1 방문 맞춤 제작 · 33만 원 정찰제
+        </motion.p>
 
-        {/* 1) 타이틀 폰트 크기: 639px 부근 왜소화 방지 및 시원한 크기감 복원 */}
+        {/* 메인 타이틀 */}
         <h1 className="text-[2rem] leading-[1.2] min-[400px]:text-[2.35rem] min-[400px]:leading-[1.2] sm:text-5xl sm:leading-[1.18] md:text-6xl lg:text-7xl font-extrabold tracking-[-0.04em] text-white w-full">
           <div className="h-[1.28em] relative flex items-center justify-center overflow-hidden w-full">
             <AnimatePresence mode="wait">
@@ -70,8 +72,8 @@ function Hero() {
           </span>
         </h1>
 
-        {/* 2) 서브 카피: sm 이상에서는 3줄 단정 고정, 354px 이하 모바일에서는 단어 단위(break-keep) 유연 흐름 */}
-        <p className="mt-7 text-sm sm:text-base md:text-lg text-slate-400 leading-relaxed sm:leading-[1.75] tracking-[-0.015em] max-w-xl font-normal break-keep">
+        {/* 서브 카피 */}
+        <p className="mt-6 sm:mt-7 text-sm sm:text-base md:text-lg text-slate-400 leading-relaxed sm:leading-[1.75] tracking-[-0.015em] max-w-xl font-normal break-keep">
           <span className="sm:block">수백만 원 견적서도, 복잡한 기획서 작성도 필요 없습니다. </span>
           <span className="sm:block">예약 연결부터 손님 문의 유도까지, </span>
           <span className="sm:block">
@@ -80,7 +82,7 @@ function Hero() {
         </p>
 
         {/* CTA 버튼 세트 */}
-        <div className="mt-10 flex flex-col sm:flex-row items-center gap-3.5 w-full sm:w-auto">
+        <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row items-center gap-3.5 w-full sm:w-auto">
           <Button
             size="lg"
             className="w-full sm:w-auto h-13 px-8 text-[15px] font-bold tracking-tight gap-2.5 bg-blue-600 hover:bg-blue-500 shadow-[0_10px_25px_-5px_rgba(37,99,235,0.35)] transition-all active:scale-95"
