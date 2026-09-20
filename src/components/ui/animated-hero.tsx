@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { MessageCircle, ArrowDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { ShaderBackground } from "@/components/ui/shader-background";
+import { BackgroundShader } from "@/components/ui/background-shader";
 
 function Hero() {
   const [titleNumber, setTitleNumber] = useState(0);
@@ -25,11 +25,10 @@ function Hero() {
   }, [titleNumber, titles]);
 
   return (
-    /* 4) 기기 전체 높이에 맞춤 (min-h-screen 및 모바일 주소창 대응 min-h-dvh) */
     <section className="relative w-full overflow-hidden min-h-dvh flex items-center justify-center pt-24 pb-16 sm:pt-28 sm:pb-20 bg-[#090D16]">
-      {/* 1. WebGL 셰이더 배경 레이어 */}
+      {/* 1. Paper Design 공식 WebGL 셰이더 배경 레이어 */}
       <div className="absolute inset-0 z-0">
-        <ShaderBackground className="w-full h-full opacity-65" />
+        <BackgroundShader className="w-full h-full opacity-60" />
       </div>
 
       {/* 2. 텍스트 가독성을 위한 다크 오버레이 및 하단 연결 그라데이션 */}
@@ -41,7 +40,7 @@ function Hero() {
       {/* 3. 콘텐츠 레이어 */}
       <div className="max-w-4xl mx-auto px-4 sm:px-6 flex flex-col items-center text-center relative z-10 w-full my-auto">
         
-        {/* 3) 뱃지 효과 없이 단정한 텍스트로만 표시 */}
+        {/* 상단 라벨 */}
         <motion.p
           initial={{ opacity: 0, y: -8 }}
           animate={{ opacity: 1, y: 0 }}
@@ -72,12 +71,15 @@ function Hero() {
           </span>
         </h1>
 
-        {/* 서브 카피 */}
-        <p className="mt-6 sm:mt-7 text-sm sm:text-base md:text-lg text-slate-400 leading-relaxed sm:leading-[1.75] tracking-[-0.015em] max-w-xl font-normal break-keep">
+        {/* 서브 카피: 일반 문구 가독성 복구 + 핵심 강조 문구 시각적 분리 */}
+        <p className="mt-6 sm:mt-7 text-sm sm:text-base md:text-lg text-slate-200/85 leading-relaxed sm:leading-[1.75] tracking-[-0.015em] max-w-xl font-normal break-keep">
           <span className="sm:block">수백만 원 견적서도, 복잡한 기획서 작성도 필요 없습니다. </span>
           <span className="sm:block">예약 연결부터 손님 문의 유도까지, </span>
           <span className="sm:block">
-            <strong className="font-semibold text-slate-200">2주 만에 실전 영업용 원페이지</strong>를 완성해 드립니다.
+            <strong className="font-extrabold text-white drop-shadow-[0_2px_12px_rgba(255,255,255,0.28)]">
+              2주 만에 실전 영업용 원페이지
+            </strong>
+            <span className="text-slate-200/85">를 완성해 드립니다.</span>
           </span>
         </p>
 
@@ -85,7 +87,7 @@ function Hero() {
         <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row items-center gap-3.5 w-full sm:w-auto">
           <Button
             size="lg"
-            className="w-full sm:w-auto h-13 px-8 text-[15px] font-bold tracking-tight gap-2.5 bg-blue-600 hover:bg-blue-500 shadow-[0_10px_25px_-5px_rgba(37,99,235,0.35)] transition-all active:scale-95"
+            className="w-full sm:w-auto h-13 px-8 text-[15px] font-bold tracking-tight gap-2.5 bg-blue-600 hover:bg-blue-500 shadow-[0_10px_25px_-5px_rgba(37,99,235,0.35)] transition-all active:scale-95 cursor-pointer"
             asChild
           >
             <a
@@ -101,11 +103,11 @@ function Hero() {
           <Button
             size="lg"
             variant="outline"
-            className="w-full sm:w-auto h-13 px-7 text-[15px] font-medium tracking-tight gap-2 border-slate-800 bg-slate-900/60 hover:bg-slate-800 hover:text-white transition-all"
+            className="w-full sm:w-auto h-13 px-7 text-[15px] font-medium tracking-tight gap-2 border-slate-800 bg-slate-900/60 hover:bg-slate-800 hover:text-white transition-all cursor-pointer"
             asChild
           >
             <a href="#problem">
-              <span>왜 33만 원일까?</span>
+              <span>고민하는 이유</span>
               <ArrowDown className="w-4 h-4 text-slate-400" />
             </a>
           </Button>
@@ -116,3 +118,4 @@ function Hero() {
 }
 
 export { Hero };
+export default Hero;
