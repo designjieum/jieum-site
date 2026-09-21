@@ -116,7 +116,9 @@ export function ProcessSection() {
             variants={headerVariants}
             className="text-slate-400 text-sm sm:text-base leading-relaxed break-keep"
           >
-            원고 작성도 기획서도 필요 없습니다. 매장 링크만 전달해 주시면 첫 기획부터 완성합니다.
+            원고 작성도 기획서도 필요 없습니다.
+            <br className="max-lg:block hidden" />{" "}
+            매장 링크만 전달해 주시면 첫 기획부터 완성합니다.
           </motion.p>
         </div>
 
@@ -135,9 +137,9 @@ export function ProcessSection() {
                 className="relative flex flex-col justify-between h-full p-6 sm:p-7 rounded-3xl bg-[#090E1A]/80 border border-white/10 hover:border-sky-500/40 transition-colors duration-300 backdrop-blur-xl group"
               >
                 <div className="flex flex-col">
-                  {/* 상단 STEP 넘버링 & 아이콘 */}
+                  {/* 상단 STEP 넘버링 & 아이콘 (박스 제거, 텍스트 전용) */}
                   <div className="flex items-center justify-between mb-5">
-                    <span className="text-xs font-mono font-bold tracking-widest text-sky-400 bg-sky-500/10 border border-sky-500/20 px-3 py-1 rounded-full">
+                    <span className="text-xs sm:text-[13px] font-mono font-bold tracking-widest text-sky-400 uppercase">
                       {item.step}
                     </span>
                     <div className="w-10 h-10 rounded-xl bg-slate-900 border border-white/10 flex items-center justify-center text-slate-300 group-hover:text-sky-300 group-hover:scale-105 transition-all shrink-0">
@@ -166,9 +168,11 @@ export function ProcessSection() {
                   </div>
                 </div>
 
-                {/* 하단 사장님 안심 라벨 태그 */}
-                <div className="pt-3.5 border-t border-white/5 flex items-center justify-between text-xs font-medium text-slate-400">
-                  <span className="text-sky-300/90 font-semibold">{item.ownerBurden}</span>
+                {/* 하단 사장님 안심 라벨 태그 (폰트 크기 확대) */}
+                <div className="pt-3.5 border-t border-white/5 flex items-center justify-between">
+                  <span className="text-[13.5px] sm:text-sm text-sky-300 font-bold tracking-tight">
+                    {item.ownerBurden}
+                  </span>
                 </div>
               </motion.div>
             );

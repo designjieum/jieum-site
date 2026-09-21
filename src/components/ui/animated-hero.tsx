@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { MessageCircle, ArrowDown } from "lucide-react";
+import { MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { BackgroundShader } from "@/components/ui/background-shader";
 
@@ -83,11 +83,11 @@ function Hero() {
           </span>
         </p>
 
-        {/* CTA 버튼 세트 */}
-        <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row items-center gap-3.5 w-full sm:w-auto">
+        {/* CTA 버튼: 단일 집중형 */}
+        <div className="mt-8 sm:mt-10 flex justify-center w-full sm:w-auto">
           <Button
             size="lg"
-            className="w-full sm:w-auto h-13 px-8 text-[15px] font-bold tracking-tight gap-2.5 bg-blue-600 hover:bg-blue-500 shadow-[0_10px_25px_-5px_rgba(37,99,235,0.35)] transition-all active:scale-95 cursor-pointer"
+            className="w-full sm:w-auto h-13 sm:h-14 px-8 sm:px-10 text-[15px] sm:text-base font-bold tracking-tight gap-2.5 bg-blue-600 hover:bg-blue-500 shadow-[0_10px_30px_-5px_rgba(37,99,235,0.45)] transition-all active:scale-95 cursor-pointer rounded-xl"
             asChild
           >
             <a
@@ -95,20 +95,8 @@ function Hero() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <MessageCircle className="w-4 h-4 fill-white" />
-              <span>카톡으로 1분 문의하기</span>
-            </a>
-          </Button>
-
-          <Button
-            size="lg"
-            variant="outline"
-            className="w-full sm:w-auto h-13 px-7 text-[15px] font-medium tracking-tight gap-2 border-slate-800 bg-slate-900/60 hover:bg-slate-800 hover:text-white transition-all cursor-pointer"
-            asChild
-          >
-            <a href="#problem">
-              <span>고민하는 이유</span>
-              <ArrowDown className="w-4 h-4 text-slate-400" />
+              <MessageCircle className="w-4 h-4 fill-white shrink-0" />
+              <span>카톡으로 1분 견적·상담 받기</span>
             </a>
           </Button>
         </div>

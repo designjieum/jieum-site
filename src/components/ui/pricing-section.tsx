@@ -57,7 +57,7 @@ export function PricingSection() {
               variants={headerVariants}
               className="block"
             >
-              내 비즈니스에 꼭 맞춘 원페이지,
+              내 매장에 꼭 맞춘 원페이지,
             </motion.span>
             <motion.span
               custom={2}
@@ -71,7 +71,7 @@ export function PricingSection() {
             </motion.span>
           </h2>
 
-          <motion.p
+         <motion.p
             custom={3}
             initial="hidden"
             whileInView="visible"
@@ -79,7 +79,9 @@ export function PricingSection() {
             variants={headerVariants}
             className="text-slate-400 text-sm sm:text-base leading-relaxed break-keep"
           >
-            매달 빠져나가는 관리비도, 알 수 없는 추가금도 없습니다. 오직 매출에 필요한 것만 담았습니다.
+            매달 빠져나가는 강제 관리비도 없습니다.
+            <br className="max-lg:block hidden" />{" "}
+            오직 매출에 필요한 것만 담았습니다.
           </motion.p>
         </div>
 
@@ -89,7 +91,7 @@ export function PricingSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.6, ease: "easeOut" }}
-          className="relative max-w-lg mx-auto rounded-4xl bg-[#0a101f]/95 border border-sky-400/30 p-5 sm:p-10 shadow-[0_0_50px_rgba(56,189,248,0.12)] backdrop-blur-2xl ring-1 ring-white/10"
+          className="relative max-w-lg mx-auto rounded-4xl bg-[#0a101f]/95 border border-sky-400/30 px-5 py-8 sm:px-10 sm:py-14 shadow-[0_0_50px_rgba(56,189,248,0.12)] backdrop-blur-2xl ring-1 ring-white/10"
         >
           {/* 1. 상단 패키지 타이틀 & 한 줄 정의 */}
           <div className="mb-6">

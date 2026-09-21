@@ -5,11 +5,10 @@ import {
   Navigation, 
   PhoneCall, 
   CalendarCheck,
-  MessageCircle,
-  Sparkles,
   ExternalLink,
   ChevronLeft,
-  ChevronRight
+  ChevronRight,
+  Quote
 } from "lucide-react";
 
 interface CaseStudy {
@@ -46,7 +45,7 @@ const CASE_STUDIES: CaseStudy[] = [
     headline: "인스타 사진만 보던 손님을 주말 매장 방문객으로 직결",
     dialogue: {
       clientAsk: "인스타 보고 주차 되냐, 빵 언제 나오냐는 DM만 하루 종일 와서 일하기가 너무 힘들어요.",
-      jieumAnswer: "첫 화면에 '주차 40대 완비 & 당일 10시 갓 구운 빵'을 3초 만에 각인시키고, 엄지 닿는 자리에 '네이버 지도 길찾기'를 박아 손님이 알아서 찾아오게 설계했습니다.",
+      jieumAnswer: "첫 화면에 '주차 40대 완비 & 당일 10시 갓 구운 빵'을 3초 만에 각인시키고, 엄지 닿는 자리에 네이버 지도 길찾기를 박아 손님이 알아서 찾아오게 설계했습니다.",
     },
     review: {
       quote: "주차 되냐는 헛걸음 문의 전화가 싹 사라졌습니다. 손님들이 지도 찍고 알아서 찾아오세요.",
@@ -70,7 +69,7 @@ const CASE_STUDIES: CaseStudy[] = [
     headline: "단순 찔러보기가 아닌, 실제 시공 사진으로 신뢰를 굳히는 창구",
     dialogue: {
       clientAsk: "복잡한 견적 양식을 넣어두니 손님은 다 나가고, 전화로는 '대충 얼마냐' 흥정만 하네요.",
-      jieumAnswer: "양식 다 걷어내고 실제 의정부·양주 아파트 시공 전후 갤러리만 투명하게 보여준 뒤, '대표 직통 전화' 버튼 하나로 1초 만에 연결되게 바꿨습니다.",
+      jieumAnswer: "양식 다 걷어내고 실제 아파트 시공 전후 갤러리만 투명하게 보여준 뒤, 대표 직통 전화 버튼 하나로 1초 만에 연결되게 바꿨습니다.",
     },
     review: {
       quote: "시공 사례를 미리 다 확인하고 믿음이 생긴 상태로 전화 주시니 계약 성사율이 확 올랐습니다.",
@@ -94,7 +93,7 @@ const CASE_STUDIES: CaseStudy[] = [
     headline: "시술 중 놓치던 예약 전화를 24시간 네이버 예약으로 자동화",
     dialogue: {
       clientAsk: "1인 샵이라 머리 하느라 바쁠 때 전화가 오면 못 받아서 손님을 자꾸 놓칩니다.",
-      jieumAnswer: "통화 필요 없이 첫 화면에서 첫 방문 20% 혜택을 확인하고, 1초 만에 네이버 실시간 예약창으로 연결되도록 자동화했습니다.",
+      jieumAnswer: "첫 화면에서 첫 방문 20% 혜택을 확인하고, 터치 한 번으로 네이버 실시간 예약창에 연결되도록 전환 동선을 설계했습니다.",
     },
     review: {
       quote: "손님 머리 하느라 전화 못 받아도 밤새 예약이 차곡차곡 차 있어서 마음이 너무 든든합니다.",
@@ -118,7 +117,7 @@ const CASE_STUDIES: CaseStudy[] = [
     headline: "가격 흥정 없는 1회 무료 체험권으로 신규 상담 신청 극대화",
     dialogue: {
       clientAsk: "인스타 광고는 많이 들어오는데, 수강료 물어보고는 그냥 다 이탈해 버려요.",
-      jieumAnswer: "망설이는 손님의 장벽을 깨기 위해 '강사진 전문 이력'과 '1회 무료 정밀 체형 분석권'을 메인에 바로 배치해 결제를 부르는 계기를 만들었습니다.",
+      jieumAnswer: "망설이는 손님의 심리 장벽을 깨기 위해 '1회 무료 정밀 체형 분석권'을 메인에 바로 배치해 문의할 확실한 명분을 만들었습니다.",
     },
     review: {
       quote: "체험권 신청 알림이 카톡으로 바로바로 꽂히니까 신규 회원 등록 전환이 2배 쉬워졌습니다.",
@@ -142,7 +141,7 @@ const CASE_STUDIES: CaseStudy[] = [
     headline: "긴급 상황 손님을 3초 만에 출장 요청으로 연결하는 모바일 직결 뷰",
     dialogue: {
       clientAsk: "누수 터져서 당황한 손님들이 복잡한 사이트에서 메뉴 찾다가 타 업체로 가버립니다.",
-      jieumAnswer: "불필요한 인사말 다 치우고 '30분 긴급 출동 + 해결 못하면 0원'을 상단에 띄우고 화면 맨 아래 엄지 위치에 통화 버튼을 대문짝만하게 고정했습니다.",
+      jieumAnswer: "불필요한 인사말을 걷어내고 '30분 긴급 출동 책임 보증'과 함께 하단 엄지 자리에 즉시 통화 버튼을 고정했습니다.",
     },
     review: {
       quote: "물이 새서 급한 분들이 고민할 틈도 없이 버튼 누르고 전화 주셔서 출동 건수가 크게 늘었습니다.",
@@ -196,12 +195,15 @@ export function PortfolioSection() {
           </h2>
 
           <p className="text-slate-400 text-sm sm:text-base leading-relaxed break-keep">
-            예쁜 겉치레를 넘어 실제 전화와 예약이 꽂히는 구조. 지음이 완성한 업종별 실전 원페이지입니다.
+            예쁜 겉치레를 넘어 실제 전화와{" "}
+            <span className="inline-block">예약이 꽂히는 구조.</span>
+            <br className="max-lg:block hidden" />{" "}
+            지음이 완성한 업종별 실전 원페이지입니다.
           </p>
         </div>
 
         {/* ─── 탭 네비게이션 ─── */}
-        <div className="relative mb-6 sm:mb-8">
+        <div className="relative mb-6 sm:mb-10">
           <div className="flex items-center justify-start sm:justify-center gap-2 overflow-x-auto no-scrollbar py-2 px-1 max-w-4xl mx-auto">
             {CASE_STUDIES.map((item) => {
               const isActive = item.id === activeTab;
@@ -256,80 +258,67 @@ export function PortfolioSection() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -15 }}
               transition={{ duration: 0.28, ease: "easeInOut" }}
-              className="bg-[#090E1A]/80 border border-white/10 rounded-3xl p-5 sm:p-9 lg:p-12 shadow-2xl backdrop-blur-xl"
+              className="bg-[#090E1A]/85 border border-white/10 rounded-3xl p-6 sm:p-10 lg:p-12 shadow-2xl backdrop-blur-xl"
             >
-              <div className="flex flex-col lg:grid lg:grid-cols-12 gap-8 lg:gap-14 items-center">
+              <div className="flex flex-col lg:grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
                 
                 {/* ─────────────────────────────────────────────────────────── */}
-                {/* 좌측: 1:1 대화형 스토리 (아이콘 인박스 일체형) (lg:col-span-7) */}
+                {/* 좌측: 단일 스토리 매거진 레이아웃 (lg:col-span-7) */}
                 {/* ─────────────────────────────────────────────────────────── */}
-                <div className="order-2 lg:order-1 lg:col-span-7 w-full flex flex-col justify-between space-y-6 sm:space-y-7">
+                <div className="order-2 lg:order-1 lg:col-span-7 w-full flex flex-col justify-between space-y-6">
+                  
+                  {/* 1. 상단 메타 & 사장님 리얼 후기 (Quote 아이콘 + 메타 톤다운) */}
                   <div>
-                    {/* 상단 메타 (업체명 + 위치) - [1번 요구: 01/05 삭제 완료] */}
-                    <div className="flex items-center gap-2 mb-3">
-                      <span className="text-xs font-bold px-2.5 py-0.5 rounded-md bg-sky-500/10 text-sky-300">
+                    {/* 상호명 & 위치 (과한 강조 박스 제거, 차분한 메타라인) */}
+                    <div className="flex items-center gap-2 mb-4 text-xs sm:text-[13px] text-slate-400">
+                      <span className="font-semibold text-slate-200">
                         {currentCase.clientName}
                       </span>
-                      <span className="text-slate-600 text-xs">•</span>
-                      <div className="flex items-center gap-1 text-xs text-slate-400">
+                      <span className="text-slate-600">•</span>
+                      <div className="flex items-center gap-1">
                         <MapPin className="w-3.5 h-3.5 text-slate-500 shrink-0" />
                         <span>{currentCase.location}</span>
                       </div>
                     </div>
 
-                    {/* 대표 헤드라인 */}
-                    <h3 className="text-xl sm:text-2xl lg:text-[26px] font-bold tracking-tight text-slate-100 mb-6 break-keep leading-snug">
-                      {currentCase.headline}
+                    {/* 은은한 큰따옴표 아이콘 */}
+                    <Quote className="w-6 h-6 sm:w-7 sm:h-7 text-sky-400/40 mb-2.5 fill-sky-400/10" />
+
+                    {/* 사장님 실제 후기 (긴 문장 대응 폰트 스케일 다운) */}
+                    <h3 className="text-[17px] min-[390px]:text-lg sm:text-xl lg:text-[22px] font-bold tracking-tight text-white mb-2 break-keep leading-snug sm:leading-relaxed">
+                      "{currentCase.review.quote}"
                     </h3>
+                    
+                    <p className="text-xs sm:text-[13px] text-slate-400 font-normal">
+                      — {currentCase.review.author}
+                    </p>
+                  </div>
 
-                    {/* 💬 대화형 스토리 컨테이너 (아이콘을 박스 내부 헤더로 통합) */}
-                    <div className="space-y-4">
-                      
-                      {/* 사장님의 사전 문의 카드 */}
-                      <div className="bg-[#121826]/90 border border-white/10 rounded-2xl p-4 sm:p-5">
-                        <div className="flex items-center gap-2 mb-2">
-                          <div className="w-7 h-7 rounded-lg bg-rose-500/10 border border-rose-500/20 flex items-center justify-center shrink-0">
-                            <MessageCircle className="w-3.5 h-3.5 text-rose-400" />
-                          </div>
-                          <span className="text-sm sm:text-[15px] font-bold text-rose-400">
-                            사장님의 사전 문의
-                          </span>
-                        </div>
-                        <p className="text-[13.5px] sm:text-[14.5px] text-slate-300 leading-relaxed break-keep pl-0.5">
-                          "{currentCase.dialogue.clientAsk}"
-                        </p>
-                      </div>
+                  {/* 2. 사장님의 고민 & 지음 솔루션 (여백 및 행간 완화) */}
+                  <div className="pt-6 border-t border-white/10 space-y-6 sm:space-y-7">
+                    {/* 사장님의 고민 */}
+                    <div className="flex flex-col items-start gap-2">
+                      <span className="text-[11.5px] font-bold px-2.5 py-0.5 rounded bg-rose-500/10 text-rose-400 select-none">
+                        사장님의 고민
+                      </span>
+                      <p className="text-[13.5px] sm:text-[14.5px] text-slate-400 leading-[1.65] break-keep pl-0.5">
+                        {currentCase.dialogue.clientAsk}
+                      </p>
+                    </div>
 
-                      {/* 지음의 솔루션 카드 */}
-                      <div className="bg-[#0b172a]/95 border border-sky-500/30 rounded-2xl p-4 sm:p-5 shadow-[0_0_25px_rgba(56,189,248,0.08)]">
-                        <div className="flex items-center gap-2 mb-2">
-                          <div className="w-7 h-7 rounded-lg bg-sky-500/15 border border-sky-500/30 flex items-center justify-center shrink-0">
-                            <Sparkles className="w-3.5 h-3.5 text-sky-400" />
-                          </div>
-                          <span className="text-sm sm:text-[15px] font-bold text-sky-300">
-                            지음의 솔루션
-                          </span>
-                        </div>
-                        <p className="text-[13.5px] sm:text-[14.5px] text-slate-100 font-medium leading-relaxed break-keep pl-0.5">
-                          {currentCase.dialogue.jieumAnswer}
-                        </p>
-                      </div>
-
+                    {/* 지음 솔루션 */}
+                    <div className="flex flex-col items-start gap-2">
+                      <span className="text-[11.5px] font-bold px-2.5 py-0.5 rounded bg-sky-500/15 text-sky-300 select-none">
+                        지음 솔루션
+                      </span>
+                      <p className="text-[13.5px] sm:text-[14.5px] text-slate-200 font-medium leading-[1.65] break-keep pl-0.5">
+                        {currentCase.dialogue.jieumAnswer}
+                      </p>
                     </div>
                   </div>
 
-                  {/* 사장님 한줄 인터뷰 */}
-                  <div className="pt-4 border-t border-white/10">
-                    <p className="text-sm sm:text-[15px] text-slate-300 italic break-keep leading-relaxed mb-1.5">
-                      "{currentCase.review.quote}"
-                    </p>
-                    <span className="text-xs text-slate-400 block">
-                      — {currentCase.review.author}
-                    </span>
-                  </div>
-
                   {/* 모바일 화면 전용: 하단 좌우 컨트롤러 바 (< >) */}
-                  <div className="flex sm:hidden items-center justify-end gap-2 pt-2">
+                  <div className="flex sm:hidden items-center justify-end gap-2 pt-2 border-t border-white/5">
                     <button
                       onClick={handlePrev}
                       className="p-2.5 rounded-full bg-slate-900 border border-white/15 text-slate-300 active:bg-slate-800"
@@ -352,7 +341,7 @@ export function PortfolioSection() {
                 {/* 우측: 스마트폰 디바이스 목업 (오토 스크롤 웹뷰) (lg:col-span-5) */}
                 {/* ─────────────────────────────────────────────────────────── */}
                 <div className="order-1 lg:order-2 lg:col-span-5 w-full flex justify-center items-center py-2">
-                  <div className="relative w-full max-w-68.75 sm:max-w-76.25 rounded-[46px] bg-[#0c111d] p-3 border-4 border-slate-700/80 shadow-[0_0_50px_rgba(0,0,0,0.85),0_0_35px_rgba(56,189,248,0.15)] ring-1 ring-white/15">
+                  <div className="relative w-full max-w-68.75 sm:max-w-74 rounded-[44px] bg-[#0c111d] p-3 border-4 border-slate-700/80 shadow-[0_0_50px_rgba(0,0,0,0.85),0_0_35px_rgba(56,189,248,0.15)] ring-1 ring-white/15">
                     
                     {/* 상단 다이내믹 아일랜드 */}
                     <div className="absolute top-5 left-1/2 -translate-x-1/2 w-20 h-4 bg-black rounded-full z-30 flex items-center justify-between px-2.5">
@@ -361,7 +350,7 @@ export function PortfolioSection() {
                     </div>
 
                     {/* 스마트폰 내부 스크린 */}
-                    <div className="relative rounded-[36px] overflow-hidden bg-[#070b14] border border-white/10 h-125 sm:h-137.5 flex flex-col justify-between">
+                    <div className="relative rounded-[34px] overflow-hidden bg-[#070b14] border border-white/10 h-120 sm:h-132 flex flex-col justify-between">
                       
                       {/* 브라우저 상단 주소 바 */}
                       <div className="pt-7 pb-2 px-3.5 bg-slate-950/90 border-b border-white/10 flex items-center justify-between text-[10px] text-slate-400 font-mono z-20">
@@ -374,7 +363,7 @@ export function PortfolioSection() {
                         <motion.div
                           key={currentCase.id}
                           initial={{ y: "0%" }}
-                          animate={{ y: ["0%", "-52%", "0%"] }}
+                          animate={{ y: ["0%", "-48%", "0%"] }}
                           transition={{
                             duration: 10,
                             ease: "easeInOut",
@@ -383,7 +372,7 @@ export function PortfolioSection() {
                           }}
                           className="w-full flex flex-col space-y-3 p-3 select-none"
                         >
-                          {/* 1. 상단 히어로 섹션 */}
+                          {/* 1. 메인 히어로 뷰 */}
                           <div className="relative rounded-2xl overflow-hidden border border-white/10 shadow-lg">
                             <img 
                               src={currentCase.mockup.heroImage} 
@@ -401,7 +390,7 @@ export function PortfolioSection() {
                           </div>
 
                           {/* 2. 매장 특장점 갤러리 */}
-                          <div className="rounded-xl bg-slate-900/80 border border-white/5 p-3 space-y-2">
+                          <div className="rounded-xl bg-slate-900/80 border border-white/5 p-2.5 space-y-1.5">
                             <span className="text-[10px] font-bold text-slate-300 block">
                               실제 매장 전경 및 혜택
                             </span>
@@ -417,16 +406,6 @@ export function PortfolioSection() {
                                 className="w-full h-20 object-cover rounded-lg border border-white/5" 
                               />
                             </div>
-                          </div>
-
-                          {/* 3. 투명 정찰제 안내 카드 */}
-                          <div className="rounded-xl bg-slate-900/80 border border-white/5 p-3 space-y-1.5">
-                            <div className="flex justify-between items-center text-[10px]">
-                              <span className="text-slate-400">정찰제 안내</span>
-                              <span className="text-sky-400 font-bold">100% 투명 공개</span>
-                            </div>
-                            <div className="h-1.5 w-full bg-white/5 rounded-full" />
-                            <div className="h-1.5 w-3/4 bg-white/5 rounded-full" />
                           </div>
                         </motion.div>
 

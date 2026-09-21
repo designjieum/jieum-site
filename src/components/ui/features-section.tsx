@@ -24,7 +24,7 @@ const ENGINE_FEATURES: FeatureCard[] = [
     tag: "상권 노출",
     title: "경기북부 로컬 검색 밀착 세팅",
     desc: "양주·의정부·포천 등 매장 상권에 맞춰 네이버와 구글 포털 메타 태그를 누락 없이 꼼꼼하게 등록합니다.",
-    highlight: "지역 키워드 검색 시 포털 노출 기반 무상 구축",
+    highlight: "네이버·구글 로컬 검색 최적화(SEO) 기본 세팅",
   },
   {
     icon: Smartphone,
@@ -38,7 +38,7 @@ const ENGINE_FEATURES: FeatureCard[] = [
     tag: "본질 집중",
     title: "문의를 부르는 전환 동선 설계",
     desc: "화려하기만 한 페이지는 소용없습니다. 손님이 어떤 정보를 봐야 예약과 구매로 이어지는지 철저히 계산해 배치합니다.",
-    highlight: "보여주기식 디자인 탈피 · 실제 매출 중심 구조화",
+    highlight: "보여주기식을 넘어 실제 매출 중심 설계",
   },
   {
     icon: MousePointerClick,
@@ -52,7 +52,7 @@ const ENGINE_FEATURES: FeatureCard[] = [
     tag: "오프라인 유입",
     title: "원클릭 네이버 지도 길찾기",
     desc: "주소를 복사해 내비에 붙여넣는 번거로움을 없앱니다. 터치 한 번으로 네이버 지도 앱 길안내로 직결됩니다.",
-    highlight: "지도 검색 ➔ 매장 방문으로 이어지는 동선 완성",
+    highlight: "지도 검색에서 매장 방문 직결", // ➔ 한 줄 압축
   },
   {
     icon: MessageCircle,
@@ -65,7 +65,7 @@ const ENGINE_FEATURES: FeatureCard[] = [
     icon: MessageSquareCheck,
     tag: "운영 안심",
     title: "카톡 1줄로 끝나는 신속 케어",
-    desc: "복잡한 관리자 화면을 배울 필요 없습니다. 가격표나 공지 수정은 카톡으로 사진만 보내주시면 즉시 처리합니다.",
+    desc: "복잡한 관리자 화면을 배울 필요 없습니다. 가격표나 공지 수정은 카톡으로 사진만 보내주시면 빠르고 꼼꼼하게 처리해 드립니다.",
     highlight: "의무 관리비 0원 · 실제 작업 건별 투명 정산",
   },
 ];
@@ -130,14 +130,15 @@ export function FeaturesSection() {
               </span>
             </h2>
 
+            {/* 서브 카피 */}
             <p className="text-slate-400 text-sm sm:text-base leading-relaxed break-keep mb-4 min-[1122px]:mb-7 max-w-2xl">
-              보기만 좋은 사이트는 매출을 만들지 못합니다. 방문자가 읽고, 신뢰하고, 전화나 예약 버튼을 누를 수밖에 없도록 설계된 7가지 전환 엔진입니다.
+              보기만 좋은 사이트는 매출을 만들지 못합니다. 어렵게 검색해 찾아온 손님이 그냥 뒤로 가지 않도록, 망설이던 발길을 우리 매장으로 이끕니다.
             </p>
 
             {/* 인디케이터 구성 */}
             <div className="pt-1 min-[1122px]:pt-2 flex flex-col gap-2 w-full min-[1122px]:max-w-xs">
               <span className="text-xs font-medium text-slate-400">
-                스크롤하여 핵심 엔진 확인
+                넘겨서 손님 붙잡는 비결 보기
               </span>
               
               <div className="w-full h-1 bg-white/10 rounded-full overflow-hidden">
@@ -186,9 +187,8 @@ export function FeaturesSection() {
                       </p>
                     </div>
 
-                    {/* 하단 강조 혜택 */}
-                    <div className="pt-3.5 border-t border-white/10 text-[13.5px] sm:text-[14px] font-semibold text-sky-300 flex items-center gap-2">
-                      <span className="w-1.5 h-1.5 rounded-full bg-sky-400 shrink-0" />
+                   {/* 하단 강조 혜택 (앞쪽 점 삭제) */}
+                    <div className="pt-3.5 border-t border-white/10 text-[13.5px] sm:text-[14px] font-semibold text-sky-300 flex items-center">
                       <span className="break-keep">{feat.highlight}</span>
                     </div>
                   </div>
@@ -202,3 +202,5 @@ export function FeaturesSection() {
     </section>
   );
 }
+
+export default FeaturesSection;

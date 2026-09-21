@@ -196,32 +196,35 @@ export function SolutionSection() {
               </div>
             </div>
 
-            {/* 2) 모바일 전용: 1:1 매칭 콤팩트 카드 (md 미만) */}
-            <div className="block md:hidden w-full max-w-sm mx-auto space-y-3.5">
+           {/* 2) 모바일 전용: 고효율 콤팩트 비교 리스트 (md 미만) */}
+            <div className="block md:hidden w-full max-w-sm mx-auto space-y-2.5">
               {COMPARISONS.map((item, idx) => (
                 <div 
                   key={idx} 
-                  className="rounded-2xl border border-white/10 bg-[#0a0f1d]/95 backdrop-blur-xl p-5 shadow-lg flex flex-col gap-3"
+                  className="rounded-xl border border-white/10 bg-[#0a0f1d]/90 backdrop-blur-xl px-4 py-3.5 shadow-md flex flex-col gap-2"
                 >
-                  <div className="flex items-center justify-between border-b border-white/5 pb-2.5">
-                    <span className="text-xs font-bold text-slate-300 tracking-tight">
+                  {/* 카테고리 라벨 */}
+                  <div className="flex items-center">
+                    <span className="text-[12.5px] font-bold text-slate-400 tracking-tight">
                       {item.category}
                     </span>
-                    <span className="text-[11px] font-medium text-sky-400 bg-sky-500/10 px-2 py-0.5 rounded-full border border-sky-500/20">
-                      지음 솔루션
-                    </span>
                   </div>
 
-                  {/* 기존 외주 */}
-                  <div className="flex items-start gap-2 text-xs text-slate-400 pt-0.5">
-                    <XCircle className="w-3.5 h-3.5 text-rose-400/80 shrink-0 mt-0.5" />
-                    <span className="break-keep leading-snug">{item.traditional}</span>
-                  </div>
+                  {/* 1:1 비교 본문 (폰트 스케일업 & 줄바꿈 여유 확보) */}
+                  <div className="flex flex-col gap-1.5 leading-snug">
+                    {/* 기존 외주 */}
+                    <div className="flex items-center gap-2 text-slate-400/80">
+                      <XCircle className="w-4 h-4 text-rose-400/70 shrink-0" />
+                      <span className="line-through decoration-rose-400/40 text-[13px] tracking-tight">
+                        {item.traditional}
+                      </span>
+                    </div>
 
-                  {/* 지음 솔루션 */}
-                  <div className="flex items-start gap-2 text-[13px] font-semibold text-slate-100 pt-0.5">
-                    <CheckCircle2 className="w-4 h-4 text-sky-400 shrink-0 mt-0.5" />
-                    <span className="break-keep leading-snug">{item.renderJieum()}</span>
+                    {/* 지음 */}
+                    <div className="flex items-center gap-2 text-[14.5px] font-medium text-slate-100 tracking-tight">
+                      <CheckCircle2 className="w-4 h-4 text-sky-400 shrink-0" />
+                      <div className="truncate font-semibold">{item.renderJieum()}</div>
+                    </div>
                   </div>
                 </div>
               ))}
