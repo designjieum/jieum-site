@@ -77,7 +77,7 @@ export function CtaSection() {
         {/* 단일 고전환 카카오톡 CTA 버튼 */}
         <div className="flex justify-center max-w-sm mx-auto">
           <a
-            href="https://pf.kakao.com"
+            href="http://pf.kakao.com/_IuxfaX/chat"
             target="_blank"
             rel="noopener noreferrer"
             className="w-full py-4.5 px-8 rounded-2xl bg-sky-500 hover:bg-sky-400 text-slate-950 font-black text-base sm:text-lg flex items-center justify-center gap-2.5 shadow-xl shadow-sky-500/25 transition-all duration-200 active:scale-[0.99] cursor-pointer"

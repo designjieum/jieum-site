@@ -25,7 +25,7 @@ export default function App() {
             <a href="#pricing" className="hover:text-white transition-colors">33만원 정찰제</a>
           </nav>
           <a
-            href="https://pf.kakao.com"
+            href="http://pf.kakao.com/_IuxfaX/chat"
             target="_blank"
             rel="noopener noreferrer"
             className="text-xs sm:text-sm font-bold px-4 py-2 rounded-xl bg-sky-500 hover:bg-sky-400 text-slate-950 transition-all shadow-md shadow-sky-500/20 active:scale-95 cursor-pointer"

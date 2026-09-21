@@ -156,7 +156,7 @@ export function PricingSection() {
           {/* 5. 하단 풀사이즈 상담 버튼 */}
           <div>
             <a
-              href="https://pf.kakao.com"
+              href="http://pf.kakao.com/_IuxfaX/chat"
               target="_blank"
               rel="noopener noreferrer"
               className="w-full py-4 px-6 rounded-2xl bg-sky-500 hover:bg-sky-400 text-slate-950 font-black text-base flex items-center justify-center shadow-lg shadow-sky-500/25 transition-all duration-200 active:scale-[0.99] cursor-pointer"
