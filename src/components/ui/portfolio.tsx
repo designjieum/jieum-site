@@ -122,6 +122,30 @@ const CASE_STUDIES: CaseStudy[] = [
     actionLabel: "무료 실기 진단 예약",
     actionIcon: CalendarCheck,
   },
+  {
+    id: "miso",
+    category: "필라테스",
+    clientName: "미소필라테스",
+    location: "경기도 양주시 덕계동",
+    isReal: false,
+    image: "/images/portfolio/miso.webp",
+    problem: "'허리가 아픈데 해도 되나요?' 묻는 상담 전화가 많은데, 1:1 수업 중에는 받을 수가 없었어요.",
+    solution: "허리·골반, 목·어깨처럼 고민별로 나눠 내 몸에 맞는 수업 방식을 먼저 확인하게 하고, 원장 이력과 1:1 전담 수업의 강점을 보여 준 뒤 바로 레슨 예약으로 이어지게 설계했습니다.",
+    actionLabel: "1:1 레슨 예약하기",
+    actionIcon: CalendarCheck,
+  },
+  {
+    id: "freshfruit",
+    category: "과일 카페",
+    clientName: "프레쉬프루잇",
+    location: "경기도 양주시 고읍동",
+    isReal: false,
+    image: "/images/portfolio/freshfruit.webp",
+    problem: "건물 3층이 전부 카페인데, 어떤 메뉴가 있는지, 주차는 되는지 몰라 그냥 지나치는 손님이 많았어요.",
+    solution: "오늘의 과일과 대표 메뉴를 가격과 함께 사진으로 먼저 보여 주고, 영업시간·라스트오더·주차 안내를 첫 화면에 담아 보는 즉시 찾아올 수 있게 했습니다.",
+    actionLabel: "길찾기",
+    actionIcon: Navigation,
+  },
 ];
 
 // 목업 화면 자동 스크롤 속도 (px/초): 이미지 길이가 달라도 같은 속도로 움직임

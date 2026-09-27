@@ -20,6 +20,15 @@
         ],
         "createdAt": "2026-09-27T03:40:11.430Z",
         "reason": "Claude triage: flagged text-slate-950 is near-black on the sky-500 mockup CTA button (high contrast), matching the site-wide CTA color the user chose"
+      },
+      {
+        "rule": "low-contrast",
+        "value": "*",
+        "files": [
+          "index.html"
+        ],
+        "createdAt": "2026-09-27T06:06:52.370Z",
+        "reason": "Claude: index.html의 크롤러용 요약은 sr-only로 화면에 보이지 않으며, 실제 화면은 React가 렌더링함"
       }
     ]
   }
