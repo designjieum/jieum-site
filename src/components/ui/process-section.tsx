@@ -22,9 +22,9 @@ const PROCESS_STEPS: Step[] = [
   {
     step: "STEP 02",
     icon: LayoutTemplate,
-    title: "고전환 원페이지 맞춤 기획 & 제작",
-    desc: "손님이 매장의 장점을 한눈에 파악하고, 엄지 위치에서 예약·전화 버튼으로 자연스럽게 이어지도록 설계합니다. 전문 카피라이팅과 모바일 반응형 디자인을 지음이 전담합니다.",
-    highlights: ["모바일 최적화 전환 동선", "매장 사진 비주얼 리터칭", "전문 카피라이팅 전담 작성"],
+    title: "우리 매장 맞춤 홈페이지 기획 & 제작",
+    desc: "손님이 매장의 장점을 한눈에 파악하고, 엄지 위치에서 예약·전화 버튼으로 자연스럽게 이어지도록 설계합니다. 전문 카피라이팅과 휴대폰·PC 어디서 봐도 깔끔한 디자인을 지음이 전담합니다.",
+    highlights: ["휴대폰에서 헤매지 않는 버튼 배치", "매장 사진 비주얼 리터칭", "전문 카피라이팅 전담 작성"],
     ownerBurden: "지음 전담: 기획부터 코딩까지 완결",
   },
   {
@@ -66,47 +66,49 @@ const cardVariants: Variants = {
 
 export function ProcessSection() {
   return (
-    <section id="process" className="relative bg-[#05070D] text-white py-24 sm:py-32 border-t border-white/10 overflow-hidden">
+    <section id="process" className="relative bg-[#0A1222] text-white py-24 sm:py-32 overflow-hidden">
       {/* 앰비언트 글로우 */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-180 h-180 bg-sky-500/5 rounded-full blur-[160px] pointer-events-none" />
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
         
         {/* ─── 섹션 헤더 ─── */}
-        <div className="text-center max-w-3xl mx-auto mb-14 sm:mb-20">
-          <motion.p 
-            custom={0}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-60px" }}
-            variants={headerVariants}
-            className="text-sm lg:text-[15px] font-semibold tracking-tight text-slate-400 mb-1.5 sm:mb-2"
-          >
-            간결한 3단계 제작 과정
-          </motion.p>
-
-          <h2 className="text-[22px] min-[390px]:text-2xl sm:text-3xl lg:text-4xl font-bold tracking-[-0.03em] leading-[1.35] sm:leading-[1.3] text-slate-100 mb-2 sm:mb-3 lg:mb-4 break-keep">
-            <motion.span 
-              custom={1}
+        <div className="grid lg:grid-cols-12 gap-4 lg:gap-10 items-end mb-12 sm:mb-16">
+          <div className="lg:col-span-7">
+            <motion.p 
+              custom={0}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, margin: "-60px" }}
               variants={headerVariants}
-              className="block"
+              className="text-sm lg:text-[15px] font-semibold tracking-tight text-slate-400 mb-1.5 sm:mb-2"
             >
-              복잡한 준비 없이,
-            </motion.span>
-            <motion.span 
-              custom={2}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-60px" }}
-              variants={headerVariants}
-              className="block text-transparent bg-clip-text bg-linear-to-r from-sky-400 via-blue-200 to-indigo-300 font-extrabold"
-            >
-              링크 하나로 완성됩니다.
-            </motion.span>
-          </h2>
+              간결한 3단계 제작 과정
+            </motion.p>
+  
+            <h2 className="text-[22px] min-[390px]:text-2xl sm:text-3xl lg:text-4xl font-bold tracking-[-0.03em] leading-[1.35] sm:leading-[1.3] text-slate-100 break-keep">
+              <motion.span 
+                custom={1}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-60px" }}
+                variants={headerVariants}
+                className="block"
+              >
+                복잡한 준비 없이,
+              </motion.span>
+              <motion.span 
+                custom={2}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-60px" }}
+                variants={headerVariants}
+                className="block"
+              >
+                <span className="text-sky-400">링크 하나</span>로 완성됩니다.
+              </motion.span>
+            </h2>
+          </div>
 
           <motion.p 
             custom={3}
@@ -114,16 +116,15 @@ export function ProcessSection() {
             whileInView="visible"
             viewport={{ once: true, margin: "-60px" }}
             variants={headerVariants}
-            className="text-slate-400 text-sm sm:text-base leading-relaxed break-keep"
+            className="lg:col-span-5 text-slate-400 text-sm sm:text-base leading-relaxed break-keep lg:pb-1"
           >
-            원고 작성도 기획서도 필요 없습니다.
-            <br className="max-lg:block hidden" />{" "}
+            원고 작성도 기획서도 필요 없습니다.{" "}
             매장 링크만 전달해 주시면 첫 기획부터 완성합니다.
           </motion.p>
         </div>
 
         {/* ─── 3단계 타임라인 레이아웃 (1024px 이하 1열 세로 스택, 1024px 이상 3열 가로 배치) ─── */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8 items-stretch max-w-2xl lg:max-w-none mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8 items-stretch">
           {PROCESS_STEPS.map((item, idx) => {
             const Icon = item.icon;
             return (
@@ -137,10 +138,13 @@ export function ProcessSection() {
                 className="relative flex flex-col justify-between h-full p-6 sm:p-7 rounded-3xl bg-[#090E1A]/80 border border-white/10 hover:border-sky-500/40 transition-colors duration-300 backdrop-blur-xl group"
               >
                 <div className="flex flex-col">
-                  {/* 상단 STEP 넘버링 & 아이콘 (박스 제거, 텍스트 전용) */}
-                  <div className="flex items-center justify-between mb-5">
-                    <span className="text-xs sm:text-[13px] font-mono font-bold tracking-widest text-sky-400 uppercase">
-                      {item.step}
+                  {/* 상단 대형 단계 번호 & 아이콘 */}
+                  <div className="flex items-start justify-between mb-5">
+                    <span
+                      aria-label={item.step}
+                      className="text-6xl sm:text-7xl font-black leading-none tracking-[-0.06em] text-sky-400/90 group-hover:text-sky-300 transition-colors"
+                    >
+                      {String(idx + 1).padStart(2, "0")}
                     </span>
                     <div className="w-10 h-10 rounded-xl bg-slate-900 border border-white/10 flex items-center justify-center text-slate-300 group-hover:text-sky-300 group-hover:scale-105 transition-all shrink-0">
                       <Icon className="w-5 h-5" />

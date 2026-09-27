@@ -18,11 +18,11 @@ const FAQ_LIST: FAQItem[] = [
   },
   {
     question: "정말로 매달 나가는 관리비나 호스팅 비용이 없나요?",
-    answer: "네, 매달 의무적으로 청구되는 고정 유지보수비는 0원입니다. 사이트 주소 유지를 위한 도메인(.com/.kr) 등록 기관 실비(연 약 2만 원 내외) 외에는 추가 고정 지출이 없으며, 추후 문구나 사진 수정이 필요하실 때만 건별(1~2만 원 선)로 편하게 요청하시면 됩니다.",
+    answer: "네, 매달 의무적으로 청구되는 고정 유지보수비는 0원입니다. 사이트 주소 유지를 위한 도메인(.com/.kr) 등록 기관 실비(연 약 2만원 내외) 외에는 추가 고정 지출이 없으며, 추후 문구나 사진 수정이 필요하실 때만 건별(1~2만원 선)로 편하게 요청하시면 됩니다.",
   },
   {
     question: "인스타그램이나 네이버 플레이스가 있는데 꼭 랜딩페이지가 필요한가요?",
-    answer: "SNS나 플레이스는 고객을 유입시키는 채널이지만, 방문 직전 '여기가 정말 믿을 만한 곳인가?'를 고민할 때 손님이 이탈하기 쉽습니다. 고전환 원페이지는 흩어진 정보와 후기를 한곳에 집중 정리하여 방문과 전화·예약 버튼으로 곧장 연결하는 종결 장치 역할을 합니다.",
+    answer: "SNS나 플레이스는 고객을 유입시키는 채널이지만, 방문 직전 '여기가 정말 믿을 만한 곳인가?'를 고민할 때 손님이 이탈하기 쉽습니다. 손님이 연락하게 만드는 홈페이지는 흩어진 정보와 후기를 한곳에 집중 정리하여 방문과 전화·예약 버튼으로 곧장 연결하는 종결 장치 역할을 합니다.",
   },
   {
     question: "양주, 의정부, 포천, 동두천 외 다른 지역은 제작이 불가한가요?",
@@ -30,11 +30,11 @@ const FAQ_LIST: FAQItem[] = [
   },
   {
     question: "제작 완료 후 메뉴 가격이나 사진을 바꾸고 싶을 땐 어떻게 하나요?",
-    answer: "매달 관리비를 내지 않으셔도 카카오톡으로 편하게 말씀해 주시면 됩니다. 단순 텍스트나 이미지 교체는 건당 1~2만 원 선의 부담 없는 비용으로 당일~익일 내에 빠르게 반영해 드립니다.",
+    answer: "매달 관리비를 내지 않으셔도 카카오톡으로 편하게 말씀해 주시면 됩니다. 단순 텍스트나 이미지 교체는 건당 1~2만원 선의 부담 없는 비용으로 당일~익일 내에 빠르게 반영해 드립니다.",
   },
   {
     question: "세금계산서나 현금영수증 발행이 가능한가요?",
-    answer: "네, 100% 정상 발행 가능합니다. 안내해 드린 33만 원은 부가세(VAT)가 포함된 최종 정찰 금액이며, 결제 시 사업자등록증이나 발급용 번호를 알려주시면 즉시 발행해 드립니다.",
+    answer: "네, 100% 정상 발행 가능합니다. 안내해 드린 33만원은 부가세(VAT)가 포함된 최종 정찰 금액이며, 결제 시 사업자등록증이나 발급용 번호를 알려주시면 즉시 발행해 드립니다.",
   },
 ];
 
@@ -59,14 +59,14 @@ export function FAQSection() {
   };
 
   return (
-    <section id="faq" className="relative bg-[#05070D] text-white py-24 sm:py-32 border-t border-white/10 overflow-hidden">
+    <section id="faq" className="relative bg-[#0A1222] text-white py-24 sm:py-32 overflow-clip">
       {/* 백그라운드 앰비언트 글로우 */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-160 sm:w-200 h-160 sm:h-200 bg-sky-500/5 rounded-full blur-[180px] pointer-events-none" />
 
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 relative z-10">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 relative z-10 grid lg:grid-cols-12 gap-10 lg:gap-14">
         
         {/* ─── 섹션 헤더 ─── */}
-        <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
+        <div className="lg:col-span-5 lg:sticky lg:top-28 self-start">
           <motion.p
             custom={0}
             initial="hidden"
@@ -78,7 +78,7 @@ export function FAQSection() {
             자주 묻는 질문
           </motion.p>
 
-          <h2 className="text-[24px] min-[390px]:text-2xl sm:text-3xl lg:text-4xl font-bold tracking-[-0.03em] leading-[1.35] sm:leading-[1.3] text-slate-100 mb-3 break-keep">
+          <h2 className="text-[24px] min-[390px]:text-2xl sm:text-3xl lg:text-[34px] font-bold tracking-[-0.03em] leading-[1.35] sm:leading-[1.3] text-slate-100 mb-3 break-keep">
             <motion.span
               custom={1}
               initial="hidden"
@@ -95,7 +95,7 @@ export function FAQSection() {
               whileInView="visible"
               viewport={{ once: true, margin: "-60px" }}
               variants={headerVariants}
-              className="block text-transparent bg-clip-text bg-linear-to-r from-sky-400 via-blue-200 to-indigo-300 font-extrabold"
+              className="block"
             >
               미리 투명하게 정리했습니다.
             </motion.span>
@@ -114,7 +114,7 @@ export function FAQSection() {
         </div>
 
         {/* ─── 아코디언 리스트 ─── */}
-        <div className="space-y-3.5 max-w-2xl mx-auto">
+        <div className="lg:col-span-7 space-y-3.5">
           {FAQ_LIST.map((faq, idx) => {
             const isOpen = openIndex === idx;
             return (

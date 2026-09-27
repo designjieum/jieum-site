@@ -4,14 +4,14 @@ import { Check, Receipt } from "lucide-react";
 const CHECK_LIST = [
   "1:1 현장 방문 인터뷰 & 매장 강점 발굴",
   "방문을 유도하는 전문 카피라이팅",
-  "모바일 엄지 최적화 고전환 구조 설계",
-  "반응형 구현 (스마트폰 100% + 태블릿 + PC)",
-  "네이버 서치어드바이저 & 구글 포털 검색 등록",
+  "휴대폰에서 전화·예약 버튼까지 헤매지 않게 배치",
+  "휴대폰·태블릿·PC 어디서 봐도 깔끔하게",
+  "네이버·구글 검색 등록",
   "네이버 지도 길찾기 & 전화/예약 버튼 연동",
-  "카카오톡 공유 최적화 (대표 사진 · OG 태그)",
+  "카톡으로 보내면 매장 사진이 예쁘게 뜨도록 세팅",
   "매장 사진 비주얼 톤보정 & 웹 최적화 리터칭",
   "디자인 맞춤 시안 1종 제공 + 피드백 수정 2회",
-  "단순 시스템 오류 및 오타 무상 케어",
+  "단순 시스템 오류 및 오타 무상 케어 (오픈 후 1개월)",
 ];
 
 const headerVariants: Variants = {
@@ -29,7 +29,7 @@ const headerVariants: Variants = {
 
 export function PricingSection() {
   return (
-    <section id="pricing" className="relative bg-[#05070D] text-white py-24 sm:py-32 border-t border-white/10 overflow-hidden">
+    <section id="pricing" className="relative bg-linear-to-b from-[#0B1B36] via-[#0C2146] to-[#0B1B36] text-white py-24 sm:py-32 overflow-hidden">
       {/* 앰비언트 글로우 */}
       <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-140 sm:w-180 h-140 sm:h-180 bg-sky-500/10 rounded-full blur-[170px] pointer-events-none" />
 
@@ -65,9 +65,9 @@ export function PricingSection() {
               whileInView="visible"
               viewport={{ once: true, margin: "-60px" }}
               variants={headerVariants}
-              className="block text-transparent bg-clip-text bg-linear-to-r from-sky-400 via-blue-200 to-indigo-300 font-extrabold"
+              className="block"
             >
-              숨은 추가금 없이 시작하세요.
+              <span className="text-sky-400">숨은 추가금 없이</span> 시작하세요.
             </motion.span>
           </h2>
 
@@ -96,7 +96,7 @@ export function PricingSection() {
           {/* 1. 상단 패키지 타이틀 & 한 줄 정의 */}
           <div className="mb-6">
             <h3 className="text-2xl sm:text-[26px] font-bold text-white tracking-tight mb-2">
-              고전환 원페이지 올인원
+              손님이 연락하게 만드는 홈페이지
             </h3>
             <p className="text-[13px] sm:text-[14.5px] text-slate-400 leading-relaxed break-keep">
               처음 방문한 고객이 매장의 장점을 한눈에 파악하고 안심하며 예약·전화할 수 있도록 설계합니다.
@@ -135,7 +135,7 @@ export function PricingSection() {
               구성
             </span>
             <p className="text-[13.5px] sm:text-[15px] text-slate-200 font-medium break-keep">
-              고전환 원페이지 (핵심 섹션 5~6개)
+              원페이지 홈페이지 (핵심 섹션 5~8개)
             </p>
           </div>
 
@@ -171,13 +171,13 @@ export function PricingSection() {
           <div className="flex items-start gap-1.5">
             <span className="text-slate-400 shrink-0">※</span>
             <p className="break-keep">
-              <strong className="text-slate-300">도메인 주소 등록:</strong> 독립 도메인(.com / .co.kr)은 사장님 명의 직접 소유를 위해 공인 등록 기관 실비(연 약 2만 원)만 발생하며, 대행 수수료 없이 무료로 세팅해 드립니다.
+              <strong className="text-slate-300">도메인 주소 등록:</strong> 독립 도메인(.com / .co.kr)은 사장님 명의 직접 소유를 위해 공인 등록 기관 실비(연 약 2만원)만 발생하며, 대행 수수료 없이 무료로 세팅해 드립니다.
             </p>
           </div>
           <div className="flex items-start gap-1.5">
             <span className="text-slate-400 shrink-0">※</span>
             <p className="break-keep">
-              <strong className="text-slate-300">의무 유지보수비 0원:</strong> 매달 나가는 관리비가 전혀 없습니다. 추후 수정이 필요할 때만 건별(1~2만 원 선)로 편하게 요청하세요.
+              <strong className="text-slate-300">의무 유지보수비 0원:</strong> 매달 나가는 관리비가 전혀 없습니다. 추후 수정이 필요할 때만 건별(1~2만원 선)로 편하게 요청하세요.
             </p>
           </div>
         </div>

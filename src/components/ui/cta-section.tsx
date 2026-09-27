@@ -16,7 +16,7 @@ const headerVariants: Variants = {
 
 export function CtaSection() {
   return (
-    <section id="contact" className="relative bg-[#05070D] text-white py-24 sm:py-32 border-t border-white/10 overflow-hidden">
+    <section id="contact" className="relative bg-[#05070D] text-white py-24 sm:py-32 overflow-hidden">
       {/* 앰비언트 글로우 백라이트 */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-160 sm:w-220 h-160 sm:h-220 bg-sky-500/10 rounded-full blur-[180px] pointer-events-none" />
 
@@ -83,7 +83,7 @@ export function CtaSection() {
             className="w-full py-4.5 px-8 rounded-2xl bg-sky-500 hover:bg-sky-400 text-slate-950 font-black text-base sm:text-lg flex items-center justify-center gap-2.5 shadow-xl shadow-sky-500/25 transition-all duration-200 active:scale-[0.99] cursor-pointer"
           >
             <MessageCircle className="w-5 h-5 fill-current shrink-0" />
-            <span>카톡으로 1분 견적·상담 받기</span>
+            <span>카톡으로 1분 상담 받기</span>
           </a>
         </div>
 

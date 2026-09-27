@@ -1,0 +1,26 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "gray-on-color",
+        "value": "*",
+        "files": [
+          "src/components/ui/animated-hero.tsx"
+        ],
+        "createdAt": "2026-09-27T03:13:56.130Z",
+        "reason": "Claude triage: flagged text-slate-950 is near-black on the sky-500 CTA button (high contrast); button color was unified to the CTA style at the user's request"
+      },
+      {
+        "rule": "gray-on-color",
+        "value": "*",
+        "files": [
+          "src/components/ui/portfolio.tsx"
+        ],
+        "createdAt": "2026-09-27T03:40:11.430Z",
+        "reason": "Claude triage: flagged text-slate-950 is near-black on the sky-500 mockup CTA button (high contrast), matching the site-wide CTA color the user chose"
+      }
+    ]
+  }
+}

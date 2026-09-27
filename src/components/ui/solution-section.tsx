@@ -11,10 +11,10 @@ interface ComparisonItem {
 const COMPARISONS: ComparisonItem[] = [
   {
     category: "견적 기준",
-    traditional: "옵션·반응형마다 숨은 추가금",
+    traditional: "옵션·모바일 대응마다 숨은 추가금",
     renderJieum: () => (
       <span className="whitespace-nowrap">
-        기획·모바일 포함 <span className="text-sky-300 font-bold">33만 원 정찰제</span>
+        기획·모바일 포함 <span className="text-sky-300 font-bold">단일 정찰제</span>
       </span>
     ),
   },
@@ -80,10 +80,9 @@ export function SolutionSection() {
     <section 
       ref={containerRef} 
       id="solution" 
-      className="relative bg-[#05070D] text-white h-[450vh]"
+      className="relative bg-[#0A1222] text-white h-[450vh]"
     >
       {/* 상단 경계선 */}
-      <div className="w-full border-t border-white/10" />
 
       {/* 화면 전체 고정 뷰포트 (데스크톱 & 모바일 일체형 sticky) */}
       <div className="sticky top-0 h-screen w-full flex items-center justify-center overflow-hidden">
@@ -104,7 +103,7 @@ export function SolutionSection() {
               style={{ opacity: text1Opacity, y: text1Y }}
               className="text-[29px] min-[390px]:text-[33px] sm:text-4xl md:text-5xl lg:text-[64px] font-extrabold tracking-[-0.035em] leading-[1.22] sm:leading-[1.18] text-slate-100 mb-2 sm:mb-2.5 break-keep drop-shadow-md"
             >
-              33만 원 정찰제가
+              33만원 정찰제가
               <br className="max-[430px]:block hidden" />
               {" "}가능한 이유,
             </motion.h2>
@@ -113,16 +112,16 @@ export function SolutionSection() {
               style={{ opacity: text2Opacity, y: text2Y }}
               className="text-[29px] min-[390px]:text-[33px] sm:text-4xl md:text-5xl lg:text-[64px] font-extrabold tracking-[-0.035em] leading-[1.22] sm:leading-[1.18] text-transparent bg-clip-text bg-linear-to-r from-sky-400 via-blue-200 to-indigo-300 mb-4 sm:mb-6 break-keep drop-shadow"
             >
-              외주 없는 1인 디렉팅과
+              외주·중간 마진 없는
               <br />
-              AI 파이프라인
+              1인 직접 운영
             </motion.h3>
 
             <motion.p 
               style={{ opacity: text3Opacity, y: text3Y }}
               className="text-slate-300/90 text-sm sm:text-base md:text-lg leading-relaxed break-keep max-w-2xl mx-auto drop-shadow tracking-tight px-1"
             >
-              불필요한 인건비 거품과 에이전시 마진을 모두 걷어냈습니다. 최신 엔지니어링 기술로 제작 공수를 줄이고, 그 혜택을 사장님께 온전히 돌려드립니다.
+              영업 직원, 외주 디자이너, 에이전시 마진을 모두 걷어냈습니다. 상담부터 기획·디자인·제작까지 한 사람이 직접 맡아, 줄어든 비용을 사장님께 그대로 돌려드립니다.
             </motion.p>
           </div>
 
@@ -136,7 +135,7 @@ export function SolutionSection() {
               <h2 className="text-[22px] min-[390px]:text-2xl sm:text-3xl lg:text-4xl font-bold tracking-[-0.03em] leading-[1.35] sm:leading-[1.3] text-slate-100 mb-2 sm:mb-3 break-keep">
                 비용은 낮추고, 퀄리티와 소통은
                 <br />
-                <span className="bg-linear-to-r from-sky-400 via-blue-200 to-indigo-300 bg-clip-text text-transparent font-extrabold">
+                <span className="text-sky-400">
                   1인 디렉터
                 </span>
                 가 책임집니다.

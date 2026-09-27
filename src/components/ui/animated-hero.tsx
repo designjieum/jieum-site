@@ -34,7 +34,7 @@ function Hero() {
       {/* 2. 텍스트 가독성을 위한 다크 오버레이 및 하단 연결 그라데이션 */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 z-1 bg-linear-to-b from-[#090D16]/50 via-transparent to-[#090D16]"
+        className="pointer-events-none absolute inset-0 z-1 bg-linear-to-b from-[#090D16]/50 via-transparent to-[#05070D]"
       />
 
       {/* 3. 콘텐츠 레이어 */}
@@ -47,12 +47,14 @@ function Hero() {
           transition={{ duration: 0.45 }}
           className="mb-6 sm:mb-8 text-xs min-[376px]:text-sm sm:text-[15px] font-semibold tracking-tight text-slate-300/90"
         >
-          경기북부 1:1 방문 맞춤 제작 · 33만 원 정찰제
+          경기북부 1:1 방문 맞춤 제작 · 33만원 정찰제
         </motion.p>
 
         {/* 메인 타이틀 */}
         <h1 className="text-[2rem] leading-[1.2] min-[400px]:text-[2.35rem] min-[400px]:leading-[1.2] sm:text-5xl sm:leading-[1.18] md:text-6xl lg:text-7xl font-extrabold tracking-[-0.04em] text-white w-full">
-          <div className="h-[1.28em] relative flex items-center justify-center overflow-hidden w-full">
+          {/* 검색엔진·화면 낭독기용 고정 제목 (화면에는 숨김) */}
+          <span className="sr-only">경기북부 소상공인을 위한 원페이지 홈페이지 제작, 33만원 정찰제</span>
+          <div aria-hidden="true" className="h-[1.28em] relative flex items-center justify-center overflow-hidden w-full">
             <AnimatePresence mode="wait">
               <motion.span
                 key={titleNumber}
@@ -66,7 +68,7 @@ function Hero() {
               </motion.span>
             </AnimatePresence>
           </div>
-          <span className="block mt-1 sm:mt-2 text-slate-100 whitespace-nowrap">
+          <span aria-hidden="true" className="block mt-1 sm:mt-2 text-slate-100 whitespace-nowrap">
             홈페이지의 모든 것
           </span>
         </h1>
@@ -87,7 +89,7 @@ function Hero() {
         <div className="mt-8 sm:mt-10 flex justify-center w-full sm:w-auto">
           <Button
             size="lg"
-            className="w-full sm:w-auto h-13 sm:h-14 px-8 sm:px-10 text-[15px] sm:text-base font-bold tracking-tight gap-2.5 bg-blue-600 hover:bg-blue-500 shadow-[0_10px_30px_-5px_rgba(37,99,235,0.45)] transition-all active:scale-95 cursor-pointer rounded-xl"
+            className="w-full sm:w-auto h-13 sm:h-14 px-8 sm:px-10 text-[15px] sm:text-base font-bold tracking-tight gap-2.5 bg-sky-500 hover:bg-sky-400 text-slate-950 shadow-xl shadow-sky-500/25 transition-all active:scale-95 cursor-pointer rounded-xl"
             asChild
           >
             <a
@@ -95,8 +97,8 @@ function Hero() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <MessageCircle className="w-4 h-4 fill-white shrink-0" />
-              <span>카톡으로 1분 견적·상담 받기</span>
+              <MessageCircle className="w-4 h-4 fill-current shrink-0" />
+              <span>카톡으로 1분 상담 받기</span>
             </a>
           </Button>
         </div>

@@ -24,7 +24,7 @@ const ENGINE_FEATURES: FeatureCard[] = [
     tag: "상권 노출",
     title: "경기북부 로컬 검색 밀착 세팅",
     desc: "양주·의정부·포천 등 매장 상권에 맞춰 네이버와 구글 포털 메타 태그를 누락 없이 꼼꼼하게 등록합니다.",
-    highlight: "네이버·구글 로컬 검색 최적화(SEO) 기본 세팅",
+    highlight: "네이버·구글 검색 등록 기본 세팅",
   },
   {
     icon: Smartphone,
@@ -36,7 +36,7 @@ const ENGINE_FEATURES: FeatureCard[] = [
   {
     icon: Layers,
     tag: "본질 집중",
-    title: "문의를 부르는 전환 동선 설계",
+    title: "전화·예약 버튼까지 헤매지 않게 배치",
     desc: "화려하기만 한 페이지는 소용없습니다. 손님이 어떤 정보를 봐야 예약과 구매로 이어지는지 철저히 계산해 배치합니다.",
     highlight: "보여주기식을 넘어 실제 매출 중심 설계",
   },
@@ -45,7 +45,7 @@ const ENGINE_FEATURES: FeatureCard[] = [
     tag: "행동 유도",
     title: "엄지손가락 원터치 행동 유도",
     desc: "마음이 움직였을 때 찾기 힘들면 나갑니다. 모바일 최하단 엄지 반경에 전화와 상담 버튼을 고정합니다.",
-    highlight: "전화 상담 및 예약 전환율 극대화",
+    highlight: "전화·예약 문의로 바로 이어지게",
   },
   {
     icon: Navigation,
@@ -110,7 +110,7 @@ export function FeaturesSection() {
     <section 
       ref={targetRef} 
       id="features" 
-      className="relative bg-[#05070D] text-white h-[460vh] border-t border-white/10"
+      className="relative bg-[#05070D] text-white h-[460vh]"
     >
       <div className="sticky top-0 h-screen w-full flex items-center overflow-hidden">
         <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col min-[1122px]:grid min-[1122px]:grid-cols-12 gap-6 min-[1122px]:gap-14 justify-center">
@@ -125,9 +125,7 @@ export function FeaturesSection() {
             <h2 className="text-[22px] min-[390px]:text-2xl sm:text-3xl lg:text-4xl font-bold tracking-[-0.03em] leading-[1.35] sm:leading-[1.3] text-slate-100 mb-2 sm:mb-3 lg:mb-4 break-keep">
               화려함보다 중요한 건,
               <br />
-              <span className="text-transparent bg-clip-text bg-linear-to-r from-sky-400 via-blue-200 to-indigo-300 font-extrabold">
-                손님이 움직이는 구조
-              </span>
+              <span>손님이 <span className="text-sky-400">움직이는</span> 구조</span>
             </h2>
 
             {/* 서브 카피 */}

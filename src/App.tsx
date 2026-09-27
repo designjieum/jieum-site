@@ -1,6 +1,7 @@
 import { Hero } from "@/components/ui/animated-hero";
 import { ProblemSection } from "@/components/ui/problem-section";
 import { SolutionSection } from "@/components/ui/solution-section";
+import { FounderSection } from "@/components/ui/founder-section";
 import { FeaturesSection } from "@/components/ui/features-section";
 import { PortfolioSection } from "@/components/ui/portfolio";
 import { ProcessSection } from "@/components/ui/process-section";
@@ -40,8 +41,9 @@ export default function App() {
         <Hero />
         <ProblemSection />
         <SolutionSection />
-        <FeaturesSection />
+        <FounderSection />
         <PortfolioSection />
+        <FeaturesSection />
         <ProcessSection />
         <PricingSection />
         <FAQSection />
