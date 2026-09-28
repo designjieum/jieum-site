@@ -1,3 +1,4 @@
+import { Fragment } from "react";
 import { ArrowDown } from "lucide-react";
 import { HERO } from "@/lib/content";
 import { CtaLink } from "@/components/sections/CtaLink";
@@ -17,14 +18,18 @@ export function Hero() {
           <span className="mt-6 block text-[clamp(2.5rem,12vw,8rem)] leading-[1.04] font-black tracking-[-0.05em] sm:mt-8">
             {HERO.titleLines.map((line, li) => (
               <span key={li} className="block">
-                {line.map((word) => {
+                {line.map((word, wi) => {
                   const delay = 0.1 + wordIndex++ * 0.08;
+                  const spaceAfter = wi < line.length - 1 && !("join" in word && word.join);
                   return (
-                    <span key={word.text} className={`${"join" in word && word.join ? "" : "mr-[0.22em]"} inline-block overflow-hidden pb-[0.06em] align-bottom last:mr-0`}>
-                      <span className="relative inline-block animate-word-rise" style={{ animationDelay: `${delay}s` }}>
-                        {"sign" in word && word.sign ? <SignWord text={word.text} delay={delay + 0.45} /> : word.text}
+                    <Fragment key={word.text}>
+                      <span className="inline-block overflow-hidden pb-[0.06em] align-bottom">
+                        <span className="relative inline-block animate-word-rise" style={{ animationDelay: `${delay}s` }}>
+                          {"sign" in word && word.sign ? <SignWord text={word.text} delay={delay + 0.45} /> : word.text}
+                        </span>
                       </span>
-                    </span>
+                      {spaceAfter && " "}
+                    </Fragment>
                   );
                 })}
               </span>

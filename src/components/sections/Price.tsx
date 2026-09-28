@@ -21,9 +21,9 @@ export function Price() {
         </h2>
         <p className="mt-5 max-w-[30em] text-[17px] leading-[1.7] text-wall/70 break-keep text-pretty sm:text-lg">{PRICE.desc}</p>
 
-        <div className="mt-12 grid gap-12 sm:mt-16 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-16">
+        <div className="mt-12 grid gap-12 sm:mt-16 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:grid-rows-[auto_1fr] lg:gap-x-16 lg:gap-y-10">
           {/* 가격 간판: 기본은 불 켜진 상태, 화면에 들어올 때 어두운 막이 깜빡이며 걷힘 */}
-          <div className="lg:sticky lg:top-24 lg:self-start">
+          <div className="lg:col-start-1 lg:row-start-1">
             <div className="relative overflow-hidden bg-sign p-6 text-ink sm:p-8">
               {!reduce && (
                 <motion.span
@@ -51,14 +51,10 @@ export function Price() {
               </ul>
               <p className="mt-4 text-[15px] font-semibold">{PRICE.sign.note}</p>
             </div>
-
-            <div className="mt-10 hidden lg:block">
-              <Extras />
-            </div>
           </div>
 
           {/* 포함 내역: 견적서 항목처럼 점선으로 "포함"까지 이어짐 */}
-          <div>
+          <div className="lg:col-start-2 lg:row-span-2 lg:row-start-1">
             <h3 className="text-[15px] font-bold text-wall/70">{PRICE.includesTitle}</h3>
             <ol className="mt-3 border-t-2 border-wall">
               {PRICE.includes.map((item, i) => (
@@ -79,10 +75,10 @@ export function Price() {
                 </motion.li>
               ))}
             </ol>
+          </div>
 
-            <div className="mt-12 lg:hidden">
-              <Extras />
-            </div>
+          <div className="lg:col-start-1 lg:row-start-2">
+            <Extras />
           </div>
         </div>
       </div>
