@@ -29,6 +29,12 @@
         ],
         "createdAt": "2026-09-27T06:06:52.370Z",
         "reason": "Claude: index.html의 크롤러용 요약은 sr-only로 화면에 보이지 않으며, 실제 화면은 React가 렌더링함"
+      },
+      {
+        "rule": "bounce-easing",
+        "value": "cubic-bezier(0.34, 1.56, 0.64, 1)",
+        "createdAt": "2026-09-28T09:49:28.455Z",
+        "reason": "Claude: design-guide.md가 '빠르고 경쾌하게' 모션 성격에 지정한 이징. 3안(경기북부 상점가) STEP 2 방향에서 확정했고, 사용자가 이 방향으로 진행을 승인함. 간판 단어 팝업 등 포인트 동작에만 사용"
       }
     ]
   }
