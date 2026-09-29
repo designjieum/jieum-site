@@ -59,6 +59,7 @@ export function Footer() {
     },
     { label: FOOTER.labels.email, value: <FooterLink href={`mailto:${SITE.email}`}>{SITE.email}</FooterLink> },
     { label: FOOTER.labels.kakao, value: <FooterLink href={SITE.kakaoUrl} external>{FOOTER.kakaoLabel}</FooterLink> },
+    { label: FOOTER.labels.instagram, value: <FooterLink href={SITE.instagramUrl} external>{FOOTER.instagramLabel}</FooterLink> },
     { label: FOOTER.labels.hours, value: SITE.hours },
   ];
 

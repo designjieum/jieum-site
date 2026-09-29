@@ -27,6 +27,12 @@
     scroll-padding-top: 4rem;
   }
 
+  /* 사례 팝업이 열려 있는 동안 뒤의 사이트는 스크롤되지 않게 고정 */
+  html:has(dialog[open]) {
+    overflow: hidden;
+    scrollbar-gutter: stable;
+  }
+
   @media (prefers-reduced-motion: no-preference) {
     html {
       scroll-behavior: smooth;

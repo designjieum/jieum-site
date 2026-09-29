@@ -5,6 +5,7 @@ export const SITE = {
   name: "디자인 지음",
   category: "경기북부 가게 홈페이지 제작",
   kakaoUrl: "https://pf.kakao.com/_IuxfaX/chat",
+  instagramUrl: "https://www.instagram.com/jieum.homepage/",
   email: "designjieum@gmail.com",
   hours: "연중무휴 09:00~22:00",
 };
@@ -186,6 +187,28 @@ export const CASES: CaseStudy[] = [
     solution: "오늘의 과일과 대표 메뉴를 가격과 함께 보여 주고, 영업시간·주차 안내를 첫 화면에 담았어요.",
     headline: "메뉴·가격·주차 안내를 첫 화면에 담았어요.",
   },
+  {
+    id: "minerae",
+    category: "향수 브랜드",
+    name: "미네레",
+    isReal: false,
+    image: "/images/portfolio/minerae.webp",
+    thumb: "/images/portfolio/thumbs/minerae.webp",
+    problem: "향은 화면으로 맡을 수 없어서, 브랜드가 어떤 분위기인지 말로만 전하기 어려워요.",
+    solution: "돌 하나에서 시작된 브랜드 철학과 컬렉션을 차분한 톤과 무드 컷으로 풀어, 향의 인상이 먼저 전해지게 했어요.",
+    headline: "브랜드 철학과 무드를 한 페이지에 담았어요.",
+  },
+  {
+    id: "raun",
+    category: "뷰티 브랜드",
+    name: "라운",
+    isReal: false,
+    image: "/images/portfolio/raun.webp",
+    thumb: "/images/portfolio/thumbs/raun.webp",
+    problem: "신제품을 알릴 때 성분과 설명만 늘어놓으면, 제품이 가진 이야기와 감성이 잘 전해지지 않아요.",
+    solution: "조향 스토리, 탑·미들·베이스 노트, 텍스처와 성분을 흐름에 따라 보여 주고, 사전 예약으로 이어지게 했어요.",
+    headline: "제품 이야기와 노트 구성을 따라 사전 예약으로 이었어요.",
+  },
 ];
 
 export const PRICE = {
@@ -306,9 +329,11 @@ export const FOOTER = {
     phone: "전화",
     email: "이메일",
     kakao: "카카오톡",
+    instagram: "인스타그램",
     hours: "상담 시간",
   },
   kakaoLabel: "채널에서 상담하기",
+  instagramLabel: "@jieum.homepage",
   visitNote: "방문 인터뷰: 양주·의정부·포천·동두천 등 경기북부 (그 외 지역은 비대면으로 진행)",
   toTop: "맨 위로",
 };

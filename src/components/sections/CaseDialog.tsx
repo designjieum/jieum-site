@@ -25,11 +25,11 @@ export function CaseDialog({ caseStudy, onClose }: CaseDialogProps) {
       onClose={onClose}
       onClick={(e) => e.target === dialogRef.current && onClose()}
       aria-labelledby="case-dialog-title"
-      className="m-auto max-h-[calc(100dvh-2rem)] w-[calc(100%-2rem)] max-w-5xl overflow-y-auto border-2 border-ink bg-wall p-0 text-ink backdrop:bg-ink/70 lg:overflow-hidden"
+      className="m-auto max-h-[calc(100dvh-2rem)] w-[calc(100%-2rem)] max-w-5xl overflow-y-auto overscroll-contain border-2 border-ink bg-wall p-0 text-ink backdrop:bg-ink/70 lg:overflow-hidden"
     >
       {caseStudy && (
         <div className="lg:grid lg:h-[min(80dvh,760px)] lg:grid-cols-[1fr_400px]">
-          <div className="flex flex-col p-6 sm:p-10 lg:overflow-y-auto">
+          <div className="flex flex-col p-6 sm:p-10 lg:overflow-y-auto lg:overscroll-contain">
             <div className="flex items-start justify-between gap-4">
               <div>
                 <p className="text-[13px] font-semibold text-muted">
@@ -76,7 +76,7 @@ export function CaseDialog({ caseStudy, onClose }: CaseDialogProps) {
           </div>
 
           {/* 전체 페이지 화면: 데스크톱은 이 칸 안에서 스크롤 */}
-          <div className="border-t-2 border-ink bg-unlit lg:overflow-y-auto lg:border-t-0 lg:border-l-2">
+          <div className="border-t-2 border-ink bg-unlit lg:overflow-y-auto lg:overscroll-contain lg:border-t-0 lg:border-l-2">
             <img
               src={caseStudy.image}
               alt={`${caseStudy.name} 홈페이지 전체 화면`}

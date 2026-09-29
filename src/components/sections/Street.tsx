@@ -8,7 +8,7 @@ import { CtaLink } from "@/components/sections/CtaLink";
 import { CaseDialog } from "@/components/sections/CaseDialog";
 
 const HEADER_PX = 64;
-const TOTAL = CASES.length + 1; // 가게 9곳 + 다음 간판 자리
+const TOTAL = CASES.length + 1; // 사례 전체 + 다음 간판 자리
 
 // 거리 걷기: 데스크톱은 섹션을 고정하고 세로 스크롤로 거리를 옆으로 걸음,
 // 모바일·낮은 화면·모션 줄이기 설정은 손가락으로 넘기는 가로 스와이프
