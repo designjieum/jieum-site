@@ -1,7 +1,8 @@
 import { useEffect, useRef } from "react";
-import { X } from "lucide-react";
+import { ArrowUpRight, X } from "lucide-react";
 import { STREET, type CaseStudy } from "@/lib/content";
 import { CtaLink } from "@/components/sections/CtaLink";
+import { cn } from "@/lib/utils";
 
 interface CaseDialogProps {
   caseStudy: CaseStudy | null;
@@ -72,11 +73,22 @@ export function CaseDialog({ caseStudy, onClose }: CaseDialogProps) {
               )}
             </dl>
 
-            <CtaLink className="mt-10 w-full sm:w-auto sm:self-start" label="우리 매장도 상담하기" />
+            <div className="mt-10 flex items-center gap-6">
+              <CtaLink className="w-full sm:w-auto" label="우리 매장도 상담하기" />
+              {/* 데스크톱: 상담 버튼 옆에 */}
+              {caseStudy.siteUrl && <SiteLink caseStudy={caseStudy} className="hidden h-14 lg:inline-flex" />}
+            </div>
           </div>
 
           {/* 전체 페이지 화면: 데스크톱은 이 칸 안에서 스크롤 */}
           <div className="border-t-2 border-ink bg-unlit lg:overflow-y-auto lg:overscroll-contain lg:border-t-0 lg:border-l-2">
+            {/* 모바일·태블릿: 상담 버튼 바로 아래, 캡처 위에 띠로 */}
+            {caseStudy.siteUrl && (
+              <SiteLink
+                caseStudy={caseStudy}
+                className="sticky top-0 z-10 flex h-12 justify-center border-b-2 border-ink bg-wall lg:hidden"
+              />
+            )}
             <img
               src={caseStudy.image}
               alt={`${caseStudy.name} 홈페이지 전체 화면`}
@@ -88,5 +100,26 @@ export function CaseDialog({ caseStudy, onClose }: CaseDialogProps) {
         </div>
       )}
     </dialog>
+  );
+}
+
+// 실제 사이트로 가는 보조 링크: 상담 버튼보다 한 단계 약하게
+function SiteLink({ caseStudy, className }: { caseStudy: CaseStudy; className?: string }) {
+  return (
+    <a
+      href={caseStudy.siteUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={cn("group items-center gap-1.5 text-[15px] font-bold", className)}
+    >
+      <span className="underline-offset-4 group-hover:underline">
+        {caseStudy.isReal ? STREET.siteLinkLabel : STREET.exampleSiteLinkLabel}
+      </span>
+      <ArrowUpRight
+        aria-hidden="true"
+        className="size-4 transition-transform duration-200 ease-out-expo group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+      />
+      <span className="sr-only">(새 창)</span>
+    </a>
   );
 }

@@ -94,6 +94,20 @@ export function Street() {
     [pinned, distance, reduce, cardOffset]
   );
 
+  // 끝에서는 마지막 몇 칸이 한 화면에 같이 보여서, 바로 앞 칸으로 가도 위치가 그대로일 수 있음
+  // → 지금 걸어온 위치보다 실제로 왼쪽에 있는 칸 중 가장 가까운 칸으로 이동
+  const goPrev = () => {
+    const pos = pinned ? Math.min(distance, cardOffset(active)) : (viewportRef.current?.scrollLeft ?? 0);
+    let target = 0;
+    for (let i = active - 1; i > 0; i--) {
+      if (cardOffset(i) < pos - 1) {
+        target = i;
+        break;
+      }
+    }
+    goTo(target);
+  };
+
   // 마키에서 가게를 누르면 해당 가게로 이동
   useEffect(() => {
     const onGo = (e: Event) => {
@@ -135,7 +149,7 @@ export function Street() {
           type="button"
           aria-label="이전 가게"
           disabled={active === 0}
-          onClick={() => goTo(active - 1)}
+          onClick={goPrev}
           className={ARROW_BUTTON}
         >
           <ArrowLeft aria-hidden="true" className="size-5" />

@@ -10,11 +10,11 @@ export const SITE = {
   hours: "연중무휴 09:00~22:00",
 };
 
-// [확인 필요] 사업자등록번호·주소·전화번호는 미정이라 임시 값
+// [확인 필요] 전화번호는 미정이라 임시 값
 export const BUSINESS = {
   owner: "김재협",
-  bizNumber: "000-00-00000",
-  address: "경기도 양주시 부흥로 1936 OO프라자 000호",
+  bizNumber: "505-33-26070",
+  address: "경기도 양주시 부흥로 1936, 4층 406호",
   phone: "0507-0000-0000",
   // 실제 번호가 확정되면 true로 바꾸면 tel: 링크와 하단 [전화] 버튼이 켜집니다
   phoneConfirmed: false,
@@ -33,7 +33,7 @@ export const HERO = {
   kicker: "양주·의정부·포천·동두천 가게 홈페이지 제작 · 33만원 정찰제",
   // sign: true인 단어는 간판(주황 면)으로 점등, join: true면 다음 조각과 띄우지 않고 붙임
   titleLines: [
-    [{ text: "홈페이지", sign: true, join: true }, { text: "로" }],
+    [{ text: "홈페이지", sign: true }, { text: "보고" }],
     [{ text: "손님이" }, { text: "연락해요." }],
   ],
   desc: [
@@ -56,6 +56,7 @@ export interface CaseStudy {
   isReal: boolean; // true: 실제 고객, false: 업종별로 미리 만들어 본 시안
   image: string; // 전체 페이지 스크린샷 (폭 425px, 자세히 보기에서 사용)
   thumb: string; // 카드용 3:4 썸네일 (윗부분 크롭)
+  siteUrl?: string; // 실제 사이트 주소: 있으면 자세히 보기에 [실제 사이트 보기] 링크가 켜짐
   problem: string;
   solution: string;
   // 카드에 보이는 한 줄: 실제 고객은 사장님 한마디, 시안은 이렇게 만들었어요
@@ -73,6 +74,8 @@ export const STREET = {
   solutionLabel: "이렇게 만들었어요",
   reviewLabel: "사장님 한마디",
   detailLabel: "자세히 보기",
+  siteLinkLabel: "사이트 보기",
+  exampleSiteLinkLabel: "사이트 둘러보기",
   nextSign: { title: "다음은", sub: "사장님 가게", cta: "상담하기" },
 };
 
@@ -86,6 +89,7 @@ export const CASES: CaseStudy[] = [
     isReal: true,
     image: "/images/portfolio/orangead.webp",
     thumb: "/images/portfolio/thumbs/orangead.webp",
+    siteUrl: "https://orange-site.pages.dev/",
     problem: "조건이 매번 다른 견적 문의에 하나하나 답하느라 시간이 오래 걸렸어요.",
     solution: "필요한 내용을 미리 적어 보내는 견적 문의 흐름을 만들어, 문의가 정리된 상태로 도착하게 했어요.",
     headline: "“답변이 훨씬 간편해졌고, 문의 건수도 눈에 띄게 늘었어요.”",
@@ -102,6 +106,7 @@ export const CASES: CaseStudy[] = [
     isReal: true,
     image: "/images/portfolio/okhome.webp",
     thumb: "/images/portfolio/thumbs/okhome.webp",
+    siteUrl: "https://okhome.co.kr/",
     problem: "'이것도 수리되나요?' 묻는 문의가 많은데, 작업 중엔 전화를 받기 힘들었어요.",
     solution: "수리 가능한 서비스를 한눈에 정리하고, 상담 신청과 전화 연결 버튼을 더했어요.",
     headline: "“수리 가능한지 묻는 문의가 확 줄어서 좋아요.”",
@@ -117,6 +122,7 @@ export const CASES: CaseStudy[] = [
     isReal: false,
     image: "/images/portfolio/dalbit.webp",
     thumb: "/images/portfolio/thumbs/dalbit.webp",
+    siteUrl: "https://camping-site-6tl.pages.dev/",
     problem: "길을 묻는 전화와 자리별 가격 문의가 하루 종일 이어지기 쉬워요.",
     solution: "자리별 가격을 한눈에 비교하게 하고, 찾아오는 길을 자세히 안내해 같은 질문이 반복되지 않게 했어요.",
     headline: "자리별 가격 비교와 길 안내로 반복 문의를 줄였어요.",
@@ -128,6 +134,7 @@ export const CASES: CaseStudy[] = [
     isReal: false,
     image: "/images/portfolio/lowhigh.webp",
     thumb: "/images/portfolio/thumbs/lowhigh.webp",
+    siteUrl: "https://lowhigh-site.pages.dev/",
     problem: "가격만 물어보고 예약까지 이어지지 않는 경우가 많아요.",
     solution: "서비스별 가격표와 스타일 모음을 보여 주고, 확인한 손님이 바로 예약하도록 이었어요.",
     headline: "가격과 스타일을 보고 바로 예약하게 이었어요.",
@@ -139,6 +146,7 @@ export const CASES: CaseStudy[] = [
     isReal: false,
     image: "/images/portfolio/bareungil.webp",
     thumb: "/images/portfolio/thumbs/bareungil.webp",
+    siteUrl: "https://admin-site-a2m.pages.dev/",
     problem: "처분서를 받고 당황한 손님은 무엇부터 할지 몰라, 첫 상담이 설명으로 길어지기 쉬워요.",
     solution: "처분서 사진 한 장만 보내면 상담이 시작되게 하고, 기한과 진행 단계를 미리 안내했어요.",
     headline: "처분서 사진 한 장으로 상담이 시작되게 했어요.",
@@ -150,6 +158,7 @@ export const CASES: CaseStudy[] = [
     isReal: false,
     image: "/images/portfolio/bomgyeol.webp",
     thumb: "/images/portfolio/thumbs/bomgyeol.webp",
+    siteUrl: "https://flower-site.pages.dev/",
     problem: "꽃을 손질하는 동안에도 '얼마예요? 오늘 되나요?' 묻는 DM이 끊이지 않아요.",
     solution: "가격, 실제 크기, 당일 주문 마감 시간을 한 페이지에 모으고, 바로 네이버 예약으로 넘어가게 했어요.",
     headline: "가격·크기·당일 마감을 한 페이지에 모았어요.",
@@ -161,6 +170,7 @@ export const CASES: CaseStudy[] = [
     isReal: false,
     image: "/images/portfolio/forme.webp",
     thumb: "/images/portfolio/thumbs/forme.webp",
+    siteUrl: "https://academy-site-ay5.pages.dev/",
     problem: "'아이가 뭘 배우는지 모르겠다'는 걱정 때문에 상담이 등록으로 잘 이어지지 않아요.",
     solution: "매주 실기 기록 공유 같은 강점을 먼저 보여 주고, 무료 실기 진단 예약으로 첫 방문을 이끌었어요.",
     headline: "무료 실기 진단 예약으로 첫 방문을 이끌었어요.",
@@ -172,6 +182,7 @@ export const CASES: CaseStudy[] = [
     isReal: false,
     image: "/images/portfolio/miso.webp",
     thumb: "/images/portfolio/thumbs/miso.webp",
+    siteUrl: "https://soma-site-dzs.pages.dev/",
     problem: "'허리가 아픈데 해도 되나요?' 묻는 전화가 많은데, 1:1 수업 중엔 받을 수 없어요.",
     solution: "허리·골반, 목·어깨처럼 고민별로 수업을 먼저 확인하게 하고, 바로 레슨 예약으로 이었어요.",
     headline: "고민별 수업 안내에서 바로 레슨 예약으로 이었어요.",
@@ -183,6 +194,7 @@ export const CASES: CaseStudy[] = [
     isReal: false,
     image: "/images/portfolio/freshfruit.webp",
     thumb: "/images/portfolio/thumbs/freshfruit.webp",
+    siteUrl: "https://fruit-site.pages.dev/",
     problem: "메뉴와 주차 여부를 몰라 그냥 지나치는 손님이 많아요.",
     solution: "오늘의 과일과 대표 메뉴를 가격과 함께 보여 주고, 영업시간·주차 안내를 첫 화면에 담았어요.",
     headline: "메뉴·가격·주차 안내를 첫 화면에 담았어요.",
@@ -194,6 +206,7 @@ export const CASES: CaseStudy[] = [
     isReal: false,
     image: "/images/portfolio/minerae.webp",
     thumb: "/images/portfolio/thumbs/minerae.webp",
+    siteUrl: "https://minerae-site.pages.dev/",
     problem: "향은 화면으로 맡을 수 없어서, 브랜드가 어떤 분위기인지 말로만 전하기 어려워요.",
     solution: "돌 하나에서 시작된 브랜드 철학과 컬렉션을 차분한 톤과 무드 컷으로 풀어, 향의 인상이 먼저 전해지게 했어요.",
     headline: "브랜드 철학과 무드를 한 페이지에 담았어요.",
@@ -205,6 +218,7 @@ export const CASES: CaseStudy[] = [
     isReal: false,
     image: "/images/portfolio/raun.webp",
     thumb: "/images/portfolio/thumbs/raun.webp",
+    siteUrl: "https://raun-site.pages.dev/",
     problem: "신제품을 알릴 때 성분과 설명만 늘어놓으면, 제품이 가진 이야기와 감성이 잘 전해지지 않아요.",
     solution: "조향 스토리, 탑·미들·베이스 노트, 텍스처와 성분을 흐름에 따라 보여 주고, 사전 예약으로 이어지게 했어요.",
     headline: "제품 이야기와 노트 구성을 따라 사전 예약으로 이었어요.",
