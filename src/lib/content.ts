@@ -10,15 +10,14 @@ export const SITE = {
   hours: "연중무휴 09:00~22:00",
 };
 
-// [확인 필요] 전화번호는 미정이라 임시 값
 export const BUSINESS = {
   owner: "김재협",
   bizNumber: "505-33-26070",
   address: "경기도 양주시 부흥로 1936, 4층 406호",
-  phone: "0507-0000-0000",
-  // 실제 번호가 확정되면 true로 바꾸면 tel: 링크와 하단 [전화] 버튼이 켜집니다
-  phoneConfirmed: false,
-  phoneHref: "tel:050700000000",
+  phone: "0507-1314-1503",
+  // true면 tel: 링크와 하단 [전화] 버튼이 켜집니다
+  phoneConfirmed: true,
+  phoneHref: "tel:050713141503",
 };
 
 export const NAV = [
@@ -222,6 +221,18 @@ export const CASES: CaseStudy[] = [
     problem: "신제품을 알릴 때 성분과 설명만 늘어놓으면, 제품이 가진 이야기와 감성이 잘 전해지지 않아요.",
     solution: "조향 스토리, 탑·미들·베이스 노트, 텍스처와 성분을 흐름에 따라 보여 주고, 사전 예약으로 이어지게 했어요.",
     headline: "제품 이야기와 노트 구성을 따라 사전 예약으로 이었어요.",
+  },
+  {
+    id: "malgeun",
+    category: "피부과",
+    name: "맑은결피부과의원",
+    isReal: false,
+    image: "/images/portfolio/malgeun.webp",
+    thumb: "/images/portfolio/thumbs/malgeun.webp",
+    siteUrl: "https://malgeun-site.pages.dev/",
+    problem: "'리쥬란 얼마예요?' 묻는 문의에 상담실장이 하루 종일 묶이는데, 의료법상 후기나 전후 사진으로 실력을 보여 주기도 어려워요.",
+    solution: "1분 문진으로 일반 진료와 미용 시술을 나눠 비급여 가격까지 바로 보여 주고, 후기 대신 전문의가 상담부터 시술까지 직접 보는 진료 방식을 앞세웠어요.",
+    headline: "1분 문진으로 진료 갈래와 비급여 가격을 먼저 보여 줬어요.",
   },
 ];
 
