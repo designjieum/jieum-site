@@ -258,7 +258,7 @@ function Storefront({ caseStudy: c, reduce, onOpen }: { caseStudy: CaseStudy; re
         type="button"
         onClick={onOpen}
         aria-label={`${c.name} ${STREET.detailLabel}`}
-        className="group relative aspect-[3/4] overflow-hidden border-x-2 border-b-2 border-ink bg-unlit"
+        className="group relative aspect-[3/4] cursor-pointer overflow-hidden border-x-2 border-b-2 border-ink bg-unlit"
       >
         <img
           src={c.thumb}
@@ -276,7 +276,7 @@ function Storefront({ caseStudy: c, reduce, onOpen }: { caseStudy: CaseStudy; re
       <button
         type="button"
         onClick={onOpen}
-        className="mt-2 inline-flex h-11 items-center gap-1 self-start text-[15px] font-semibold underline decoration-unlit decoration-2 underline-offset-[6px] transition-colors duration-200 ease-out-expo hover:decoration-ink"
+        className="mt-2 inline-flex h-11 cursor-pointer items-center gap-1 self-start text-[15px] font-semibold underline decoration-unlit decoration-2 underline-offset-[6px] transition-colors duration-200 ease-out-expo hover:decoration-ink"
       >
         {STREET.detailLabel}
         <ArrowUpRight aria-hidden="true" className="size-4" />
