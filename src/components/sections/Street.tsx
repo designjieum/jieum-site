@@ -271,7 +271,7 @@ function Storefront({ caseStudy: c, reduce, onOpen }: { caseStudy: CaseStudy; re
         />
       </button>
 
-      <p className="mt-4 text-[13px] font-semibold text-muted">{c.isReal ? STREET.reviewLabel : STREET.solutionLabel}</p>
+      <p className="mt-4 text-[13px] font-semibold text-muted">{c.isReal && c.review ? STREET.reviewLabel : STREET.solutionLabel}</p>
       <p className="mt-1 min-h-[3em] text-[17px] leading-[1.5] font-bold break-keep text-pretty">{c.headline}</p>
       <button
         type="button"

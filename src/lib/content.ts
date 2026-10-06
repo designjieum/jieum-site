@@ -37,13 +37,13 @@ export const HERO = {
   ],
   desc: [
     "매장에 찾아가 이야기를 듣고,",
-    "전화·예약이 오는 홈페이지를 1~2주 안에 열어 드려요.",
+    "전화·예약이 오는 홈페이지를 1주 안에 열어 드려요.",
   ],
   secondary: { label: "만든 홈페이지 먼저 보기", href: "#street" },
   facts: [
     { value: "33만원", label: "VAT 포함" },
     { value: "0원", label: "월 관리비" },
-    { value: "1~2주", label: "오픈까지" },
+    { value: "1주", label: "오픈까지" },
   ],
 };
 
@@ -113,6 +113,19 @@ export const CASES: CaseStudy[] = [
       quote: "작업이 끝난 뒤 부재중 전화를 확인하고 연락드리면 되니 편하고, 수리 가능한지 묻는 문의도 확 줄어서 좋아요.",
       author: "포천 오케이집수리 대표",
     },
+  },
+  {
+    id: "ulsanems",
+    category: "사설구급차",
+    name: "중앙응급환자이송단",
+    location: "울산 삼산동",
+    isReal: true,
+    image: "/images/portfolio/ulsanems.webp",
+    thumb: "/images/portfolio/thumbs/ulsanems.webp",
+    siteUrl: "https://ulsanems.com/",
+    problem: "급하게 구급차를 찾는 분들이 많아서, 사이트에 들어오자마자 전화 연결 버튼이 잘 보였으면 했어요.",
+    solution: "어느 화면에서든 눈에 띄는 전화 버튼을 상단과 본문 곳곳에 두고, 24시간 출동 전화와 문자·카톡 상담 번호를 나눠 안내했어요. 이송 서비스 종류와 출동 지역, 이용 절차도 한 페이지에 정리했어요.",
+    headline: "어느 화면에서든 바로 전화가 걸리도록 전화 버튼을 앞세웠어요.",
   },
   {
     id: "dalbit",
@@ -258,6 +271,18 @@ export const CASES: CaseStudy[] = [
     solution: "요양보호사의 하루를 시간대별로 보여 주고, 등급 신청 4단계와 본인부담 15% 비용을 미리 안내해 무료 방문상담 신청으로 이었어요.",
     headline: "등급 신청 절차와 비용을 먼저 안내해 무료 방문상담으로 이었어요.",
   },
+  {
+    id: "saebom",
+    category: "부동산",
+    name: "새봄집 공인중개사사무소",
+    isReal: false,
+    image: "/images/portfolio/saebom.webp",
+    thumb: "/images/portfolio/thumbs/saebom.webp",
+    siteUrl: "https://property-site-53g.pages.dev/",
+    problem: "전세사기 소식이 잦아지면서, 처음 집을 구하는 손님일수록 계약 자체를 불안해하고 문의를 망설여요.",
+    solution: "직접 가 본 매물만 보여 준다는 원칙과 계약 전 등기부 무료 권리분석을 앞세우고, 아파트·첫 집·상가·토지처럼 찾는 매물별로 안내해 전화 상담 예약으로 이었어요.",
+    headline: "계약 전 무료 권리분석을 앞세워 전화 상담 예약으로 이었어요.",
+  },
 ];
 
 export const PRICE = {
@@ -316,7 +341,7 @@ export const PROCESS = {
     {
       title: "매장 방문·제작",
       desc: "매장에 찾아가 이야기를 듣고, 문구·디자인·제작까지 지음이 맡아요.",
-      tag: "1~2주",
+      tag: "1주",
     },
     {
       title: "오픈·검색 등록",
@@ -338,7 +363,7 @@ export const FAQ = {
     },
     {
       q: "제작 기간은 얼마나 걸리나요?",
-      a: "1:1 매장 인터뷰 완료 후 평균 1~2주 내외로 최종 오픈까지 완료됩니다. 디자인 시안 확인 후 사장님의 피드백을 반영하는 수정 2회가 포함되어 있으며, 오픈 즉시 네이버와 구글 검색 등록까지 마무리해 드립니다.",
+      a: "1:1 매장 인터뷰 완료 후 평균 1주 내외로 최종 오픈까지 완료됩니다. 디자인 시안 확인 후 사장님의 피드백을 반영하는 수정 2회가 포함되어 있으며, 오픈 즉시 네이버와 구글 검색 등록까지 마무리해 드립니다.",
     },
     {
       q: "정말로 매달 나가는 관리비나 호스팅 비용이 없나요?",
