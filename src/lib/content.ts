@@ -140,6 +140,18 @@ export const CASES: CaseStudy[] = [
     headline: "제품 이야기와 노트 구성을 따라 사전 예약으로 이었어요.",
   },
   {
+    id: "hwadam",
+    category: "고깃집",
+    name: "화담숯불",
+    isReal: false,
+    image: "/images/portfolio/hwadam.webp",
+    thumb: "/images/portfolio/thumbs/hwadam.webp",
+    siteUrl: "https://hwadam.pages.dev/",
+    problem: "저녁마다 '지금 자리 있어요?', '단체 몇 명까지 돼요?' 묻는 전화가 몰리는데, 고기 굽느라 제대로 받기 어려웠어요.",
+    solution: "지금 영업 중인지와 라스트오더까지 남은 시간을 바로 보여 주고, 인원별 룸 배치와 가격이 적힌 전체 메뉴, 주차·오시는 길을 한 페이지에 정리해 전화·네이버 예약으로 이었어요.",
+    headline: "지금 갈 수 있는지와 단체 룸 정보를 먼저 보여 줬어요.",
+  },
+  {
     id: "malgeun",
     category: "피부과",
     name: "맑은결피부과의원",
