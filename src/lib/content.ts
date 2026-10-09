@@ -200,6 +200,18 @@ export const CASES: CaseStudy[] = [
     headline: "계약 전 무료 권리분석을 앞세워 전화 상담 예약으로 이었어요.",
   },
   {
+    id: "bbodeuk",
+    category: "입주청소",
+    name: "뽀득하우스",
+    isReal: false,
+    image: "/images/portfolio/bbodeuk.webp",
+    thumb: "/images/portfolio/thumbs/bbodeuk.webp",
+    siteUrl: "https://bbodeuk.pages.dev/",
+    problem: "입주청소는 '가서 보니 오염이 심해서 추가 요금이 붙는다'는 이야기가 많아서, 손님들이 견적 전화부터 망설여요.",
+    solution: "평당 단가 정찰제와 평수 계산기로 가격을 먼저 보여 주고, 창틀·욕실·배수구 전후 사진과 48시간 무상 A/S, 작업 순서를 정리해 전화·카톡 견적으로 이었어요.",
+    headline: "평수만 알면 끝나는 정찰제 가격을 먼저 보여 줬어요.",
+  },
+  {
     id: "dalbit",
     category: "캠핑장",
     name: "달빛계곡",
