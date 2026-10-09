@@ -29,7 +29,7 @@ export const NAV = [
 export const CTA_LABEL = "카톡으로 1분 상담 받기";
 
 export const HERO = {
-  kicker: "양주·의정부·포천·동두천 가게 홈페이지 제작 · 33만원 정찰제",
+  kicker: "양주·의정부·포천·동두천 가게 홈페이지 제작 · 13만원 정찰제",
   // sign: true인 단어는 간판(주황 면)으로 점등, join: true면 다음 조각과 띄우지 않고 붙임
   titleLines: [
     [{ text: "홈페이지", sign: true }, { text: "보고" }],
@@ -41,7 +41,7 @@ export const HERO = {
   ],
   secondary: { label: "만든 홈페이지 먼저 보기", href: "#street" },
   facts: [
-    { value: "33만원", label: "VAT 포함" },
+    { value: "13만원", label: "VAT 포함" },
     { value: "0원", label: "월 관리비" },
     { value: "1주", label: "오픈까지" },
   ],
@@ -302,7 +302,7 @@ export const PRICE = {
   desc: "서버비 없이 만들고, 수정은 필요할 때만 받아요.",
   sign: {
     label: "원페이지 홈페이지 1건",
-    amount: "330,000원",
+    amount: "130,000원",
     rows: ["VAT 포함", "추가금 0원", "월 관리비 0원"],
     note: "핵심 섹션 5~8개 구성",
   },
@@ -395,7 +395,7 @@ export const FAQ = {
     },
     {
       q: "세금계산서나 현금영수증 발행이 가능한가요?",
-      a: "네, 100% 정상 발행 가능합니다. 안내해 드린 33만원은 부가세(VAT)가 포함된 최종 정찰 금액이며, 결제 시 사업자등록증이나 발급용 번호를 알려주시면 즉시 발행해 드립니다.",
+      a: "네, 100% 정상 발행 가능합니다. 안내해 드린 13만원은 부가세(VAT)가 포함된 최종 정찰 금액이며, 결제 시 사업자등록증이나 발급용 번호를 알려주시면 즉시 발행해 드립니다.",
     },
   ],
 };
