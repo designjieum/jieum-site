@@ -58,7 +58,7 @@ export function Footer() {
       value: BUSINESS.phoneConfirmed ? <FooterLink href={BUSINESS.phoneHref}>{BUSINESS.phone}</FooterLink> : BUSINESS.phone,
     },
     { label: FOOTER.labels.email, value: <FooterLink href={`mailto:${SITE.email}`}>{SITE.email}</FooterLink> },
-    { label: FOOTER.labels.kakao, value: <FooterLink href={SITE.kakaoUrl} external>{FOOTER.kakaoLabel}</FooterLink> },
+    { label: FOOTER.labels.blog, value: <FooterLink href={SITE.blogUrl} external>{FOOTER.blogLabel}</FooterLink> },
     { label: FOOTER.labels.instagram, value: <FooterLink href={SITE.instagramUrl} external>{FOOTER.instagramLabel}</FooterLink> },
     { label: FOOTER.labels.hours, value: SITE.hours },
   ];
