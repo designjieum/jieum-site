@@ -16,12 +16,7 @@ export function Founder() {
           <p className="mt-5 border-t-2 border-ink pt-3 text-lg font-bold">{FOUNDER.role}</p>
 
           <div className="mt-10">
-            <p className="text-[15px] font-bold text-muted">{FOUNDER.visitTitle}</p>
-            <ul className="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-2xl font-black tracking-[-0.04em] sm:text-3xl">
-              {FOUNDER.visitAreas.map((area) => (
-                <li key={area}>{area}</li>
-              ))}
-            </ul>
+            <p className="text-2xl font-black tracking-[-0.04em] break-keep sm:text-3xl">{FOUNDER.visitTitle}</p>
             <p className="mt-2 text-[15px] leading-[1.6] text-muted break-keep">{FOUNDER.visitNote}</p>
           </div>
         </div>
