@@ -69,7 +69,7 @@ export function Price() {
                   <span className="w-6 shrink-0 text-[15px] font-bold text-wall/50 tabular-nums">
                     {String(i + 1).padStart(2, "0")}
                   </span>
-                  <span className="text-[17px] leading-[1.5] font-semibold break-keep sm:text-xl">{item}</span>
+                  <span className="text-[17px] leading-[1.5] font-semibold break-keep text-pretty sm:text-xl">{item}</span>
                   <span aria-hidden="true" className="min-w-6 flex-1 translate-y-[-0.3em] border-b-2 border-dotted border-wall/25" />
                   <span className="shrink-0 text-[15px] font-bold">{PRICE.includedTag}</span>
                 </motion.li>
@@ -92,7 +92,7 @@ function Extras() {
       <h3 className="text-xl font-black tracking-[-0.03em]">{PRICE.extrasTitle}</h3>
       <ul className="mt-4 space-y-2 text-[17px] leading-[1.6] text-wall/80">
         {PRICE.extras.map((extra) => (
-          <li key={extra} className="flex gap-2 break-keep">
+          <li key={extra} className="flex gap-2 break-keep text-pretty">
             <span aria-hidden="true">·</span>
             {extra}
           </li>

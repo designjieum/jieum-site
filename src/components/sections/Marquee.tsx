@@ -3,7 +3,7 @@ import { goToCase } from "@/lib/street-events";
 
 export function Marquee() {
   return (
-    <section aria-label="지음이 만든 가게 목록" className="group overflow-hidden bg-ink py-5 text-wall motion-reduce:overflow-x-auto [&_:focus-visible]:outline-wall">
+    <section aria-label="지음이 만든 가게 목록" className="group relative overflow-hidden bg-ink py-5 text-wall motion-reduce:overflow-x-auto [&_:focus-visible]:outline-wall">
       <div className="flex w-max animate-marquee group-hover:[animation-play-state:paused] group-focus-within:[animation-play-state:paused] motion-reduce:animate-none">
         {[0, 1].map((copy) => (
           <ul key={copy} aria-hidden={copy === 1} className="flex shrink-0 items-center">
@@ -19,7 +19,6 @@ export function Marquee() {
                   <span aria-hidden="true" className="relative size-2.5 shrink-0 rounded-full bg-muted">
                     <span className="absolute inset-0 rounded-full bg-sign opacity-0 group-hover/item:animate-sign-light group-focus-visible/item:animate-sign-light" />
                   </span>
-                  <span className="text-wall/60 transition-colors duration-200 ease-out-expo group-hover/item:text-wall">{c.category}</span>
                   <span>{c.name}</span>
                   {c.isReal && <span className="sr-only">(실제 고객)</span>}
                 </button>

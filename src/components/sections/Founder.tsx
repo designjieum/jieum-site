@@ -10,7 +10,7 @@ export function Founder() {
           <h2 id="founder-title" className="text-[15px] font-bold text-muted sm:text-lg">
             {FOUNDER.title}
           </h2>
-          <p className="mt-4 text-[clamp(5rem,24vw,10rem)] leading-[0.9] font-black tracking-[-0.06em]">
+          <p className="mt-4 text-[clamp(5rem,24vw,10rem)] leading-[0.9] font-black tracking-[-0.06em] whitespace-nowrap lg:text-[clamp(6rem,10vw,10rem)]">
             {BUSINESS.owner}
           </p>
           <p className="mt-5 border-t-2 border-ink pt-3 text-lg font-bold">{FOUNDER.role}</p>

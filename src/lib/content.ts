@@ -22,9 +22,16 @@ export const BUSINESS = {
 };
 
 export const NAV = [
-  { label: "사례", href: "#street" },
+  { label: "업종별 사례", href: "/portfolio/" },
   { label: "비용", href: "#price" },
   { label: "FAQ", href: "#faq" },
+];
+
+// 사례 페이지(/portfolio/)에서는 메인 섹션으로 돌아가는 주소 (current: 지금 보고 있는 페이지 표시)
+export const PORTFOLIO_NAV = [
+  { label: "업종별 사례", href: "/portfolio/", current: true },
+  { label: "비용", href: "/#price" },
+  { label: "FAQ", href: "/#faq" },
 ];
 
 export const CTA_LABEL = "카톡으로 1분 상담 받기";
@@ -54,6 +61,7 @@ export interface CaseStudy {
   name: string;
   location?: string; // 실제 고객만 표기 (시안은 동네 이름 없이 "캠핑장 시안"처럼)
   isReal: boolean; // true: 실제 고객, false: 업종별로 미리 만들어 본 시안
+  floor: FloorId; // 사례 페이지 층별 안내판의 층 (업종군)
   image: string; // 전체 페이지 스크린샷 (폭 425px, 자세히 보기에서 사용)
   thumb: string; // 카드용 3:4 썸네일 (윗부분 크롭)
   siteUrl?: string; // 실제 사이트 주소: 있으면 자세히 보기에 [실제 사이트 보기] 링크가 켜짐
@@ -68,7 +76,6 @@ export const STREET = {
   titleLines: ["지음이 만든", "홈페이지"],
   desc: "실제 고객 매장과, 업종별 홈페이지예요. 사장님 업종과 가까운 것부터 보세요.",
   realLabel: "실제 고객", // 화면에는 안 보이고 스크린리더에만 읽힘
-  exampleSuffix: "시안",
   realProblemLabel: "사장님의 고민",
   exampleProblemLabel: "이 업종에서 자주 듣는 고민",
   solutionLabel: "이렇게 만들었어요",
@@ -77,15 +84,169 @@ export const STREET = {
   siteLinkLabel: "사이트 보기",
   exampleSiteLinkLabel: "사이트 둘러보기",
   nextSign: { title: "다음은", sub: "사장님 가게", cta: "상담하기" },
+  // 메인 거리 끝: 사례 페이지로 가는 간판, 설명 아래 링크
+  allSign: {
+    label: "업종별 사례",
+    title: (total: number) => `${total}곳 전부 보기`,
+    more: (count: number) => `+${count}곳`,
+    caption: "이 골목 안쪽에 더 있어요",
+    desc: "사장님 업종과 가까운 가게를 층별로 찾아보세요.",
+    cta: "업종별 사례 보기",
+  },
+  allLink: (total: number) => `업종별 사례 ${total}곳 전부 보기`,
+  allHref: "/portfolio/",
 };
 
-// 실제 고객 사례를 앞에, 업종별 시안을 뒤에 배치
+// 사례 페이지(/portfolio/): 상가 층별 안내판. 층 하나 = 업종군 하나
+export type FloorId = 1 | 2 | 3 | 4 | 5 | 6;
+
+export const FLOORS: { id: FloorId; name: string }[] = [
+  { id: 1, name: "외식·여가" },
+  { id: 2, name: "미용·헬스" },
+  { id: 3, name: "꽃·가구·브랜드" },
+  { id: 4, name: "수리·설비·시공" },
+  { id: 5, name: "학원·요양·의료" },
+  { id: 6, name: "서비스·기업·전문직" },
+];
+
+// 맨 위 공실 층 번호 (층이 늘면 자동으로 올라감)
+export const VACANT_FLOOR = `${FLOORS.length + 1}F`;
+
+export const PORTFOLIO = {
+  kicker: "홈페이지 제작 사례 · 전국 어디서나 비대면 제작",
+  titleLines: ["업종별로", "찾아보세요."],
+  desc: (total: number) => `업종별로 만든 홈페이지 ${total}곳이에요. 사장님 업종이 있는 층부터 둘러보세요.`,
+  boardTitle: "층별 안내",
+  countSuffix: "곳",
+  allLabel: "전체 보기",
+  allCode: "전체",
+  floorsTitle: "층별 가게",
+  barLabel: "지금 보는 층",
+  // 층마다 마지막 칸: 비어 있는 점포
+  vacantSlot: { sign: "빈 점포", title: "사장님 가게 자리", desc: "이 층에 들어올 다음 가게를 기다려요.", cta: "이 자리 상담하기" },
+  // 마지막 장면: 맨 위층 공실 (층 번호는 층 수 + 1로 자동)
+  closing: {
+    title: "다음 간판은 사장님 가게예요.",
+    desc: "업종이 없어도 괜찮아요. 처음 만드는 업종도 1주 안에 열어 드려요.",
+  },
+  vacancy: { label: "공실", sub: "사장님 가게 자리" },
+};
+
+// 메인 「지음이 만든 홈페이지」에 보여 줄 10곳 (이 순서대로). 나머지는 사례 페이지(/portfolio/)에서만
+export const MAIN_CASE_IDS = ["haruzip", "deundeun", "bbodeuk", "hangyeol", "hwadam", "saebom", "lowhigh", "toomyeong", "jeongyeon", "bareungil"];
+
+// 새로 만든 사례를 앞에
 export const CASES: CaseStudy[] = [
+  {
+    id: "cheongeum",
+    category: "누수탐지",
+    name: "청음누수탐지",
+    isReal: false,
+    floor: 4,
+    image: "/images/portfolio/cheongeum.webp",
+    thumb: "/images/portfolio/thumbs/cheongeum.webp",
+    siteUrl: "https://cheongeum.pages.dev/",
+    problem: "누수는 바닥을 어디까지 깨야 할지 몰라서, 손님들이 공사비부터 걱정하며 전화를 망설여요.",
+    solution: "계량기·보일러 압력 같은 증상별 안내와 탐지 장비를 먼저 보여 주고, 시작 가격과 못 찾으면 탐지비 0원 견적표를 정리해 긴급출동 전화로 이었어요.",
+    headline: "못 찾으면 탐지비 0원, 견적표를 먼저 보여 줬어요.",
+  },
+  {
+    id: "toomyeong",
+    category: "누수탐지",
+    name: "투명누수",
+    isReal: false,
+    floor: 4,
+    image: "/images/portfolio/toomyeong.webp",
+    thumb: "/images/portfolio/thumbs/toomyeong.webp",
+    siteUrl: "https://toomyeong.pages.dev/",
+    problem: "빌라 누수는 윗집과 아랫집 중 어디서 새는지부터 다툼이 생겨서, 손님들이 원인을 눈으로 확인하고 싶어 해요.",
+    solution: "내시경·열화상 화면을 손님 휴대폰으로 같이 보는 탐지 방식과 정찰 견적표, 누수 보고서, 재누수 무상 보증을 정리해 사진 톡톡 상담으로 이었어요.",
+    headline: "탐지 화면을 손님 휴대폰으로 같이 보는 과정을 앞세웠어요.",
+  },
+  {
+    id: "sonbom",
+    category: "집수리",
+    name: "손봄집수리",
+    isReal: false,
+    floor: 4,
+    image: "/images/portfolio/sonbom.webp",
+    thumb: "/images/portfolio/thumbs/sonbom.webp",
+    siteUrl: "https://sonbom.pages.dev/",
+    problem: "도어락이나 수전처럼 작은 고장은 이 정도로 불러도 되나 싶어서, 손님들이 연락을 미뤄요.",
+    solution: "현관부터 벽까지 집 안을 따라 내려가며 고장별 시작 가격을 보여 주고, 사진 견적과 출장비 무료 지역을 앞세워 톡톡 상담으로 이었어요.",
+    headline: "집 안을 따라 내려가며 고장별 시작 가격을 찾게 했어요.",
+  },
+  {
+    id: "soridam",
+    category: "음향설비",
+    name: "소리담음향",
+    isReal: false,
+    floor: 4,
+    image: "/images/portfolio/soridam.webp",
+    thumb: "/images/portfolio/thumbs/soridam.webp",
+    siteUrl: "https://soridam.pages.dev/",
+    problem: "교회·학교 음향설비는 금액이 커서, 담당자가 업체 실적과 설계 근거부터 꼼꼼히 비교해요.",
+    solution: "보고서 형식으로 실적과 음향·방송·영상·회의 사업 범위, 현장별 시공 기록을 정리하고, 현장 측정 견적 신청으로 이었어요.",
+    headline: "업체 비교용 보고서처럼 실적과 시공 기록을 정리했어요.",
+  },
+  {
+    id: "hangyeol",
+    category: "체결부품 제조",
+    name: "한결체결산업",
+    isReal: false,
+    floor: 6,
+    image: "/images/portfolio/hangyeol.webp",
+    thumb: "/images/portfolio/thumbs/hangyeol.webp",
+    siteUrl: "https://hangyeol-ej2.pages.dev/",
+    problem: "건설·태양광 현장은 규격과 납기가 가장 중요해서, 구매 담당자가 공장 역량부터 확인해요.",
+    solution: "선재 입고부터 출고까지 일곱 단계 공정을 스크롤로 보여 주고, 규격표와 당일 출고 기준, 도면 견적 요청을 한 흐름으로 묶었어요.",
+    headline: "볼트 하나가 만들어지는 일곱 공정을 그대로 보여 줬어요.",
+  },
+  {
+    id: "neulsoop",
+    category: "플라워·플랜트",
+    name: "늘숲 플라워 & 플랜트",
+    isReal: false,
+    floor: 3,
+    image: "/images/portfolio/neulsoop.webp",
+    thumb: "/images/portfolio/thumbs/neulsoop.webp",
+    siteUrl: "https://neulsoop.pages.dev/",
+    problem: "꽃 선물부터 실내조경, 클래스까지 하는 일이 많아서, 손님이 원하는 걸 어디서 물어야 할지 헷갈려요.",
+    solution: "꽃·식물·클래스를 땅 위에서 뿌리까지 깊이에 따라 나눠 보여 주고, 서비스별 시작 가격과 실내조경 진행 순서를 정리해 카톡 상담으로 이었어요.",
+    headline: "꽃·식물·클래스를 흙 깊이에 따라 나눠 보여 줬어요.",
+  },
+  {
+    id: "jeongyeon",
+    category: "노무법인",
+    name: "노무법인 정연",
+    isReal: false,
+    floor: 6,
+    image: "/images/portfolio/jeongyeon.webp",
+    thumb: "/images/portfolio/thumbs/jeongyeon.webp",
+    siteUrl: "https://jeongyeon.pages.dev/",
+    problem: "노무 상담은 비용과 비밀 유지가 걱정돼서, 사장님도 근로자도 첫 연락을 망설여요.",
+    solution: "담당 노무사 직접 상담과 첫 상담 무료·비밀 보장을 앞세우고, 업무분야와 구성원, 업무사례를 정리해 상담 신청으로 이었어요.",
+    headline: "첫 상담 무료와 비밀 보장을 첫 화면에 앞세웠어요.",
+  },
+  {
+    id: "stocklog",
+    category: "재고관리 서비스",
+    name: "스톡로그",
+    isReal: false,
+    floor: 6,
+    image: "/images/portfolio/stocklog.webp",
+    thumb: "/images/portfolio/thumbs/stocklog.webp",
+    siteUrl: "https://stocklog.pages.dev/",
+    problem: "엑셀로 재고를 관리하는 회사는 새 프로그램이 복잡할까 봐 도입을 미뤄요.",
+    solution: "엑셀 재고가 안 맞는 네 가지 상황을 먼저 짚고, 실제 대시보드 화면과 요금제, 무료 체험을 보여 줘 가입으로 이었어요.",
+    headline: "엑셀이 안 맞는 순간들을 먼저 짚고 실제 화면을 보여 줬어요.",
+  },
   {
     id: "bbodeuk",
     category: "입주청소",
     name: "뽀득하우스",
     isReal: false,
+    floor: 4,
     image: "/images/portfolio/bbodeuk.webp",
     thumb: "/images/portfolio/thumbs/bbodeuk.webp",
     siteUrl: "https://bbodeuk.pages.dev/",
@@ -98,6 +259,7 @@ export const CASES: CaseStudy[] = [
     category: "자동차 정비",
     name: "든든오토케어",
     isReal: false,
+    floor: 4,
     image: "/images/portfolio/deundeun.webp",
     thumb: "/images/portfolio/thumbs/deundeun.webp",
     siteUrl: "https://deundeun-b6s.pages.dev/",
@@ -110,6 +272,7 @@ export const CASES: CaseStudy[] = [
     category: "인테리어",
     name: "하루집 인테리어",
     isReal: false,
+    floor: 4,
     image: "/images/portfolio/haruzip.webp",
     thumb: "/images/portfolio/thumbs/haruzip.webp",
     siteUrl: "https://haruzip.pages.dev/",
@@ -122,6 +285,7 @@ export const CASES: CaseStudy[] = [
     category: "뷰티 브랜드",
     name: "라운",
     isReal: false,
+    floor: 2,
     image: "/images/portfolio/raun.webp",
     thumb: "/images/portfolio/thumbs/raun.webp",
     siteUrl: "https://raun-site.pages.dev/",
@@ -134,6 +298,7 @@ export const CASES: CaseStudy[] = [
     category: "고깃집",
     name: "화담숯불",
     isReal: false,
+    floor: 1,
     image: "/images/portfolio/hwadam.webp",
     thumb: "/images/portfolio/thumbs/hwadam.webp",
     siteUrl: "https://hwadam.pages.dev/",
@@ -146,6 +311,7 @@ export const CASES: CaseStudy[] = [
     category: "피부과",
     name: "맑은결피부과의원",
     isReal: false,
+    floor: 2,
     image: "/images/portfolio/malgeun.webp",
     thumb: "/images/portfolio/thumbs/malgeun.webp",
     siteUrl: "https://malgeun-site.pages.dev/",
@@ -158,6 +324,7 @@ export const CASES: CaseStudy[] = [
     category: "가구점",
     name: "결온가구",
     isReal: false,
+    floor: 3,
     image: "/images/portfolio/gyeolon.webp",
     thumb: "/images/portfolio/thumbs/gyeolon.webp",
     siteUrl: "https://furniture-site-btb.pages.dev/",
@@ -170,6 +337,7 @@ export const CASES: CaseStudy[] = [
     category: "방문요양센터",
     name: "늘곁 방문요양센터",
     isReal: false,
+    floor: 5,
     image: "/images/portfolio/neulgyeot.webp",
     thumb: "/images/portfolio/thumbs/neulgyeot.webp",
     siteUrl: "https://family-site-12c.pages.dev/",
@@ -182,6 +350,7 @@ export const CASES: CaseStudy[] = [
     category: "부동산",
     name: "새봄집 공인중개사사무소",
     isReal: false,
+    floor: 6,
     image: "/images/portfolio/saebom.webp",
     thumb: "/images/portfolio/thumbs/saebom.webp",
     siteUrl: "https://property-site-53g.pages.dev/",
@@ -195,6 +364,7 @@ export const CASES: CaseStudy[] = [
     name: "오렌지애드컴퍼니",
     location: "양주 고암동",
     isReal: true,
+    floor: 4,
     image: "/images/portfolio/orangead.webp",
     thumb: "/images/portfolio/thumbs/orangead.webp",
     siteUrl: "https://orangead.co.kr/",
@@ -212,6 +382,7 @@ export const CASES: CaseStudy[] = [
     name: "오케이집수리",
     location: "포천 소흘읍",
     isReal: true,
+    floor: 4,
     image: "/images/portfolio/okhome.webp",
     thumb: "/images/portfolio/thumbs/okhome.webp",
     siteUrl: "https://okhome.co.kr/",
@@ -229,6 +400,7 @@ export const CASES: CaseStudy[] = [
     name: "중앙응급환자이송단",
     location: "울산 삼산동",
     isReal: true,
+    floor: 5,
     image: "/images/portfolio/ulsanems.webp",
     thumb: "/images/portfolio/thumbs/ulsanems.webp",
     siteUrl: "https://ulsanems.com/",
@@ -241,6 +413,7 @@ export const CASES: CaseStudy[] = [
     category: "캠핑장",
     name: "달빛계곡",
     isReal: false,
+    floor: 1,
     image: "/images/portfolio/dalbit.webp",
     thumb: "/images/portfolio/thumbs/dalbit.webp",
     siteUrl: "https://camping-site-6tl.pages.dev/",
@@ -253,6 +426,7 @@ export const CASES: CaseStudy[] = [
     category: "바버샵",
     name: "로우앤하이",
     isReal: false,
+    floor: 2,
     image: "/images/portfolio/lowhigh.webp",
     thumb: "/images/portfolio/thumbs/lowhigh.webp",
     siteUrl: "https://lowhigh-site.pages.dev/",
@@ -265,6 +439,7 @@ export const CASES: CaseStudy[] = [
     category: "행정사",
     name: "바른길 행정사사무소",
     isReal: false,
+    floor: 6,
     image: "/images/portfolio/bareungil.webp",
     thumb: "/images/portfolio/thumbs/bareungil.webp",
     siteUrl: "https://admin-site-a2m.pages.dev/",
@@ -277,6 +452,7 @@ export const CASES: CaseStudy[] = [
     category: "플라워샵",
     name: "봄결 플라워",
     isReal: false,
+    floor: 3,
     image: "/images/portfolio/bomgyeol.webp",
     thumb: "/images/portfolio/thumbs/bomgyeol.webp",
     siteUrl: "https://flower-site.pages.dev/",
@@ -289,6 +465,7 @@ export const CASES: CaseStudy[] = [
     category: "학원",
     name: "포름미술학원",
     isReal: false,
+    floor: 5,
     image: "/images/portfolio/forme.webp",
     thumb: "/images/portfolio/thumbs/forme.webp",
     siteUrl: "https://academy-site-ay5.pages.dev/",
@@ -301,6 +478,7 @@ export const CASES: CaseStudy[] = [
     category: "필라테스",
     name: "미소필라테스",
     isReal: false,
+    floor: 2,
     image: "/images/portfolio/miso.webp",
     thumb: "/images/portfolio/thumbs/miso.webp",
     siteUrl: "https://soma-site-dzs.pages.dev/",
@@ -313,6 +491,7 @@ export const CASES: CaseStudy[] = [
     category: "카페",
     name: "프레쉬프루잇",
     isReal: false,
+    floor: 1,
     image: "/images/portfolio/freshfruit.webp",
     thumb: "/images/portfolio/thumbs/freshfruit.webp",
     siteUrl: "https://fruit-site.pages.dev/",
@@ -325,6 +504,7 @@ export const CASES: CaseStudy[] = [
     category: "향수 브랜드",
     name: "미네레",
     isReal: false,
+    floor: 2,
     image: "/images/portfolio/minerae.webp",
     thumb: "/images/portfolio/thumbs/minerae.webp",
     siteUrl: "https://minerae-site.pages.dev/",
@@ -357,7 +537,7 @@ export const PRICE = {
     "디자인 시안 1종 + 수정 2회",
     "오픈 후 1개월 오류·오타 무상 수정",
   ],
-  extrasTitle: "따로 드는 돈은 이것뿐이에요",
+  extrasTitle: "따로 드는 돈은 이것뿐이에요.",
   extras: [
     "도메인 실비 연 약 2만원 (사장님 명의로 등록)",
     "오픈 뒤 수정은 필요할 때만 건당 1~2만원",
@@ -451,11 +631,9 @@ export const FOOTER = {
     phone: "전화",
     email: "이메일",
     blog: "블로그",
-    instagram: "인스타그램",
     hours: "상담 시간",
   },
   blogLabel: "blog.naver.com/design-jieum",
-  instagramLabel: "@jieum.homepage",
   visitNote: "전국 비대면 진행 · 경기북부(양주·의정부·포천·동두천)는 방문 상담 가능",
   toTop: "맨 위로",
 };

@@ -1,14 +1,17 @@
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
-import { motion, useInView, useMotionValueEvent, useReducedMotion, useScroll, useTransform } from "framer-motion";
-import { ArrowDown, ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react";
-import { CASES, STREET, type CaseStudy } from "@/lib/content";
+import { motion, useMotionValueEvent, useReducedMotion, useScroll, useTransform } from "framer-motion";
+import { ArrowDown, ArrowLeft, ArrowRight } from "lucide-react";
+import { CASES, MAIN_CASE_IDS, STREET, type CaseStudy } from "@/lib/content";
 import { STREET_GO_EVENT } from "@/lib/street-events";
 import { useMediaQuery } from "@/lib/use-media-query";
 import { CtaLink } from "@/components/sections/CtaLink";
 import { CaseDialog } from "@/components/sections/CaseDialog";
+import { Storefront } from "@/components/sections/Storefront";
 
 const HEADER_PX = 64;
-const TOTAL = CASES.length + 1; // 사례 전체 + 다음 간판 자리
+// 메인에는 고른 10곳만 고른 순서대로, 전체는 사례 페이지에서
+const SHOPS = MAIN_CASE_IDS.map((id) => CASES.find((c) => c.id === id)).filter((c): c is CaseStudy => !!c);
+const TOTAL = SHOPS.length + 2; // 고른 사례 + 전부 보기 간판 + 다음 간판 자리
 
 // 거리 걷기: 데스크톱은 섹션을 고정하고 세로 스크롤로 거리를 옆으로 걸음,
 // 모바일·낮은 화면·모션 줄이기 설정은 손가락으로 넘기는 가로 스와이프
@@ -111,8 +114,13 @@ export function Street() {
   // 마키에서 가게를 누르면 해당 가게로 이동
   useEffect(() => {
     const onGo = (e: Event) => {
-      const index = CASES.findIndex((c) => c.id === (e as CustomEvent<string>).detail);
-      if (index < 0) return;
+      const id = (e as CustomEvent<string>).detail;
+      const index = SHOPS.findIndex((c) => c.id === id);
+      // 메인에 없는 가게는 사례 페이지에서 그 가게 팝업을 열어 보여 줌
+      if (index < 0) {
+        window.location.assign(`${STREET.allHref}?case=${id}`);
+        return;
+      }
       if (!pinned) sectionRef.current?.scrollIntoView({ behavior: reduce ? "auto" : "smooth" });
       goTo(index);
     };
@@ -191,6 +199,14 @@ export function Street() {
               ))}
             </h2>
             <p className="mt-5 max-w-[26em] text-[17px] leading-[1.7] text-muted break-keep text-pretty">{STREET.desc}</p>
+            {/* 휴대폰은 헤더 메뉴가 없어서, 사례 페이지로 가는 길을 설명 바로 아래에도 둠 */}
+            <a
+              href={STREET.allHref}
+              className="group mt-3 inline-flex h-11 items-center gap-1 text-[15px] font-bold underline decoration-unlit decoration-2 underline-offset-[6px] transition-colors duration-200 ease-out-expo hover:decoration-ink"
+            >
+              {STREET.allLink(CASES.length)}
+              <ArrowRight aria-hidden="true" className="size-4 transition-transform duration-200 ease-out-expo group-hover:translate-x-0.5" />
+            </a>
             {pinned && <div className="mt-10">{counter}</div>}
           </div>
 
@@ -210,9 +226,10 @@ export function Street() {
               style={pinned ? { x } : undefined}
               className={`flex w-max gap-6 ${pinned ? "pr-8" : "px-4 sm:px-8"}`}
             >
-              {CASES.map((c) => (
-                <Storefront key={c.id} caseStudy={c} reduce={!!reduce} onOpen={() => setOpenCase(c)} />
+              {SHOPS.map((c) => (
+                <Storefront key={c.id} caseStudy={c} reduce={!!reduce} onOpen={() => setOpenCase(c)} className={`${CARD_WIDTH} shrink-0 snap-start`} />
               ))}
+              <AllSign />
               <NextSign />
             </motion.div>
           </div>
@@ -232,56 +249,46 @@ const CARD_WIDTH = "w-[min(78vw,300px)]";
 const ARROW_BUTTON =
   "inline-flex size-11 items-center justify-center border-2 border-ink transition-colors duration-200 ease-out-expo hover:bg-ink hover:text-wall disabled:hover:bg-transparent disabled:hover:text-ink [&:disabled_svg]:opacity-25";
 
-function Storefront({ caseStudy: c, reduce, onOpen }: { caseStudy: CaseStudy; reduce: boolean; onOpen: () => void }) {
-  const cardRef = useRef<HTMLElement>(null);
-  const lit = useInView(cardRef, { once: true, amount: 0.9 });
+// 거리 끝 바로 앞: 사례 페이지로 가는 골목 입구. 가게 카드와 같은 규격(간판 → 화면 → 한 줄 → 링크)
+// 화면 칸에는 메인에 없는 가게들의 썸네일을 3×3으로 모아, 안쪽에 가게가 더 있다는 걸 보여 줌
+const HIDDEN = CASES.filter((c) => !MAIN_CASE_IDS.includes(c.id));
 
+function AllSign() {
   return (
-    <article ref={cardRef} id={`case-${c.id}`} aria-label={c.name} className={`group/card ${CARD_WIDTH} flex shrink-0 snap-start flex-col`}>
-      {/* 간판: 카드 전체가 거의 다 보인 뒤 불이 켜지고, 마우스를 올리면 한 번 더 깜빡임 */}
-      <div className="relative border-2 border-ink bg-unlit px-4 py-3">
-        <motion.span
-          aria-hidden="true"
-          className="absolute inset-0 bg-sign group-hover/card:animate-sign-light"
-          initial={reduce ? false : { opacity: 0 }}
-          animate={reduce ? { opacity: 1 } : lit ? { opacity: [0, 1, 0.25, 1] } : { opacity: 0 }}
-          transition={lit ? { duration: 0.6, delay: 0.35, times: [0, 0.3, 0.55, 1], ease: "linear" } : { duration: 0 }}
-        />
-        <p className="relative text-[13px] font-semibold">
-          {c.isReal ? `${c.category} · ${c.location}` : `${c.category} ${STREET.exampleSuffix}`}
-          {c.isReal && <span className="sr-only"> · {STREET.realLabel}</span>}
-        </p>
-        <h3 className="relative truncate text-xl font-black tracking-[-0.04em]">{c.name}</h3>
+    <a href={STREET.allHref} className={`group/all ${CARD_WIDTH} flex shrink-0 snap-start flex-col`}>
+      <div className="relative border-2 border-ink bg-ink px-4 py-3 text-wall transition-colors duration-300 ease-out-expo group-hover/all:bg-sign group-hover/all:text-ink">
+        <p className="text-[13px] font-semibold">{STREET.allSign.label}</p>
+        <p className="truncate text-xl font-black tracking-[-0.04em]">{STREET.allSign.title(CASES.length)}</p>
       </div>
 
-      <button
-        type="button"
-        onClick={onOpen}
-        aria-label={`${c.name} ${STREET.detailLabel}`}
-        className="group relative aspect-[3/4] cursor-pointer overflow-hidden border-x-2 border-b-2 border-ink bg-unlit"
-      >
-        <img
-          src={c.thumb}
-          alt=""
-          width={300}
-          height={400}
-          loading="lazy"
-          decoding="async"
-          className="absolute inset-0 size-full object-cover object-top transition-transform duration-500 ease-out-expo group-hover:scale-[1.03]"
-        />
-      </button>
+      <div className="relative aspect-[3/4] overflow-hidden border-x-2 border-b-2 border-ink bg-ink">
+        <div aria-hidden="true" className="grid size-full grid-cols-3 grid-rows-3 gap-0.5">
+          {HIDDEN.slice(0, 9).map((c) => (
+            <img
+              key={c.id}
+              src={c.thumb}
+              alt=""
+              width={100}
+              height={133}
+              loading="lazy"
+              decoding="async"
+              className="size-full object-cover object-top opacity-70 transition-opacity duration-500 ease-out-expo group-hover/all:opacity-100"
+            />
+          ))}
+        </div>
+        <span className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-2 bg-ink px-4 py-3 text-wall">
+          <span className="text-4xl font-black tracking-[-0.045em] tabular-nums">{STREET.allSign.more(HIDDEN.length)}</span>
+          <ArrowRight aria-hidden="true" className="mb-1 size-7 shrink-0 transition-transform duration-300 ease-out-expo group-hover/all:translate-x-1" />
+        </span>
+      </div>
 
-      <p className="mt-4 text-[13px] font-semibold text-muted">{c.isReal && c.review ? STREET.reviewLabel : STREET.solutionLabel}</p>
-      <p className="mt-1 min-h-[3em] text-[17px] leading-[1.5] font-bold break-keep text-pretty">{c.headline}</p>
-      <button
-        type="button"
-        onClick={onOpen}
-        className="mt-2 inline-flex h-11 cursor-pointer items-center gap-1 self-start text-[15px] font-semibold underline decoration-unlit decoration-2 underline-offset-[6px] transition-colors duration-200 ease-out-expo hover:decoration-ink"
-      >
-        {STREET.detailLabel}
-        <ArrowUpRight aria-hidden="true" className="size-4" />
-      </button>
-    </article>
+      <p className="mt-4 text-[13px] font-semibold text-muted">{STREET.allSign.caption}</p>
+      <p className="mt-1 min-h-[3em] text-[17px] leading-[1.5] font-bold break-keep text-pretty">{STREET.allSign.desc}</p>
+      <span className="mt-2 inline-flex h-11 items-center gap-1 self-start text-[15px] font-semibold underline decoration-unlit decoration-2 underline-offset-[6px] transition-colors duration-200 ease-out-expo group-hover/all:decoration-ink">
+        {STREET.allSign.cta}
+        <ArrowRight aria-hidden="true" className="size-4" />
+      </span>
+    </a>
   );
 }
 

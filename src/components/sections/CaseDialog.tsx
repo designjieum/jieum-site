@@ -2,6 +2,7 @@ import { useEffect, useRef } from "react";
 import { ArrowUpRight, X } from "lucide-react";
 import { STREET, type CaseStudy } from "@/lib/content";
 import { CtaLink } from "@/components/sections/CtaLink";
+import { caseLabel } from "@/lib/case-label";
 import { cn } from "@/lib/utils";
 
 interface CaseDialogProps {
@@ -34,7 +35,7 @@ export function CaseDialog({ caseStudy, onClose }: CaseDialogProps) {
             <div className="flex items-start justify-between gap-4">
               <div>
                 <p className="text-[13px] font-semibold text-muted">
-                  {caseStudy.isReal ? `${caseStudy.category} · ${caseStudy.location}` : `${caseStudy.category} ${STREET.exampleSuffix}`}
+                  {caseLabel(caseStudy)}
                 </p>
                 <h3 id="case-dialog-title" className="mt-1 text-3xl font-black tracking-[-0.04em] break-keep sm:text-4xl">
                   {caseStudy.name}

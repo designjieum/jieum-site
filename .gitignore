@@ -22,3 +22,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# 반응형 검수 스크립트·캡처 (배포 제외)
+qa/

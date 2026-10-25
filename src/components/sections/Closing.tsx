@@ -59,7 +59,6 @@ export function Footer() {
     },
     { label: FOOTER.labels.email, value: <FooterLink href={`mailto:${SITE.email}`}>{SITE.email}</FooterLink> },
     { label: FOOTER.labels.blog, value: <FooterLink href={SITE.blogUrl} external>{FOOTER.blogLabel}</FooterLink> },
-    { label: FOOTER.labels.instagram, value: <FooterLink href={SITE.instagramUrl} external>{FOOTER.instagramLabel}</FooterLink> },
     { label: FOOTER.labels.hours, value: SITE.hours },
   ];
 
@@ -91,7 +90,7 @@ export function Footer() {
         </dl>
 
         <div className="mt-8 flex flex-col gap-2 text-[13px] leading-[1.6] text-wall/60 sm:flex-row sm:justify-between">
-          <p className="break-keep">{FOOTER.visitNote}</p>
+          <p className="break-keep text-pretty">{FOOTER.visitNote}</p>
           <p>© {new Date().getFullYear()} {SITE.name}</p>
         </div>
       </div>
