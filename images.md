@@ -16,6 +16,14 @@ node scripts/capture-case.cjs public/images/portfolio 아이디=https://사이�
 |---|---|---|---|---|
 | og-image.png | 메인 공유 미리보기 | 1200×630 | 1.91:1 | 카카오톡·SNS 공유 (기존) |
 | og-portfolio.png | 업종별 사례 페이지 공유 미리보기 | 1200×630 | 1.91:1 | 카카오톡·SNS 공유 |
+| pilatesjyoung.jpg / thumbs/pilatesjyoung.webp | 필라테스 · 필라테스 제이영 (실제 고객) | 425×전체 높이 / 425×567 | — / 3:4 | 팝업 전체 화면 / 카드 썸네일 |
+| weolcheon.webp / thumbs/weolcheon.webp | 특수청소 · 월천환경 (실제 고객) | 425×전체 높이 / 425×567 | — / 3:4 | 팝업 전체 화면 / 카드 썸네일 |
+| ggotggot.webp / thumbs/ggotggot.webp | 필라테스 · 꼿꼿필라테스 | 425×전체 높이 / 425×567 | — / 3:4 | 팝업 전체 화면 / 카드 썸네일 |
+| ongyeol.webp / thumbs/ongyeol.webp | 한의원 · 온결한의원 | 425×전체 높이 / 425×567 | — / 3:4 | 팝업 전체 화면 / 카드 썸네일 |
+| bareunteo.jpg / thumbs/bareunteo.webp | 철거 · 바른터철거 | 425×전체 높이 / 425×567 | — / 3:4 | 팝업 전체 화면 / 카드 썸네일 |
+| barodam.jpg / thumbs/barodam.webp | 포장이사 · 바로담이사 | 425×전체 높이 / 425×567 | — / 3:4 | 팝업 전체 화면 / 카드 썸네일 |
+| dodum.webp / thumbs/dodum.webp | 세무사 · 세무회계 돋움 | 425×전체 높이 / 425×567 | — / 3:4 | 팝업 전체 화면 / 카드 썸네일 |
+| kkujun.jpg / thumbs/kkujun.webp | 헬스장 · 꾸준피트니스 | 425×전체 높이 / 425×567 | — / 3:4 | 팝업 전체 화면 / 카드 썸네일 |
 | cheongeum.webp / thumbs/cheongeum.webp | 누수탐지 · 청음누수탐지 | 425×전체 높이 / 425×567 | — / 3:4 | 팝업 전체 화면 / 카드 썸네일 |
 | toomyeong.webp / thumbs/toomyeong.webp | 누수탐지 · 투명누수 | 425×전체 높이 / 425×567 | — / 3:4 | 팝업 전체 화면 / 카드 썸네일 |
 | sonbom.webp / thumbs/sonbom.webp | 집수리 · 손봄집수리 | 425×전체 높이 / 425×567 | — / 3:4 | 팝업 전체 화면 / 카드 썸네일 |
@@ -54,7 +62,8 @@ node scripts/capture-case.cjs public/images/portfolio 아이디=https://사이�
 - 구성: 왼쪽에 "디자인 지음 / 업종별 홈페이지 사례"(홈페이지 단어만 주황 면), 아래 "사장님 업종부터 찾아보세요. 13만원 정찰제 · 전국 비대면 제작". 오른쪽에 사례 썸네일 12개를 4열로 엇갈려 배치하고 위·오른쪽으로 잘리게 둠.
 - 다시 만들 때: 썸네일 구성을 바꾸고 싶으면 대표 사례 썸네일로 같은 구도를 유지합니다.
 
-### 사례 화면 (28곳)
+### 사례 화면 (36곳)
 - 경로: `/public/images/portfolio/아이디.webp`, `/public/images/portfolio/thumbs/아이디.webp`
 - 사용: 카드(메인 「지음이 만든 홈페이지」, 업종별 사례 페이지)는 썸네일, 자세히 보기 팝업은 전체 화면
 - 사이즈: 전체 화면은 폭 425px × 사이트 전체 높이, 썸네일은 425×567px(3:4), WebP
+- 예외: WebP는 높이 16,383px까지만 저장돼서, 그보다 긴 화면(pilatesjyoung, bareunteo, barodam, kkujun)은 전체 화면만 JPG로 저장합니다. 썸네일은 그대로 WebP입니다.
