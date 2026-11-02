@@ -4,7 +4,7 @@
 export const SITE = {
   name: "디자인 지음",
   category: "매장, 브랜드, 기업 맞춤",
-  kakaoUrl: "https://pf.kakao.com/_IuxfaX/chat",
+  talkUrl: "https://talk.naver.com/ct/wlw7vhe",
   instagramUrl: "https://www.instagram.com/jieum.homepage/",
   blogUrl: "https://blog.naver.com/design-jieum",
   email: "designjieum@gmail.com",
@@ -34,7 +34,7 @@ export const PORTFOLIO_NAV = [
   { label: "FAQ", href: "/#faq" },
 ];
 
-export const CTA_LABEL = "카톡으로 1분 상담 받기";
+export const CTA_LABEL = "톡톡으로 1분 상담 받기";
 
 export const HERO = {
   kicker: "템플릿이 아닌 직접 디자인하고 코딩하는 홈페이지 · 13만원 정찰제",
@@ -126,7 +126,7 @@ export const PORTFOLIO = {
   vacantSlot: { sign: "빈 점포", title: "사장님 가게 자리", desc: "이 층에 들어올 다음 가게를 기다려요.", cta: "이 자리 상담하기" },
   // 마지막 장면: 맨 위층 공실 (층 번호는 층 수 + 1로 자동)
   closing: {
-    title: "다음 간판은 사장님 가게예요.",
+    title: `${FLOORS.length + 1}층은 사장님 홈페이지 자리예요.`,
     desc: "업종이 없어도 괜찮아요. 처음 만드는 업종도 1주 안에 열어 드려요.",
   },
   vacancy: { label: "공실", sub: "사장님 가게 자리" },
@@ -689,7 +689,7 @@ export const PROCESS = {
 export const FAQ = {
   title: "자주 묻는 질문",
   desc: "제작 전에 사장님들이 가장 많이 물어보신 질문이에요.",
-  more: "다른 게 궁금하면 카톡으로 물어보세요",
+  more: "다른 게 궁금하면 톡톡으로 물어보세요",
   items: [
     {
       q: "준비해야 할 사진이나 원고가 거의 없는데 제작이 가능한가요?",
@@ -709,11 +709,11 @@ export const FAQ = {
     },
     {
       q: "다른 지역도 제작이 가능한가요?",
-      a: "네, 전국 어디서든 제작 가능합니다. 인터뷰부터 시안 확인, 수정, 오픈까지 전화와 카카오톡으로 진행하기 때문에, 직접 만나지 않아도 완성도는 똑같습니다. 경기북부(양주, 의정부, 포천, 동두천)는 원하시면 방문 상담도 무료로 가능합니다.",
+      a: "네, 전국 어디서든 제작 가능합니다. 인터뷰부터 시안 확인, 수정, 오픈까지 전화와 네이버톡톡으로 진행하기 때문에, 직접 만나지 않아도 완성도는 똑같습니다. 경기북부(양주, 의정부, 포천, 동두천)는 원하시면 방문 상담도 무료로 가능합니다.",
     },
     {
       q: "제작 완료 후 메뉴 가격이나 사진을 바꾸고 싶을 땐 어떻게 하나요?",
-      a: "매달 관리비를 내지 않으셔도 카카오톡으로 편하게 말씀해 주시면 됩니다. 단순 텍스트나 이미지 교체는 건당 1~2만원 선의 부담 없는 비용으로 당일~익일 내에 빠르게 반영해 드립니다.",
+      a: "매달 관리비를 내지 않으셔도 네이버톡톡으로 편하게 말씀해 주시면 됩니다. 단순 텍스트나 이미지 교체는 건당 1~2만원 선의 부담 없는 비용으로 당일~익일 내에 빠르게 반영해 드립니다.",
     },
     {
       q: "세금계산서나 현금영수증 발행이 가능한가요?",
@@ -725,7 +725,7 @@ export const FAQ = {
 export const CLOSING = {
   emptySign: "사장님 상호가 들어갈 자리",
   titleLines: ["다음은", "사장님 가게 차례예요."],
-  desc: "카톡으로 가게 이름과 네이버 플레이스 링크만 보내 주세요. 언제 시작할 수 있는지 알려 드릴게요.",
+  desc: "톡톡으로 가게 이름과 네이버 플레이스 링크만 보내 주세요. 언제 시작할 수 있는지 알려 드릴게요.",
 };
 
 export const FOOTER = {

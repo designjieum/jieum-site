@@ -25,7 +25,7 @@ export function Header({ homeHref = "#top", nav = NAV }: { homeHref?: string; na
               </a>
             ))}
           </nav>
-          <CtaLink size="sm" label="카톡 상담" />
+          <CtaLink size="sm" label="톡톡 상담" />
         </div>
       </div>
     </header>

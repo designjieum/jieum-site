@@ -57,7 +57,7 @@ function portfolioSummary() {
       <h1>${esc(SITE.name)} 홈페이지 제작 사례 ${CASES.length}곳</h1>
       <p>템플릿 없이 직접 디자인하고 코딩한 업종별 홈페이지 사례입니다. 업종별로 손님이 망설이는 이유를 먼저 찾고, 전화·예약·카카오톡 상담으로 이어지게 구성했습니다. 전국 비대면 제작, 13만원 정찰제(VAT 포함), 월 관리비 0원, 1주 완성.</p>
       ${floors}
-      <p><a href="${esc(SITE.kakaoUrl)}">카카오톡으로 상담하기</a> · <a href="${ORIGIN}/">디자인 지음 홈페이지 제작 안내</a></p>
+      <p><a href="${esc(SITE.talkUrl)}">네이버 톡톡으로 상담하기</a> · <a href="${ORIGIN}/">디자인 지음 홈페이지 제작 안내</a></p>
     </main>`
 }
 

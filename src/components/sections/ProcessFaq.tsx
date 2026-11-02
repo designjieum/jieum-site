@@ -62,7 +62,7 @@ function Faq() {
           </h2>
           <p className="mt-5 text-[17px] leading-[1.7] text-muted break-keep">{FAQ.desc}</p>
           <a
-            href={SITE.kakaoUrl}
+            href={SITE.talkUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="mt-4 inline-flex h-11 items-center text-[15px] font-bold underline decoration-ink/30 decoration-2 underline-offset-[6px] transition-colors duration-200 ease-out-expo hover:decoration-ink"
