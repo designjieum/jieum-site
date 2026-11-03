@@ -1,5 +1,3 @@
-import { useRef } from "react";
-import { motion, useInView } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import { STREET, type CaseStudy } from "@/lib/content";
 import { cn } from "@/lib/utils";
@@ -7,26 +5,20 @@ import { caseLabel } from "@/lib/case-label";
 
 interface StorefrontProps {
   caseStudy: CaseStudy;
-  reduce: boolean;
+  reduce?: boolean; // 지금은 쓰지 않음 (간판은 CSS motion-reduce로 처리)
   onOpen: () => void;
   className?: string; // 폭·배치 (메인 거리: 고정 폭 가로 줄, 사례 페이지: 격자 칸)
 }
 
 // 가게 카드: 간판 → 홈페이지 화면 → 한 줄 → 자세히 보기 (메인 거리와 사례 페이지에서 같은 규격)
-export function Storefront({ caseStudy: c, reduce, onOpen, className }: StorefrontProps) {
-  const cardRef = useRef<HTMLElement>(null);
-  const lit = useInView(cardRef, { once: true, amount: 0.9 });
-
+export function Storefront({ caseStudy: c, onOpen, className }: StorefrontProps) {
   return (
-    <article ref={cardRef} id={`case-${c.id}`} aria-label={c.name} className={cn("group/card flex flex-col", className)}>
-      {/* 간판: 카드 전체가 거의 다 보인 뒤 불이 켜지고, 마우스를 올리면 한 번 더 깜빡임 */}
+    <article id={`case-${c.id}`} aria-label={c.name} className={cn("group/card flex flex-col", className)}>
+      {/* 간판: 평소에는 불 꺼진 회색, 마우스를 올리거나 키보드로 들어오면 깜빡이며 불이 켜짐 */}
       <div className="relative border-2 border-ink bg-unlit px-4 py-3">
-        <motion.span
+        <span
           aria-hidden="true"
-          className="absolute inset-0 bg-sign group-hover/card:animate-sign-light"
-          initial={reduce ? false : { opacity: 0 }}
-          animate={reduce ? { opacity: 1 } : lit ? { opacity: [0, 1, 0.25, 1] } : { opacity: 0 }}
-          transition={lit ? { duration: 0.6, delay: 0.35, times: [0, 0.3, 0.55, 1], ease: "linear" } : { duration: 0 }}
+          className="absolute inset-0 bg-sign opacity-0 transition-opacity duration-300 ease-out-expo group-hover/card:opacity-100 group-hover/card:animate-sign-light group-focus-within/card:opacity-100 motion-reduce:animate-none"
         />
         <p className="relative truncate text-[13px] font-semibold">
           {caseLabel(c)}

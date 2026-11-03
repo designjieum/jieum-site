@@ -62,8 +62,9 @@ node scripts/capture-case.cjs public/images/portfolio 아이디=https://사이�
 - 구성: 왼쪽에 "디자인 지음 / 업종별 홈페이지 사례"(홈페이지 단어만 주황 면), 아래 "사장님 업종부터 찾아보세요. 13만원 정찰제 · 전국 비대면 제작". 오른쪽에 사례 썸네일 12개를 4열로 엇갈려 배치하고 위·오른쪽으로 잘리게 둠.
 - 다시 만들 때: 썸네일 구성을 바꾸고 싶으면 대표 사례 썸네일로 같은 구도를 유지합니다.
 
-### 사례 화면 (36곳)
+### 사례 화면 (37곳)
 - 경로: `/public/images/portfolio/아이디.webp`, `/public/images/portfolio/thumbs/아이디.webp`
 - 사용: 카드(메인 「지음이 만든 홈페이지」, 업종별 사례 페이지)는 썸네일, 자세히 보기 팝업은 전체 화면
+- 썸네일 테스트 중: 카드는 지금 `/public/images/portfolio/thumbs-mockup/아이디.webp`(모니터·휴대폰 목업, 800×800 정사각)를 씁니다. 기존 3:4 썸네일은 `thumbs/`에 그대로 있습니다.
 - 사이즈: 전체 화면은 폭 425px × 사이트 전체 높이, 썸네일은 425×567px(3:4), WebP
 - 예외: WebP는 높이 16,383px까지만 저장돼서, 그보다 긴 화면(pilatesjyoung, bareunteo, barodam, kkujun)은 전체 화면만 JPG로 저장합니다. 썸네일은 그대로 WebP입니다.

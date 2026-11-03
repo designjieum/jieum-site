@@ -45,7 +45,7 @@ export function CaseDialog({ caseStudy, onClose }: CaseDialogProps) {
                 type="button"
                 onClick={onClose}
                 aria-label="닫기"
-                className="-mt-2 -mr-2 inline-flex size-11 shrink-0 items-center justify-center transition-opacity duration-200 ease-out-expo hover:opacity-60"
+                className="-mt-2 -mr-2 inline-flex size-11 shrink-0 cursor-pointer items-center justify-center transition-opacity duration-200 ease-out-expo hover:opacity-60"
               >
                 <X aria-hidden="true" className="size-6" />
               </button>
