@@ -138,6 +138,32 @@ export const MAIN_CASE_IDS = ["haruzip", "deundeun", "bbodeuk", "hangyeol", "hwa
 // 새로 만든 사례를 앞에
 export const CASES: CaseStudy[] = [
   {
+    id: "hanul",
+    category: "행정사",
+    name: "한울 글로벌 행정사사무소",
+    isReal: false,
+    floor: 6,
+    image: "/images/portfolio/hanul.webp",
+    thumb: "/images/portfolio/thumbs-mockup/hanul.webp",
+    siteUrl: "https://hanul-bam.pages.dev/",
+    problem: "외국인 손님은 비자 이름도 모르고 한국어 설명도 어려워서, 어떤 업무를 맡겨야 할지부터 막막해해요.",
+    solution: "국제결혼·초청·취업·투자·국적 업무를 상황별로 고를 수 있게 나누고, 5개 언어 상담과 출입국·외국인청까지의 거리를 첫 화면에 둔 뒤 무료 자격 진단으로 이었어요.",
+    headline: "비자 이름을 몰라도 상황만 고르면 되게 했어요.",
+  },
+  {
+    id: "baro",
+    category: "행정사",
+    name: "바로 행정사사무소",
+    isReal: false,
+    floor: 6,
+    image: "/images/portfolio/baro.webp",
+    thumb: "/images/portfolio/thumbs-mockup/baro.webp",
+    siteUrl: "https://baro-3mj.pages.dev/",
+    problem: "음주운전으로 면허 처분을 받은 분은 기한이 얼마나 남았는지, 다퉈 볼 수는 있는지 몰라 불안해해요.",
+    solution: "처분일만 넣으면 남은 기한을 계산해 주고, 다섯 가지 질문으로 검토할 수 있는 절차를 알려 준 뒤 비용과 진행 사례를 공개해 전화·카톡 상담으로 이었어요.",
+    headline: "처분일만 넣으면 남은 기한부터 계산해 줬어요.",
+  },
+  {
     id: "saebit",
     category: "성당",
     name: "새빛성당",
