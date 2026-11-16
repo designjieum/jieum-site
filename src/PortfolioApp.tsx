@@ -1,20 +1,20 @@
 import { useState } from "react";
 import { useReducedMotion } from "framer-motion";
-import { CASES, FLOORS, PORTFOLIO_NAV, type CaseStudy, type FloorId } from "@/lib/content";
+import { CASES, GROUPS, PORTFOLIO_NAV, type CaseStudy, type GroupId } from "@/lib/content";
 import { Header } from "@/components/sections/Header";
 import { Footer } from "@/components/sections/Closing";
 import { MobileCtaBar } from "@/components/sections/MobileCtaBar";
 import { CaseDialog } from "@/components/sections/CaseDialog";
 import { PortfolioHero } from "@/components/portfolio/PortfolioHero";
-import { FloorList } from "@/components/portfolio/FloorList";
+import { CategoryList } from "@/components/portfolio/CategoryList";
 import { VacantFloor } from "@/components/portfolio/VacantFloor";
 
-// 주소의 ?floor=3 · ?case=okhome 을 읽어 처음부터 그 층만, 그 사례 팝업을 열어 보여 줌 (링크 공유용)
+// 주소의 ?category=3 · ?case=okhome 을 읽어 처음부터 그 카테고리만, 그 사례 팝업을 열어 보여 줌 (링크 공유용)
 const params = () => new URLSearchParams(window.location.search);
 
-function readFloor(): FloorId | null {
-  const value = Number(params().get("floor"));
-  return FLOORS.find((f) => f.id === value)?.id ?? null;
+function readGroup(): GroupId | null {
+  const value = Number(params().get("category"));
+  return GROUPS.find((g) => g.id === value)?.id ?? null;
 }
 
 function readCase(): CaseStudy | null {
@@ -29,16 +29,20 @@ function setParam(key: string, value: string | null) {
   window.history.replaceState(null, "", url);
 }
 
-// 사례 페이지(/portfolio/): 층별 안내판 → 층별 가게 → 맨 위층 공실(상담)
+// 사례 페이지(/portfolio/): 히어로 → 카테고리 탭 + 사례 2열 → 마지막 상담
 export default function PortfolioApp() {
   const reduce = useReducedMotion();
-  const [floor, setFloor] = useState<FloorId | null>(readFloor);
+  const [group, setGroup] = useState<GroupId | null>(readGroup);
   const [openCase, setOpenCase] = useState<CaseStudy | null>(readCase);
 
-  const selectFloor = (next: FloorId | null) => {
-    setFloor(next);
-    setParam("floor", next ? String(next) : null);
-    document.getElementById("floors")?.scrollIntoView({ behavior: reduce ? "auto" : "smooth" });
+  const selectGroup = (next: GroupId | null) => {
+    setGroup(next);
+    setParam("category", next ? String(next) : null);
+    // 목록 중간까지 내려와 있을 때만 탭 위치로 올려 줌 (히어로에서 누르면 화면이 튀지 않게)
+    const section = document.getElementById("cases");
+    if (section && section.getBoundingClientRect().top < 0) {
+      section.scrollIntoView({ behavior: reduce ? "auto" : "smooth" });
+    }
   };
 
   const showCase = (next: CaseStudy | null) => {
@@ -50,8 +54,8 @@ export default function PortfolioApp() {
     <div className="min-h-screen bg-wall text-ink">
       <Header homeHref="/" nav={PORTFOLIO_NAV} />
       <main>
-        <PortfolioHero floor={floor} onSelect={selectFloor} />
-        <FloorList floor={floor} onSelect={selectFloor} onOpen={showCase} />
+        <PortfolioHero onOpen={showCase} />
+        <CategoryList group={group} onSelect={selectGroup} onOpen={showCase} />
         <VacantFloor />
       </main>
       <Footer />

@@ -1,7 +1,7 @@
-import { PORTFOLIO, SITE, VACANT_FLOOR } from "@/lib/content";
+import { PORTFOLIO, SITE } from "@/lib/content";
 import { CtaLink } from "@/components/sections/CtaLink";
 
-// ④ 마지막 장면: 안내판 맨 위의 공실 층. #contact가 보이면 모바일 하단 고정 바가 숨음
+// ④ 마지막 장면: 다음 가게 자리. #contact가 보이면 모바일 하단 고정 바가 숨음
 export function VacantFloor() {
   return (
     <section id="contact" aria-labelledby="vacant-title" className="pb-24 sm:pb-32">
@@ -13,8 +13,8 @@ export function VacantFloor() {
             className="absolute inset-0 bg-sign opacity-0 transition-opacity duration-300 ease-out-expo lg:group-hover/vacant:opacity-100"
           />
           <div className="relative grid gap-8 lg:grid-cols-[auto_minmax(0,1fr)_auto] lg:items-center lg:gap-12">
-            <span className="inline-flex h-14 w-20 items-center justify-center self-start border-2 border-ink text-2xl font-black tracking-[-0.02em] tabular-nums lg:self-center">
-              {VACANT_FLOOR}
+            <span className="inline-flex h-14 items-center justify-center self-start border-2 border-ink px-4 text-xl leading-none font-black tracking-[0.08em] lg:self-center">
+              {PORTFOLIO.nextLabel}
             </span>
             <div>
               <h2 id="vacant-title" className="text-[clamp(1.75rem,4.5vw,3rem)] leading-[1.2] font-black tracking-[-0.04em] break-keep text-balance">

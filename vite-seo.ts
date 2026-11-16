@@ -6,14 +6,13 @@
 import fs from "node:fs"
 import path from "node:path"
 import type { Plugin } from "vite"
-import { CASES, FLOORS, MAIN_CASE_IDS, SITE, type CaseStudy } from "./src/lib/content.ts"
+import { CASES, GROUPS, casesInGroup, MAIN_CASE_IDS, SITE, type CaseStudy } from "./src/lib/content.ts"
 
 const ORIGIN = "https://designjieum.com"
 const PORTFOLIO_URL = `${ORIGIN}/portfolio/`
 
 const esc = (s: string) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;")
 const label = (c: CaseStudy) => (c.isReal ? `${c.category} · ${c.name}(${c.location}, 실제 고객)` : `${c.category} · ${c.name}`)
-const byFloor = (id: number) => CASES.filter((c) => c.floor === id)
 
 // 사례 페이지 <head>: 사례 목록 구조화 데이터
 function itemListJsonLd() {
@@ -43,14 +42,14 @@ function itemListJsonLd() {
 
 // 사례 페이지 #root: JS를 실행하지 않는 크롤러용 요약 (화면에는 숨김, React 마운트 시 교체)
 function portfolioSummary() {
-  const floors = FLOORS.map((f) => {
-    const items = byFloor(f.id)
+  const floors = GROUPS.map((f) => {
+    const items = casesInGroup(f.id)
       .map((c) => {
         const link = c.siteUrl ? ` <a href="${esc(c.siteUrl)}">사이트 보기</a>` : ""
         return `<li><strong>${esc(label(c))}</strong>: ${esc(c.problem)} ${esc(c.solution)}${link}</li>`
       })
       .join("\n        ")
-    return `<h2>${f.id}층 ${esc(f.name)}</h2>\n      <ul>\n        ${items}\n      </ul>`
+    return `<h2>${esc(f.name)}</h2>\n      <ul>\n        ${items}\n      </ul>`
   }).join("\n      ")
 
   return `<main style="position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0">
@@ -73,8 +72,8 @@ function llmsCases() {
     const review = c.review ? ` 사장님 후기: "${c.review.quote}"` : ""
     return `- ${label(c)}: ${c.solution}${review}${c.siteUrl ? ` (${c.siteUrl})` : ""}`
   })
-  const floors = FLOORS.map((f) => {
-    const items = byFloor(f.id).filter((c) => !c.isReal).map((c) => `- ${c.category} · ${c.name}: ${c.headline}${c.siteUrl ? ` (${c.siteUrl})` : ""}`)
+  const floors = GROUPS.map((f) => {
+    const items = casesInGroup(f.id).filter((c) => !c.isReal).map((c) => `- ${c.category} · ${c.name}: ${c.headline}${c.siteUrl ? ` (${c.siteUrl})` : ""}`)
     return items.length ? `### ${f.name}\n\n${items.join("\n")}` : ""
   }).filter(Boolean)
   const main = MAIN_CASE_IDS.map((id) => CASES.find((c) => c.id === id)?.name).filter(Boolean).join(", ")
