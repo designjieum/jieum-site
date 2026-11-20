@@ -112,11 +112,11 @@ export const GROUPS: { id: GroupId; name: string }[] = [
 // 카테고리 안에서 보여 줄 순서 (여기 없는 사례는 맨 뒤에 content.ts 순서대로)
 export const GROUP_ORDER: Record<GroupId, string[]> = {
   1: ["orangead", "okhome", "bbodeuk", "deundeun", "haruzip", "cheongeum", "toomyeong", "sonbom", "bareunteo", "barodam", "weolcheon", "nusudaepyo", "julnoon", "cleanon", "cleancut", "awningspace"],
-  2: ["gyeolon", "hwadam", "lowhigh", "freshfruit", "miso", "bomgyeol", "ggotggot", "pilatesjyoung", "kkujun", "noteend"],
-  3: ["ulsanems", "neulgyeot", "malgeun", "ongyeol", "harmony", "reborn"],
+  2: ["gyeolon", "hwadam", "lowhigh", "freshfruit", "miso", "bomgyeol", "ggotggot", "pilatesjyoung", "kkujun", "noteend", "dalbit", "cheongramjae"],
+  3: ["ulsanems", "neulgyeot", "malgeun", "ongyeol", "harmony", "reborn", "hansarang"],
   4: ["saebom", "bareungil", "jeongyeon", "dodum", "baro", "hanul", "hyean", "jeongpyo", "cheonglim", "jianlaw", "saessak"],
   5: ["raun", "forme", "soridam", "hangyeol", "neulsoop", "ladog", "minerae"],
-  6: ["dalbit", "stocklog", "saebit"],
+  6: ["stocklog", "saebit"],
 };
 
 export const casesInGroup = (id: GroupId) => {
@@ -568,7 +568,7 @@ export const CASES: CaseStudy[] = [
     category: "캠핑장",
     name: "달빛계곡",
     isReal: false,
-    group: 6,
+    group: 2,
     image: "/images/portfolio/dalbit.webp",
     thumb: "/images/portfolio/thumbs-mockup/dalbit.webp",
     siteUrl: "https://camping-site-6tl.pages.dev/",
@@ -850,6 +850,33 @@ export const CASES: CaseStudy[] = [
     problem: "아이 발달이 걱정돼도 어떤 치료가 필요한지 몰라, 센터에 전화하기까지 오래 고민해요.",
     solution: "부모가 느끼는 고민으로 첫 화면을 열고, 언어·감각통합·놀이미술·사회성 그룹 프로그램마다 이런 아이에게 권하는 체크리스트와 바우처 결제 방법을 정리해 초기상담 예약으로 이었어요.",
     headline: "아이 모습을 체크하면 맞는 치료가 보이게 했어요.",
+  },
+  {
+    id: "cheongramjae",
+    category: "한옥 스테이",
+    name: "청람재",
+    isReal: false,
+    group: 2,
+    image: "/images/portfolio/cheongramjae.jpg",
+    thumb: "/images/portfolio/thumbs-mockup/cheongramjae.webp",
+    siteUrl: "https://cheongramjae.pages.dev/",
+    problem: "하루 두 팀만 받는 독채라, 사진만 보고는 어느 채가 맞는지와 날짜별 요금을 묻는 연락이 많아요.",
+    solution: "두 채의 인원·구성·요금을 나란히 보여 주고, 웰컴 다도와 아침 소반 같은 머무는 경험을 소개한 뒤, 날짜를 고르면 요금이 계산되는 달력에서 네이버 예약으로 이었어요.",
+    headline: "날짜를 고르면 요금이 바로 계산되는 달력을 넣었어요.",
+  },
+  {
+    id: "hansarang",
+    category: "요양원",
+    name: "한사랑요양원",
+    location: "인천 · 서울 강동",
+    isReal: true,
+    group: 3,
+    image: "/images/portfolio/hansarang.jpg",
+    thumb: "/images/portfolio/thumbs-mockup/hansarang.webp",
+    siteUrl: "https://xn--9i2br6op3du3avij48e.com/",
+    problem: "인천점과 강동 암사점, 여러 지점을 홈페이지 하나에 다 담고 싶었어요. 지점마다 시설과 비용, 연락처가 달라서 보호자분들이 헷갈리지 않아야 했어요.",
+    solution: "첫 화면에서 지점을 먼저 고르게 하고, 지점마다 따로 페이지를 두어 돌봄·식사·시설 사진과 등급별 한 달 예상 비용, 오시는 길, 입소 상담 전화를 각각 정리했어요.",
+    headline: "여러 지점을 한 홈페이지에 담고, 지점마다 따로 안내했어요.",
   },
 ];
 
