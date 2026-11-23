@@ -112,7 +112,7 @@ export const GROUPS: { id: GroupId; name: string }[] = [
 // 카테고리 안에서 보여 줄 순서 (여기 없는 사례는 맨 뒤에 content.ts 순서대로)
 export const GROUP_ORDER: Record<GroupId, string[]> = {
   1: ["orangead", "okhome", "bbodeuk", "deundeun", "haruzip", "cheongeum", "toomyeong", "sonbom", "bareunteo", "barodam", "weolcheon", "nusudaepyo", "julnoon", "cleanon", "cleancut", "awningspace"],
-  2: ["gyeolon", "hwadam", "lowhigh", "freshfruit", "miso", "bomgyeol", "ggotggot", "pilatesjyoung", "kkujun", "noteend", "dalbit", "cheongramjae"],
+  2: ["gyeolon", "hwadam", "lowhigh", "freshfruit", "miso", "bomgyeol", "ggotggot", "pilatesjyoung", "kkujun", "noteend", "dalbit", "cheongramjae", "aether"],
   3: ["ulsanems", "neulgyeot", "malgeun", "ongyeol", "harmony", "reborn", "hansarang"],
   4: ["saebom", "bareungil", "jeongyeon", "dodum", "baro", "hanul", "hyean", "jeongpyo", "cheonglim", "jianlaw", "saessak"],
   5: ["raun", "forme", "soridam", "hangyeol", "neulsoop", "ladog", "minerae"],
@@ -209,7 +209,7 @@ export const CASES: CaseStudy[] = [
     group: 1,
     image: "/images/portfolio/weolcheon.webp",
     thumb: "/images/portfolio/thumbs-mockup/weolcheon.webp",
-    siteUrl: "https://wolcheon.kr/",
+    siteUrl: "https://weolcheon.pages.dev/",
     problem: "쓰레기집이나 고독사 현장은 말을 꺼내기도 어려워서, 손님들이 어디서부터 물어야 할지 망설여요.",
     solution: "'집 안이 너무 쌓여서 누구도 들일 수가 없어요'처럼 손님 상황을 문장으로 먼저 보여 주고, 특수청소부터 에어컨 분해세척까지 다섯 서비스와 비밀보장을 정리해 전화·사진 상담으로 이었어요.",
     headline: "말 꺼내기 어려운 상황을 손님 말투로 먼저 적어 줬어요.",
@@ -877,6 +877,19 @@ export const CASES: CaseStudy[] = [
     problem: "인천점과 강동 암사점, 여러 지점을 홈페이지 하나에 다 담고 싶었어요. 지점마다 시설과 비용, 연락처가 달라서 보호자분들이 헷갈리지 않아야 했어요.",
     solution: "첫 화면에서 지점을 먼저 고르게 하고, 지점마다 따로 페이지를 두어 돌봄·식사·시설 사진과 등급별 한 달 예상 비용, 오시는 길, 입소 상담 전화를 각각 정리했어요.",
     headline: "여러 지점을 한 홈페이지에 담고, 지점마다 따로 안내했어요.",
+  },
+  {
+    id: "aether",
+    category: "필라테스",
+    name: "에테르 필라테스",
+    isReal: false,
+    group: 2,
+    image: "/images/portfolio/aether.webp",
+    thumb: "/images/portfolio/thumbs-mockup/aether.webp",
+    siteUrl: "https://aether-6kn.pages.dev/",
+    problem: "1:1·2:1 프라이빗 수업이라 가격대가 있어서, 운동이 처음이거나 통증이 있는 분들은 내 몸에 맞을지부터 망설여요.",
+    solution: "상담·체형 확인부터 맞춤 수업, 운동 노트, 4주마다 다시 확인까지 네 단계를 보여 주고, 프로그램별 요금과 기구·강사진, 자주 묻는 질문을 정리해 1:1 체험 레슨 예약으로 이었어요.",
+    headline: "첫날 체형을 확인하고 4주마다 다시 보는 과정을 앞세웠어요.",
   },
 ];
 
