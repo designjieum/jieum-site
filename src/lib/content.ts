@@ -34,7 +34,7 @@ export const PORTFOLIO_NAV = [
   { label: "FAQ", href: "/#faq" },
 ];
 
-export const CTA_LABEL = "톡톡으로 1분 상담 받기";
+export const CTA_LABEL = "톡톡으로 무료 상담 받기";
 
 export const HERO = {
   kicker: "템플릿이 아닌 직접 디자인하고 코딩하는 홈페이지 · 13만원 정찰제",
@@ -83,7 +83,7 @@ export const STREET = {
   detailLabel: "자세히 보기",
   siteLinkLabel: "사이트 보기",
   exampleSiteLinkLabel: "사이트 둘러보기",
-  nextSign: { title: "다음은", sub: "사장님 가게", cta: "상담하기" },
+  nextSign: { title: "다음은", sub: "사장님 가게", cta: "무료 상담" },
   // 메인 거리 끝: 사례 페이지로 가는 간판, 설명 아래 링크
   allSign: {
     label: "업종별 사례",
@@ -109,14 +109,15 @@ export const GROUPS: { id: GroupId; name: string }[] = [
   { id: 6, name: "IT/서비스/종교" },
 ];
 
-// 카테고리 안에서 보여 줄 순서 (여기 없는 사례는 맨 뒤에 content.ts 순서대로)
+// 카테고리 안에서 보여 줄 순서: 최신 업로드 순. 새 사례는 해당 카테고리 맨 앞에 넣어 주세요
+// (여기 없는 사례는 맨 뒤에 content.ts 순서대로)
 export const GROUP_ORDER: Record<GroupId, string[]> = {
-  1: ["orangead", "okhome", "bbodeuk", "deundeun", "haruzip", "cheongeum", "toomyeong", "sonbom", "bareunteo", "barodam", "weolcheon", "nusudaepyo", "julnoon", "cleanon", "cleancut", "awningspace"],
-  2: ["gyeolon", "hwadam", "lowhigh", "freshfruit", "miso", "bomgyeol", "ggotggot", "pilatesjyoung", "kkujun", "noteend", "dalbit", "cheongramjae", "aether"],
-  3: ["ulsanems", "neulgyeot", "malgeun", "ongyeol", "harmony", "reborn", "hansarang"],
-  4: ["saebom", "bareungil", "jeongyeon", "dodum", "baro", "hanul", "hyean", "jeongpyo", "cheonglim", "jianlaw", "saessak"],
-  5: ["raun", "forme", "soridam", "hangyeol", "neulsoop", "ladog", "minerae"],
-  6: ["stocklog", "saebit"],
+  1: ["lumiclean", "nusulee", "awningspace", "cleancut", "cleanon", "julnoon", "nusudaepyo", "weolcheon", "barodam", "bareunteo", "sonbom", "toomyeong", "cheongeum", "haruzip", "deundeun", "bbodeuk", "okhome", "orangead"],
+  2: ["aether", "cheongramjae", "noteend", "kkujun", "pilatesjyoung", "ggotggot", "hwadam", "gyeolon", "dalbit", "bomgyeol", "miso", "freshfruit", "lowhigh"],
+  3: ["baekkot", "hansarang", "reborn", "harmony", "ongyeol", "ulsanems", "neulgyeot", "malgeun"],
+  4: ["saessak", "jianlaw", "cheonglim", "jeongpyo", "hyean", "hanul", "baro", "dodum", "jeongyeon", "saebom", "bareungil"],
+  5: ["ladog", "neulsoop", "hangyeol", "soridam", "minerae", "raun", "forme"],
+  6: ["saebit", "stocklog"],
 };
 
 export const casesInGroup = (id: GroupId) => {
@@ -138,12 +139,13 @@ export const PORTFOLIO = {
   },
   nextLabel: "NEXT",
   // 히어로 오른쪽에 걸어 둘 실제 고객 사례 4곳 (이 순서대로)
-  heroCaseIds: ["nusudaepyo", "pilatesjyoung", "ladog", "weolcheon"],
+  heroCaseIds: ["nusudaepyo", "pilatesjyoung", "ladog", "nusulee"],
   heroCasesLabel: "실제 고객 사례",
 };
 
-// 메인 「지음이 만든 홈페이지」에 보여 줄 10곳 (이 순서대로). 나머지는 사례 페이지(/portfolio/)에서만
-export const MAIN_CASE_IDS = ["nusudaepyo", "deundeun", "bbodeuk", "hangyeol", "hwadam", "saebom", "lowhigh", "toomyeong", "jeongyeon", "bareungil"];
+// 메인 「지음이 만든 홈페이지」에 보여 줄 사례 (이 순서대로). 나머지는 사례 페이지(/portfolio/)에서만
+// 같은 업종(누수·필라테스)과 실제 고객이 한쪽에 몰리지 않게 섞어 둠
+export const MAIN_CASE_IDS = ["nusulee", "pilatesjyoung", "ladog", "cheongramjae", "hansarang", "jianlaw", "nusudaepyo", "lowhigh", "reborn", "awningspace", "ggotggot"];
 
 // 새로 만든 사례를 앞에
 export const CASES: CaseStudy[] = [
@@ -890,6 +892,47 @@ export const CASES: CaseStudy[] = [
     problem: "1:1·2:1 프라이빗 수업이라 가격대가 있어서, 운동이 처음이거나 통증이 있는 분들은 내 몸에 맞을지부터 망설여요.",
     solution: "상담·체형 확인부터 맞춤 수업, 운동 노트, 4주마다 다시 확인까지 네 단계를 보여 주고, 프로그램별 요금과 기구·강사진, 자주 묻는 질문을 정리해 1:1 체험 레슨 예약으로 이었어요.",
     headline: "첫날 체형을 확인하고 4주마다 다시 보는 과정을 앞세웠어요.",
+  },
+  {
+    id: "lumiclean",
+    category: "입주청소",
+    name: "루미클린",
+    isReal: false,
+    group: 1,
+    image: "/images/portfolio/lumiclean.webp",
+    thumb: "/images/portfolio/thumbs-mockup/lumiclean.webp",
+    siteUrl: "https://lumiclean.pages.dev/",
+    problem: "청소를 맡기고 집을 비우면 제대로 됐는지 확인하기 어렵고, 아이나 반려동물이 있으면 세제 냄새와 안전도 걱정돼요.",
+    solution: "직영팀·안심 세제·직접 검수·사진 리포트 네 가지 약속을 먼저 보여 주고, 청소 종류별 평당 가격과 카톡으로 받는 공간별 전·후 사진, 3일 무상 A/S를 정리해 카톡 견적으로 이었어요.",
+    headline: "집에 없어도 공간별 전·후 사진을 카톡으로 보내 드려요.",
+  },
+  {
+    id: "nusulee",
+    category: "누수탐지",
+    name: "누수리",
+    location: "부산 부산진구",
+    isReal: true,
+    group: 1,
+    image: "/images/portfolio/nusulee.jpg",
+    thumb: "/images/portfolio/thumbs-mockup/nusulee.webp",
+    siteUrl: "https://nusulee.co.kr/",
+    problem: "윗집 누수 하나에 탐지, 배관 공사, 아랫집 복구, 보험 서류까지 업체를 따로 알아봐야 해서 손님들이 어디서부터 시작할지 막막해했어요.",
+    solution: "상담부터 탐지·수리·피해복구·보험 청구·사후관리까지 여섯 단계를 한 업체가 맡는다는 걸 보여 주고, 특허 공법과 자격증, 보험으로 되는 것과 안 되는 것, 무료 항목을 정리해 부산·경남 다섯 지점 전화로 이었어요.",
+    headline: "탐지부터 보험 청구까지, 한 곳에서 끝난다는 걸 보여 줬어요.",
+  },
+  {
+    id: "baekkot",
+    category: "요양원",
+    name: "배꽃너싱홈",
+    location: "시흥 배곧",
+    isReal: true,
+    group: 3,
+    image: "/images/portfolio/baekkot.webp",
+    thumb: "/images/portfolio/thumbs-mockup/baekkot.webp",
+    siteUrl: "https://xn--js0bp7a02sxxgk6z.com/",
+    problem: "다인실 없이 1·2인실만 운영하는 곳인데, 보호자분들은 사진 몇 장만으로는 부모님이 하루를 어떻게 보내실지 그려 보기 어려워했어요.",
+    solution: "조용한 1·2인실과 문 앞 소나무공원, 재활 걷기를 먼저 보여 주고, 아침부터 밤 야간 근무까지 하루 일과와 등급·치매·부부 입소 같은 질문을 정리해 전화·네이버 방문상담 예약으로 이었어요.",
+    headline: "부모님이 보내실 하루를 시간대별로 그려 보여 줬어요.",
   },
 ];
 

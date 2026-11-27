@@ -9,7 +9,7 @@ import { CaseDialog } from "@/components/sections/CaseDialog";
 import { Storefront } from "@/components/sections/Storefront";
 
 const HEADER_PX = 64;
-// 메인에는 고른 10곳만 고른 순서대로, 전체는 사례 페이지에서
+// 메인에는 MAIN_CASE_IDS에 고른 사례만 고른 순서대로, 전체는 사례 페이지에서
 const SHOPS = MAIN_CASE_IDS.map((id) => CASES.find((c) => c.id === id)).filter((c): c is CaseStudy => !!c);
 const TOTAL = SHOPS.length + 2; // 고른 사례 + 전부 보기 간판 + 다음 간판 자리
 

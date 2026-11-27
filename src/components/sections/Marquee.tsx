@@ -4,7 +4,8 @@ import { goToCase } from "@/lib/street-events";
 export function Marquee() {
   return (
     <section aria-label="지음이 만든 가게 목록" className="group relative overflow-hidden bg-ink py-5 text-wall motion-reduce:overflow-x-auto [&_:focus-visible]:outline-wall">
-      <div className="flex w-max animate-marquee group-hover:[animation-play-state:paused] group-focus-within:[animation-play-state:paused] motion-reduce:animate-none">
+      {/* 속도: 가게 1곳당 2.5초. 사례가 늘어도 흐르는 속도는 그대로 */}
+      <div style={{ animationDuration: `${CASES.length * 2.5}s` }} className="flex w-max animate-marquee group-hover:[animation-play-state:paused] group-focus-within:[animation-play-state:paused] motion-reduce:animate-none">
         {[0, 1].map((copy) => (
           <ul key={copy} aria-hidden={copy === 1} className="flex shrink-0 items-center">
             {CASES.map((c) => (

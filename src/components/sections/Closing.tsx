@@ -103,7 +103,8 @@ function FooterLink({ href, external, children }: { href: string; external?: boo
     <a
       href={href}
       {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-      className="inline-flex min-h-11 items-center break-all underline decoration-wall/30 underline-offset-4 transition-colors duration-200 ease-out-expo hover:decoration-wall"
+      // 글자 줄높이는 옆 칸(대표·주소 등)과 같게 두고, 누르는 영역만 위아래로 넓혀 44px 확보
+      className="relative break-all underline after:absolute after:inset-x-0 after:-inset-y-3 after:content-[''] decoration-wall/30 underline-offset-4 transition-colors duration-200 ease-out-expo hover:decoration-wall"
     >
       {children}
     </a>

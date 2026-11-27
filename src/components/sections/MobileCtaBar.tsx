@@ -34,17 +34,21 @@ export function MobileCtaBar() {
         show ? "translate-y-0" : "translate-y-full"
       }`}
     >
-      <div className="flex gap-2">
+      {/* 전화·톡톡 반반. 320px 폭에서도 한 줄에 들어가도록 글자·여백을 줄임 */}
+      <div className={BUSINESS.phoneConfirmed ? "grid grid-cols-2 gap-2" : "flex"}>
         {BUSINESS.phoneConfirmed && (
           <a
             href={BUSINESS.phoneHref}
-            aria-label="전화 상담"
-            className="inline-flex h-14 w-14 shrink-0 items-center justify-center border-2 border-ink text-ink"
+            className="inline-flex h-14 items-center justify-center gap-2 whitespace-nowrap border-2 border-ink px-2 text-[15px] font-bold text-ink max-[359px]:text-[14px]"
           >
-            <Phone aria-hidden="true" className="size-5" />
+            <Phone aria-hidden="true" className="size-4 shrink-0" />
+            전화 상담
           </a>
         )}
-        <CtaLink className="flex-1" />
+        <CtaLink
+          label={BUSINESS.phoneConfirmed ? "톡톡 무료 상담" : undefined}
+          className={BUSINESS.phoneConfirmed ? "px-2 text-[15px] sm:px-2 max-[359px]:text-[14px]" : "flex-1"}
+        />
       </div>
     </div>
   );
